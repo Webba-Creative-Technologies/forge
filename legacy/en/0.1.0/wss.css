@@ -1,0 +1,758 @@
+/*WEBBA Style System - 2020 : https://software.webba-creative.com/wss/index.html */
+
+html
+{
+        scroll-behavior: smooth;
+}
+
+/*Debut Bouton*/
+
+
+.btn-cl a
+{
+        color: white;
+        text-decoration: none;
+        font-family: Roboto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        cursor: pointer;
+        background-color: rgb(179, 59, 59);
+
+}
+
+.disabled a
+{
+        background-color:#B46666;
+        cursor: context-menu;
+}
+
+.btn-cl a:hover
+{
+        background-color: rgb(232, 132, 132);
+}
+
+.disabled a:hover
+{
+        background-color:#B46666;
+}
+
+.btn-cl_select a
+{
+        color: white;
+        text-decoration: none;
+        font-family: Roboto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: rgb(232, 132, 132);
+
+}
+
+.btn-cl_select a:hover
+{
+        background-color: rgb(179, 59, 59);
+}
+
+
+.btn_cl a
+{
+        color: white;
+        text-decoration: none;
+        font-family: Roboto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: rgb(179, 59, 59);
+
+}
+
+.btn_cl a:hover
+{
+        background-color: rgb(232, 132, 132);
+}
+
+.btn_cl_select a
+{
+        color: white;
+        text-decoration: none;
+        font-family: Roboto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: rgb(232, 132, 132);
+
+}
+
+.btn_cl_select a:hover
+{
+        background-color: rgb(179, 59, 59);
+}
+
+
+.btn-ol a
+{
+        color: rgb(179, 59, 59);
+        text-decoration: none;
+        font-family: Roboto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        cursor: pointer;
+        border : 1px solid rgb(179, 59, 59);
+
+}
+
+.btn-ol a:hover
+{
+        background-color: rgb(179, 59, 59);
+        color:white;
+}
+
+.btn-ol-disabled a
+{
+        color: #B46666;
+        text-decoration: none;
+        font-family: Roboto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        cursor: context-menu;
+        border : 1px solid #B46666;
+
+}
+
+.btn-ol-disabled a:hover
+{
+        
+}
+
+/*Fin Bouton*/
+
+/*Debut Barre*/
+
+@media only screen and (min-width: 1400px) {
+
+.navItem-center
+{
+        margin:auto;
+}
+
+.navItem-center a
+{
+        text-decoration:none;
+}
+
+.navItem-logo-center, navItem-logo-center a
+{
+margin:auto;
+}
+
+.navigation-container-center
+{
+        margin:auto;
+        width:20%;
+}
+
+}
+
+@media only screen and (max-width: 1400px) {
+
+.navItem-center
+{
+        margin:left;
+        margin-left:20px
+}
+
+.navItem-center a
+{
+        text-decoration:none;
+}
+
+.navigation-container-center
+{
+        width:100%;
+}
+
+.navItem-logo-center, navItem-logo-center a
+{
+margin:left;
+margin-left:20px;
+}
+
+}
+
+/*Fin Barre*/
+
+/*Debut navigation*/
+
+@media only screen and (min-width: 1400px) {
+.navigation-container
+{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+}
+
+.navigation-complete-logo
+{
+        margin: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+}
+
+#links
+{
+        display: flex;
+        width: 100%;
+}
+
+.right-nav
+{
+        margin-left: auto;
+        margin-right: 30px; 
+        display: flex;
+        align-items: center; 
+}
+
+.navButton
+{
+        display: none;
+}
+}
+
+@media only screen and (max-width: 1400px) {
+        .navigation-container
+        {
+                display: grid;
+                align-items: center;
+                
+        }
+        
+        .navigation-complete-logo
+        {
+                margin: 0;
+                padding-top: 10px;
+                padding-bottom: 10px;
+        }
+
+        .right-nav
+{
+         display: grid;
+}
+
+#container-nav
+{
+        display: flex;
+}
+
+#links
+{
+        display: none;
+}
+
+.navButton
+{
+        display: flex;
+}
+}
+
+#nav-color-white
+{
+        background-color: rgb(242, 242, 242);
+}
+
+#nav-color-white a
+{
+        color: #b1b1b1;
+}
+
+#nav-color-white a:hover
+{
+        color: #353535;
+}
+
+#nav-color-black a
+{
+        color: #7c7c7c;
+}
+
+#nav-color-black a:hover
+{
+        color: white;
+}
+
+#nav-color-black
+{
+        background-color: rgb(60, 56, 56);
+}
+
+.actual-nav-black
+{
+        color: white;
+}
+
+.actual-nav-white
+{
+        color:  #353535;
+}
+
+.navigation-complete-logo img
+{
+        width: 150px;
+        height: auto;
+
+}
+
+.navItem
+{
+        padding-left: 20px;
+        padding-right: 20px;
+}
+
+.navItem a
+{
+        text-decoration: none;
+       
+}
+
+
+
+.navItem h4
+{
+        font-weight: 500;
+}
+
+.navItem img
+{
+        margin-right: 0px;
+        margin-left: 20px;
+        vertical-align: middle;
+        border-style: none;
+}
+
+
+/*Fin navigation*/
+
+/*Debut container*/
+
+body
+{
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+}
+
+@media only screen and (min-width: 1400px) {
+.container-cl
+{
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+}
+
+.container-lg
+{
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+}
+
+.container-sl
+{
+        width: 50%;
+        margin-right: auto;
+        margin-left: auto;
+}
+}
+
+@media only screen and (max-width: 1400px) {
+        .container-cl
+        {
+                width: 95%;
+                margin-right: auto;
+                margin-left: auto;
+        }
+        
+        .container-lg
+        {
+                width: 100%;
+                margin-right: auto;
+                margin-left: auto;
+        }
+        
+        .container-sl
+        {
+                width: 95%;
+                margin-right: auto;
+                margin-left: auto;
+        }
+}
+
+.grid
+{
+        text-align: center;
+}
+@media only screen and (min-width: 1400px) {
+.grid-container
+{
+        /*display: inline-flex;
+        text-align: center;
+        margin: auto;
+        padding: 20px;*/
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+}
+.grid-selector
+{
+        text-align: center;
+        margin: auto;
+        width: 100%;
+}
+}
+
+@media only screen and (max-width: 1400px) {
+.grid-container
+{
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: auto;
+        
+}
+.grid-selector
+{
+        text-align: center;
+        margin: auto;
+        width: 100%;
+
+}
+}
+
+
+.list-container
+{
+        display:grid;
+        width:100%;
+        margin:auto;
+
+}
+
+.list-container a
+{
+        text-decoration:none;
+
+}
+
+.list-selector
+{
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        border: 1px solid #989898;
+
+}
+
+.first-list-selector
+{
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        border: 1px solid #989898;
+        border-radius: 10px 10px 0 0;
+
+}
+
+.last-list-selector
+{
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        border: 1px solid #989898;
+        border-radius: 0 0 10px 10px;
+
+}
+
+.selected
+{
+background-color:#B33B3B;
+color:white;
+}
+
+.link
+{
+background-color:white;
+color:black;
+
+}
+
+.link:hover
+{
+background-color:#D94747;
+color:white;
+border: 1px solid #D94747;
+}
+
+
+/*Fin container*/
+
+/*Debut titres*/
+
+h1, h2, h3, h4, h5, h6
+{
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+
+p span 
+{ 
+        display: block; 
+}
+
+/*Fin Titres*/
+
+/*Debut liens*/
+
+.link-red
+{
+        text-decoration: none;
+        color: rgb(179, 59, 59);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.link-red:hover
+{
+        text-decoration: none;
+        color: rgb(232, 132, 132);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/*Fin Liens*/
+
+/*Debut hr*/
+
+.hr-small
+{
+        margin: 1rem 0;
+        width: 30%;
+        color: inherit;
+        background-color: currentColor;
+        opacity: 0.40;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+}
+
+.hr-medium
+{
+        margin: 1rem 0;
+        width: 80%;
+        color: inherit;
+        background-color: currentColor;
+        opacity: 0.40;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+}
+
+.hr-large
+{
+        margin: 1rem 0;
+        width: 100%;
+        color: inherit;
+        background-color: currentColor;
+        opacity: 0.40;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+}
+
+.hr-vertical-small
+{
+
+        height: 100px;
+        width: 1px;
+        color: inherit;
+        background-color: currentColor;
+        opacity: 0.20;
+        margin-top: 10px;
+        margin-bottom: 10px; 
+}
+
+.hr-vertical-medium
+{
+
+        height: 300px;
+        width: 1px;
+        color: inherit;
+        background-color: currentColor;
+        opacity: 0.20;
+        margin-top: 10px;
+        margin-bottom: 10px; 
+}
+
+.hr-vertical-large
+{
+
+        height: 800px;
+        width: 1px;
+        color: inherit;
+        background-color: currentColor;
+        opacity: 0.20;
+        margin-top: 10px;
+        margin-bottom: 10px; 
+}
+
+/*Fin hr*/
+
+/*Debut paragraphes*/
+
+p, pre
+{
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/*Fin paragraphes*/
+
+/*Debut articles*/
+
+.article
+{
+     padding: 10px;
+     text-align: left;
+}
+
+.article img
+{
+        width: 100%;
+        height: auto;
+}
+
+.article h3
+{
+        font-size: 22px;
+        margin-top: 10px;
+        line-height: 1;
+        margin-bottom: 10px;
+}
+
+.article h3, .article p, .article a
+{
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.article p
+{
+        margin-top: 10px;
+        margin-bottom: 25px;
+}
+
+.article .icn
+{
+        width: 10px;
+        height: auto;
+        padding-left: 10px;
+}
+@media only screen and (min-width: 1400px) {
+.small-article
+{
+        width:200px;
+        height: auto;
+}
+
+.medium-article
+{
+        width:400px;
+        height: auto;
+}
+
+.large-article
+{
+
+        width:600px;
+        height: auto;
+
+}
+}
+
+@media only screen and (max-width: 1400px) {
+        .small-article
+        {
+                width:95%;
+                height: auto;
+        }
+        
+        .medium-article
+        {
+                width:95%;
+                height: auto;
+        }
+        
+        .large-article
+        {
+        
+                width:95%;
+                height: auto;
+        
+        }
+}
+
+/*Fin articles*/
+
+/*Debut footer*/
+
+footer
+{
+  background-color: #2D2D2D;
+  height: 200px;
+  margin: auto;
+  text-align: center;
+  margin-top: 100px;
+}
+
+footer img
+{
+  width: 100px;
+  padding-top: 60px;
+  margin: auto;
+  height: auto;
+  padding-bottom: 20px;
+}
+
+footer h4
+{
+  padding-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  font-family: 'Roboto';
+}
+
+/* Fin footer */

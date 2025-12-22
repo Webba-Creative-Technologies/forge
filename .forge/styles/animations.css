@@ -1,0 +1,660 @@
+/* ================================
+   Forge Design System - Animations
+   ================================ */
+
+/* === Smooth Scroll === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Input Number Spinners (hide native) === */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* === HR Reset === */
+hr {
+  border: none;
+  border-color: var(--border-color);
+  background-color: var(--border-color);
+}
+
+/* === Fade === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* === Scale === */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* === Slide === */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* === Spinner === */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* === Gradient Button Halo Effect === */
+@keyframes gradientBorderRotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.gradient-btn-halo {
+  animation: gradientBorderRotate 2s linear infinite;
+  background:
+    linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%) padding-box,
+    conic-gradient(from var(--angle), var(--brand-primary), var(--brand-secondary), #10b981, #06b6d4, var(--brand-primary)) border-box !important;
+  border: 2px solid transparent !important;
+}
+
+/* === Pulse === */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* === Pulse Scale (for upload dropzone) === */
+@keyframes pulseScale {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* === Float (for icons) === */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* === Wiggle (for attention) === */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+/* === Glow Pulse (AI indicator) === */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(163, 91, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(163, 91, 255, 0.5);
+  }
+}
+
+/* === Border Sweep (Mode transition) === */
+@keyframes borderSweepIn {
+  0% {
+    clip-path: polygon(50% 50%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+  }
+  14% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+  }
+  28% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%, 100% 50%, 100% 50%, 100% 50%);
+  }
+  42% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%, 100% 100%, 100% 100%, 100% 100%);
+  }
+  57% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%, 100% 100%, 50% 100%, 50% 100%);
+  }
+  71% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%, 100% 100%, 50% 100%, 0% 100%);
+  }
+  85% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%, 100% 100%, 50% 100%, 0% 100%, 0% 50%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
+  }
+}
+
+/* === Shimmer (Skeleton loading) === */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* === Bounce === */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* === Checkmark Bounce (for checkbox) === */
+@keyframes checkmarkBounce {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* === Switch Thumb Spring === */
+@keyframes thumbSpring {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  30% {
+    transform: translateY(-50%) scale(1.1, 0.9);
+  }
+  50% {
+    transform: translateY(-50%) scale(0.95, 1.05);
+  }
+  70% {
+    transform: translateY(-50%) scale(1.02);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* === Shake === */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* === Skeleton Animations === */
+@keyframes skeletonPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes skeletonWave {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* === Drawer/Sheet Animations === */
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes slideInTop {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slideInBottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* === Progress Bar === */
+@keyframes progressBarFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ================================
+   Utility Classes
+   ================================ */
+
+/* Animations */
+.animate-fadeIn { animation: fadeIn 0.15s ease-out; }
+.animate-fadeOut { animation: fadeOut 0.15s ease-out; }
+.animate-scaleIn { animation: scaleIn 0.2s ease-out; }
+.animate-scaleOut { animation: scaleOut 0.2s ease-out; }
+.animate-slideInUp { animation: slideInUp 0.2s ease-out; }
+.animate-slideInDown { animation: slideInDown 0.2s ease-out; }
+.animate-spin { animation: spin 1s linear infinite; }
+.animate-pulse { animation: pulse 2s ease-in-out infinite; }
+.animate-pulseScale { animation: pulseScale 2s ease-in-out infinite; }
+.animate-glowPulse { animation: glowPulse 2s ease-in-out infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-wiggle { animation: wiggle 0.5s ease-in-out; }
+.animate-bounce { animation: bounce 0.5s ease-in-out; }
+.animate-shake { animation: shake 0.3s ease-in-out; }
+
+/* Border sweep */
+.border-sweep-active {
+  animation: borderSweepIn 0.2s ease-out forwards;
+}
+
+.border-sweep-inactive {
+  opacity: 0;
+}
+
+/* Skeleton */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-tertiary);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-pulse {
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-wave {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    var(--bg-tertiary) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonWave 1.5s ease-in-out infinite;
+}
+
+/* Progress bar */
+.progress-bar-animated {
+  transform-origin: left center;
+  animation: progressBarFill 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Interactive states */
+.interactive-icon:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.interactive-danger:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.interactive-nav:hover {
+  color: var(--text-primary);
+}
+
+.interactive-card-subtle:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* Row hover (for dropdowns, lists, table rows) */
+.interactive-row {
+  transition: all 0.15s ease;
+}
+
+.interactive-row:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* Subtle hover (for accordion headers, list items) */
+.interactive-subtle {
+  transition: all 0.15s ease;
+}
+
+.interactive-subtle:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* Card hover with border */
+.interactive-card {
+  transition: all 0.15s ease;
+}
+
+.interactive-card:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.btn-ghost:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.btn-danger:hover {
+  background-color: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+/* ================================
+   Transitions
+   ================================ */
+
+.transition-fast {
+  transition: all 0.15s ease;
+}
+
+.transition-normal {
+  transition: all 0.2s ease;
+}
+
+.transition-slow {
+  transition: all 0.3s ease;
+}
+
+/* Hover effects */
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(163, 91, 255, 0.3);
+}
+
+/* === Image Tile === */
+.image-tile {
+  transform: scale(1);
+  box-shadow: none;
+}
+
+.image-tile:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.image-tile-img {
+  transition: transform 0.2s ease;
+}
+
+.image-tile:hover .image-tile-img {
+  transform: scale(1.05);
+}
+
+.image-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-tile:hover .image-tile-overlay {
+  opacity: 1;
+}
+
+/* Lightbox thumbnails - subtler hover */
+.lightbox-thumbnail {
+  transform: none;
+}
+
+.lightbox-thumbnail:hover {
+  transform: none;
+  box-shadow: none;
+  opacity: 1 !important;
+}
+
+.lightbox-thumbnail .image-tile-img {
+  transition: none;
+}
+
+.lightbox-thumbnail:hover .image-tile-img {
+  transform: none;
+}
+
+.lightbox-thumbnail .image-tile-overlay {
+  display: none;
+}
+
+/* ================================
+   Scrollbars
+   ================================ */
+
+/* Webkit (Chrome, Safari, Edge) */
+.forge-scrollbar::-webkit-scrollbar,
+.forge-scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.forge-scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.forge-scrollbar::-webkit-scrollbar-track,
+.forge-scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.forge-scrollbar::-webkit-scrollbar-thumb,
+.forge-scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border-color, #404040);
+  border-radius: 4px;
+}
+
+.forge-scrollbar::-webkit-scrollbar-thumb:hover,
+.forge-scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted, #737373);
+}
+
+/* Scrollbar with gutter (always visible space) */
+.forge-scrollbar-gutter {
+  scrollbar-gutter: stable;
+}
+
+/* Auto-hide scrollbar (only show on hover) */
+.forge-scrollbar-auto::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.forge-scrollbar-auto:hover::-webkit-scrollbar-thumb {
+  background: var(--border-color, #404040);
+}
+
+.forge-scrollbar-auto:hover::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted, #737373);
+}
+
+/* Minimal scrollbar (very thin, subtle) */
+.forge-scrollbar-minimal::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.forge-scrollbar-minimal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.forge-scrollbar-minimal::-webkit-scrollbar-thumb {
+  background: var(--border-subtle, #2a2a2a);
+  border-radius: 2px;
+}
+
+.forge-scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color, #404040);
+}
+
+/* Hidden scrollbar (still scrollable) */
+.forge-scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.forge-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+.forge-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color, #404040) transparent;
+}
+
+.forge-scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color, #404040) transparent;
+}
+
+.forge-scrollbar-minimal {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle, #2a2a2a) transparent;
+}
+
+/* Global scrollbar style (apply to all elements) */
+.forge-scrollbar-global,
+.forge-scrollbar-global * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color, #404040) transparent;
+}
+
+.forge-scrollbar-global::-webkit-scrollbar,
+.forge-scrollbar-global *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.forge-scrollbar-global::-webkit-scrollbar-track,
+.forge-scrollbar-global *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.forge-scrollbar-global::-webkit-scrollbar-thumb,
+.forge-scrollbar-global *::-webkit-scrollbar-thumb {
+  background: var(--border-color, #404040);
+  border-radius: 4px;
+}
+
+.forge-scrollbar-global::-webkit-scrollbar-thumb:hover,
+.forge-scrollbar-global *::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted, #737373);
+}
+

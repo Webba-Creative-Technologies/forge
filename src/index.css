@@ -1,0 +1,107 @@
+:root {
+  /* Brand */
+  --brand-primary: #A35BFF;
+  --brand-secondary: #FD9173;
+
+  /* Backgrounds */
+  --bg-primary: #070707;
+  --bg-secondary: #0c0c0c;
+  --bg-tertiary: #1a1a1a;
+  --bg-hover: #2a2a2a;
+
+  /* Text */
+  --text-primary: #FAFAFA;
+  --text-secondary: #999999;
+  --text-muted: #666666;
+
+  /* Borders */
+  --border-color: #404040;
+  --border-subtle: #1a1a1a;
+
+  /* Status */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  /* Accent */
+  --accent-color: var(--brand-primary);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+/* Apply Forge scrollbar globally */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Also apply to all scrollable elements */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Enhanced sidebar hover effects */
+.interactive-nav {
+  transition: color 0.15s ease, background-color 0.15s ease !important;
+}
+
+.interactive-nav:hover {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-tertiary) !important;
+}

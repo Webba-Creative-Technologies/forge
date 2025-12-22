@@ -1,0 +1,153 @@
+# ===================
+# DEPENDENCIES
+# ===================
+node_modules/
+.pnp/
+.pnp.js
+
+# ===================
+# BUILD OUTPUT
+# ===================
+dist/
+dist-ssr/
+build/
+out/
+*.local
+
+# ===================
+# ENVIRONMENT VARIABLES (NEVER COMMIT!)
+# ===================
+.env
+.env.*
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+!.env.example
+
+# ===================
+# API KEYS & SECRETS
+# ===================
+*.pem
+*.key
+*.crt
+secrets/
+credentials/
+**/api-keys.*
+**/secrets.*
+
+# ===================
+# CLAUDE / AI TOOLS
+# ===================
+.claude/
+.claude
+CLAUDE.md
+.webba/
+.cursor/
+.aider*
+
+# ===================
+# LOGS
+# ===================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===================
+# TESTING
+# ===================
+test-results/
+playwright-report/
+coverage/
+.nyc_output/
+*.lcov
+
+# ===================
+# EDITOR & IDE
+# ===================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-workspace
+*.sublime-project
+
+# ===================
+# OS FILES
+# ===================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ===================
+# TEMPORARY FILES
+# ===================
+.temp/
+.cache/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*~
+*_backup.*
+
+# ===================
+# DEBUG/SETUP FILES
+# ===================
+debug-*.js
+fix-*.js
+test-*.php
+build_log*.txt
+
+# ===================
+# PRIVATE DOCS
+# ===================
+docs/devblog/
+*_SETUP.md
+*_FIX.md
+*_DEBUG.md
+*_TEST.md
+TROUBLESHOOTING_*.md
+DEPLOY_*.md
+PRIVATE_*.md
+INTERNAL_*.md
+
+# ===================
+# DATABASE
+# ===================
+*.sqlite
+*.sqlite3
+*.db
+database-setup/
+**/migrations/**/*.js
+**/migrations/**/*.ts
+
+# ===================
+# SUPABASE
+# ===================
+supabase/.temp/
+supabase/.branches/
+
+# ===================
+# MISC
+# ===================
+*.tgz
+*.tar.gz
+*.zip

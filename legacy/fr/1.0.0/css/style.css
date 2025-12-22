@@ -1,0 +1,144 @@
+#ol-noir a
+{
+    color: black;background-color: white;
+}
+
+#ol-noir a:hover
+{
+    color: white;background-color: black;
+}
+
+
+
+#otl-noir a:hover
+{
+    color: white;border: black 2px solid;
+    background-color: black;
+}
+
+#lien-webba
+{
+    color: #A40DF8;
+    text-decoration: none;
+}
+
+#lien-webba:hover
+{
+    color: rgb(184, 113, 250);
+    text-decoration: underline;
+}
+
+#lien
+{
+    color: #B33B3B;
+    text-decoration: none;
+}
+
+#lien:hover
+{
+    color:#eb8888;
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 700px) {
+
+    .navNav
+    {
+        margin-right: 50px;
+        width: 13%;
+    }
+
+#fixed
+{
+    position: fixed;
+}
+
+.navWSS
+{
+    width: 8%;
+    margin-left: 100px;
+    margin-top: 50px;
+    left: 0;
+}
+
+#petitCont
+{
+    
+}
+
+#TitreTop
+{
+    color: white;
+}
+
+#titreBleu
+{
+    font-size: 80px;
+}
+
+#otl-noir a
+{
+    color: white;border: white 2px solid;
+}
+
+#grandCont{
+
+    margin-left: 100px;
+}
+
+.navbarTop
+    {
+        top: 0;
+    }
+
+}
+
+
+@media only screen and (max-width: 700px) {
+    #petitCont
+    {
+        margin-left: 0px;
+    }
+
+    .navWSS
+    {
+    width: 90%;
+    margin-left: 0px;
+    margin-top: 0px;
+
+    }
+
+    .navbarTop
+    {
+        padding-top: 20px;
+        top: 0;
+    }
+
+    .navNav
+    {
+        margin-right: 0px;
+        width: 90%;
+    }
+
+    
+    #TitreTop
+    {
+        color: black;
+    }
+    
+    #titreBleu
+    {
+        font-size: 30px;
+    }
+
+    #grandCont{
+
+        margin-left: 50px;
+    }
+
+    #otl-noir a
+    {
+        color: black;border: black 2px solid;
+    }
+    
+    }

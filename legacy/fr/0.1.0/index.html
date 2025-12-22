@@ -1,0 +1,996 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="WSS is an HTML, CSS, Javascript library under development by Webba.">
+        <meta name="keywords" content="webba, webba wss, webba-creative, webbewss, webba style system,wss, html, css, tutorials, librairie, library, html library, css library, javascript library, javascript, web, website" />
+        <title>WSS by Webba - Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="wss.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="shortcut icon" href="https://software.webba-creative.com/wss/img/Favicon.png"/>
+    </head>
+    <body>
+    
+    <section class="navigation-complete-logo" id="nav-color-black">
+
+            <section class="container-lg">
+
+                <section class="navigation-container">
+
+                    <section style="display: flex;align-items: center;"><section class="navItem"><a href="index.html"><img src="img/logo.png" alt="logo"></a></section>
+                    <section class="navButton" id="navBtn" style="margin-left: auto;margin-right: 40px;"><a onclick="JavaScript:navMenu()"><img src="https://software.webba-creative.com/wss/icones/navPhone.png" style="width: 30px;height: auto;"></a></section></section>
+                    <section id="links" ><section class="navItem"><a href="index.html"><span class="actual-nav-black"><h4>Home / Docs</h4></span</a></section>
+                    <section class="navItem"><a href="https://software.webba-creative.com/"><h4>Webba-software</h4></a></section>
+                    <section class="navItem"><a href="https://docs.webba-creative.com/index.html"><h4>Privacy</h4></a></section>
+                    <section class="navItem"><a href="https://software.webba-creative.com/contact.php"><h4>Contact</h4></a></section>
+                    <section class="right-nav"><section class="navItem" ><a href="https://software.webba-creative.com/id.php"><h4>My Account</h4></a></section>
+                    <section class="navItem" ><a href="https://opencollective.com/wss-by-webba"><h4>Support Us</h4></a></section></section></section></section>
+
+                </section>
+
+            </section>
+
+        </section>
+
+        <section class="container-lg">
+        <h1 style="text-align:center;background-color:#DBDBDB;padding-top:130px;padding-bottom:130px;margin:0;font-size:35px;">WSS BETA <u>FOR WEB DEV</u></h1>
+        </section>
+
+        <section class="container-lg">
+
+            <section class="grid-container" style="background-color:#c5c5c5;width:100%; height: 40px;">
+
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#QS" style=""><p>Quick Start</p></a></section>
+
+                </section>
+
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#containers" style=""><p>Containers</p></a></section>
+
+                </section>
+
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#grid" style=""><p>Grids</p></a></section>
+
+                </section>
+                
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#lists" style=""><p>Lists</p></a></section>
+
+                </section>
+
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#navbar" style=""><p>NavBar</p></a></section>
+
+                </section>
+                
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#bar" style=""><p>Bars</p></a></section>
+
+                </section>
+
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#articles" style=""><p>Articles</p></a></section>
+
+                </section>
+                
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#button" style=""><p>Buttons</p></a></section>
+
+                </section>
+
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#HHR" style=""><p>Horizontal Hr</p></a></section>
+
+                </section>
+
+                <section class="grid-selector">
+
+                    <section class="btn_cl"><a href="#VHR" style=""><p>Vertical Hr</p></a></section>
+
+                </section>
+                
+                
+
+        </section>
+        
+        <section class="container-lg">
+        
+                
+                <section class="container-cl" style="padding-top:50px;padding-bottom:50px;text-align:left;">
+                
+                         <!--<section class="btn_cl" style="text-align:center;"><a href="test.html">Zone de Test</a></section><br>-->
+                         
+                         <h1 style="font-size:40px;" id="QS">Quick start :</h1>
+                         
+                         <section ><h2 style="color:#B33B3B;">CSS</h2><p>Copy-paste this code in your head :</p></section>
+                         <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><<span style="display:none;">"</span>link <span style="color:green">href=</span><span style="color:blue">"https://software.webba-creative.com/wss/wss.css"</span> <span style="color:green">rel=</span><span style="color:blue">"stylesheet"</span>></pre>
+
+                         <section ><h2 style="color:#B33B3B;">JS</h2><p>Copy-paste this code in the end of your body :</p></section>
+                         <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>script <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/js/wss.js"</span>><span><</span>/script></pre>
+
+
+                        <br><hr class="hr-medium">
+
+                        <h1 style="font-size:40px;">How it work :</h1>
+
+                        <section id="containers"><h1 style="font-size:28px;color:#B33B3B;">CONTAINERS</h1><p>Small Container (50%)</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-sl"</span>></pre>
+
+                        <section><p>Classic Container (80%)</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-cl"</span>></pre>
+
+                        <section><p>Large Container (100%)</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></pre>
+
+                        <section ><h2>Example</h2><p>All containers available with WSS</p></section>
+
+                        <img src="img/containerExemple.jpg" style="width: 100%;height: auto;">
+
+                        <br><hr class="hr-medium">
+
+                        <section id="grid"><h1 style="font-size:28px;color:#B33B3B;">GRIDS</h1><p>How to simply create a grid with WSS</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 100px;"><br><br><section><span><</span>section <span style="color:green">class=</span><span style="color:blue">"grid-container"</span>></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"grid-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 1</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"grid-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 2</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"grid-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 3</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent:100px"><span><</span>/section></section>
+                        </pre>
+                        
+                        <section ><h2>Example</h2><p>An example of a grid (desktop)</p></section>
+                        
+                         <section class="grid-container" style="background-color:#c5c5c5;width:100%;">
+
+                            <section class="grid-selector">
+
+                                <p>Element 1</p>
+
+                            </section>
+
+                            <section class="grid-selector">
+
+                                <p>Element 2</p>
+
+                            </section>
+
+                            <section class="grid-selector">
+
+                                <p>Element 3</p>
+
+                            </section>
+
+                        </section>
+                        
+                        <section ><h2>Example</h2><p>An example of a grid (phone)</p></section>
+                        
+                        <section class="grid-container" style="background-color:#c5c5c5;width:100%;display:grid;text-align:center;margin:auto;justify-content: center;">
+
+                            <section class="grid-selector">
+
+                                <p>Element 1</p>
+
+                            </section>
+
+                            <section class="grid-selector">
+
+                                <p>Element 2</p>
+
+                            </section>
+
+                            <section class="grid-selector">
+
+                                <p>Element 3</p>
+
+                            </section>
+
+                        </section>
+
+                        <br><hr class="hr-medium">
+
+                        <section id="lists"><h1 style="font-size:28px;color:#B33B3B;">LISTS</h1><h2>Classical List</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 100px;"><br><br><section><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-container"</span>></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"first-list-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 1</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 2</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 3</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"last-list-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 4</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent:100px"><span><</span>/section></section>
+                        </pre>
+                        
+                        <section ><h2>Example</h2><p>An example of a classical list</p></section>
+                        
+                         <section style="background-color:#c5c5c5;width:100%;padding-top:20px;padding-bottom:20px;";><section class="list-container" style="width:50%;">
+
+                            <section class="first-list-selector" style="background-color:white;">
+
+                                <p>Element 1</p>
+
+                            </section>
+
+                            <section class="list-selector" style="background-color:white;">
+
+                                <p>Element 2</p>
+
+                            </section>
+                            
+                            <section class="list-selector" style="background-color:white;">
+
+                                <p>Element 3</p>
+
+                            </section>
+
+                            <section class="last-list-selector" style="background-color:white;">
+
+                                <p>Element 4</p>
+
+                            </section>
+
+                        </section></section>
+                        
+                        <br><hr class="hr-medium">
+                        
+                        <section><h2>Classical List with selector</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 100px;"><br><br><section><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-container"</span>></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"first-list-selector selected"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 1</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 2</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 3</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"last-list-selector"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 4</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent:100px"><span><</span>/section></section>
+                        </pre>
+                        
+                        <section ><h2>Example</h2><p>An example of a list with selector</p></section>
+                        
+                         <section style="background-color:#c5c5c5;width:100%;padding-top:20px;padding-bottom:20px;";><section class="list-container" style="width:50%;">
+
+                            <section class="first-list-selector selected">
+
+                                <p>Element 1</p>
+
+                            </section>
+
+                            <section class="list-selector" style="background-color:white;">
+
+                                <p>Element 2</p>
+
+                            </section>
+                            
+                            <section class="list-selector" style="background-color:white;">
+
+                                <p>Element 3</p>
+
+                            </section>
+
+                            <section class="last-list-selector" style="background-color:white;">
+
+                                <p>Element 4</p>
+
+                            </section>
+
+                        </section></section>
+                        
+                        <br><hr class="hr-medium">
+                        
+                        <section><h2>Classical List with links</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 100px;"><br><br><section><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-container"</span>></section>
+                        <section style="text-indent: 210px;"><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>section <span style="color:green">class=</span><span style="color:blue">"first-list-selector link"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 1</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section><span><</span>/a></section>
+                        <section style="text-indent: 210px;"><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-selector link"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 2</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section><span><</span>/a></section>
+                        <section style="text-indent: 210px;"><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-selector link"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 3</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section><span><</span>/a></section>
+                        <section style="text-indent: 210px;"><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>section <span style="color:green">class=</span><span style="color:blue">"last-list-selector link"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 4</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section><span><</span>/a></section>
+                        <section style="text-indent:100px"><span><</span>/section></section>
+                        </pre>
+                        
+                        <section ><h2>Example</h2><p>An example of a list with links</p></section>
+                        
+                         <section style="background-color:#c5c5c5;width:100%;padding-top:20px;padding-bottom:20px;";><section class="list-container" style="width:50%;">
+
+                            <a href="#"><section class="first-list-selector link">
+
+                                <p>Element 1</p>
+
+                            </section></a>
+
+                            <a href="#"><section class="list-selector link">
+
+                                <p>Element 2</p>
+
+                            </section></a>
+                            
+                            <a href="#"><section class="list-selector link">
+
+                                <p>Element 3</p>
+
+                            </section></a>
+
+                            <a href="#"><section class="last-list-selector link">
+
+                                <p>Element 4</p>
+
+                            </section></a>
+
+                        </section></section>
+                        
+                        <br><hr class="hr-medium">
+                        
+                        <section><h2>Classical List with links and selector</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 100px;"><br><br><section><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-container"</span>></section>
+                        <section style="text-indent: 210px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"first-list-selector selected"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 1</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section></section>
+                        <section style="text-indent: 210px;"><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-selector link"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 2</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section><span><</span>/a></section>
+                        <section style="text-indent: 210px;"><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>section <span style="color:green">class=</span><span style="color:blue">"list-selector link"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 3</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section><span><</span>/a></section>
+                        <section style="text-indent: 210px;"><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>section <span style="color:green">class=</span><span style="color:blue">"last-list-selector link"</span>></section>
+                        <section style="text-indent:310px;"><span><</span>p><span style="color:blue">Element 4</span><span><</span>/p></section>
+                        <section style="text-indent:210px"><span><</span>/section><span><</span>/a></section>
+                        <section style="text-indent:100px"><span><</span>/section></section>
+                        </pre>
+                        
+                        <section ><h2>Example</h2><p>An example of a list with links</p></section>
+                        
+                         <section style="background-color:#c5c5c5;width:100%;padding-top:20px;padding-bottom:20px;";><section class="list-container" style="width:50%;">
+
+                            <section class="first-list-selector selected">
+
+                                <p>Element 1</p>
+
+                            </section>
+
+                            <a href="#"><section class="list-selector link">
+
+                                <p>Element 2</p>
+
+                            </section></a>
+                            
+                            <a href="#"><section class="list-selector link">
+
+                                <p>Element 3</p>
+
+                            </section></a>
+
+                            <a href="#"><section class="last-list-selector link">
+
+                                <p>Element 4</p>
+
+                            </section></a>
+
+                        </section></section>
+                        
+                        <br><hr class="hr-medium">
+
+                        <section id="bar"><h1 style="font-size:28px;color:#B33B3B;">BARS</h1><h2>Classical with Logo (White)</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;">
+                            <br><br><section style="text-indent:50px"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-complete-logo"</span> <span style="color:green">id=</span><span style="color:blue">"nav-color-white"</span>></section>
+
+                            <section style="text-indent: 70px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></section>
+                    
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container"</span>></section>
+                    
+                                    <section style="text-indent: 120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span> <span style="color:green">style=</span><span style="color:blue">"margin:auto;"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"img/logo-black.png"</span> <span style="color:green">alt=</span><span style="color:blue">"logo"</span>><span><</span>/a><span><</span>/section></section>
+
+                                    <section style="text-indent: 100px;"> <span><</span>/section></section>
+                    
+                                <section style="text-indent: 70px;"><span><</span>/section></section>
+                    
+                                <section style="text-indent: 50px;"><span><</span>/section></section>
+                            
+                            </pre>
+
+                        <section ><h2>Example</h2><p>An example of a classical bar with Logo (White)</p></section>
+
+                        <section style="background-color:#c5c5c5;"><section class="navigation-complete-logo" id="nav-color-white">
+
+                            <section class="container-lg">
+                
+                                <section class="navigation-container">
+                
+                                    <section class="navItem" style="margin:auto;"><a href="#.html"><img src="img/logo-black.png" alt="logo"></a></section>
+                
+                                </section>
+                
+                            </section>
+                
+                        </section></section>
+
+                        <br><hr class="hr-medium">
+                        
+                        <section><h2>Classical with Logo (Black)</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;">
+                            <br><br><section style="text-indent:50px"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-complete-logo"</span> <span style="color:green">id=</span><span style="color:blue">"nav-color-black"</span>></section>
+
+                            <section style="text-indent: 70px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></section>
+                    
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container"</span>></section>
+                    
+                                    <section style="text-indent: 120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span> <span style="color:green">style=</span><span style="color:blue">"margin:auto;"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"img/logo-white.png"</span> <span style="color:green">alt=</span><span style="color:blue">"logo"</span>><span><</span>/a><span><</span>/section></section>
+
+                                    <section style="text-indent: 100px;"> <span><</span>/section></section>
+                    
+                                <section style="text-indent: 70px;"><span><</span>/section></section>
+                    
+                                <section style="text-indent: 50px;"><span><</span>/section></section>
+                            
+                            </pre>
+
+                        <section ><h2>Example</h2><p>An example of a classical bar with Logo (White)</p></section>
+
+                        <section style="background-color:#c5c5c5;"><section class="navigation-complete-logo" id="nav-color-black">
+
+                            <section class="container-lg">
+                
+                                <section class="navigation-container">
+                
+                                    <section class="navItem" style="margin:auto;"><a href="#.html"><img src="img/logo-white.png" alt="logo"></a></section>
+                
+                                </section>
+                
+                            </section>
+                
+                        </section></section>
+
+                        <br><hr class="hr-medium">
+
+                        <section id="navbar"><h1 style="font-size:28px;color:#B33B3B;">NAVBAR</h1><h2>Classical with Logo (White)</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;">
+                            <br><br><section style="text-indent:50px"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-complete-logo"</span> <span style="color:green">id=</span><span style="color:blue">"nav-color-white"</span>></section>
+
+                            <section style="text-indent: 70px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></section>
+                    
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container"</span>></section>
+                    
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">style=</span><span style="color:blue">"display: flex;align-items: center;"</span><span>></span><span><</span>section class=<span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"logo.png"</span> <span style="color:green">alt=</span><span style="color:blue">"logo"</span>><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navButton"</span> <span style="color:green">id=</span><span style="color:blue">"navBtn"</span> style=<span style="color:blue">"margin-left: auto;margin-right: 40px;"</span>><span><</span>a <span style="color:rgb(0, 147, 181)">onclick=</span><span style="color:blue">"JavaScript:navMenu()"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/navPhone-black.png"</span> <span style="color:green">style=</span><span style="color:blue">"width: 30px;height: auto;"</span>><span><</span>/a><span><</span>/section><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">id=</span><span style="color:blue">"links"</span>></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>span <span style="color:green">class=</span><span style="color:blue">"actual-nav-white"</span>><span><</span>h4>Home<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Presentation<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Contact<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>/section></section>
+                                    <section style="text-indent: 100px;"> <span><</span>/section></section>
+                    
+                                <section style="text-indent: 70px;"><span><</span>/section></section>
+                    
+                                <section style="text-indent: 50px;"><span><</span>/section></section>
+                            
+                            </pre>
+
+                        <section ><h2>Example</h2><p>An example of a classical navbar with Logo (White)</p></section>
+
+                        <section style="background-color:#c5c5c5;"><section class="navigation-complete-logo" id="nav-color-white">
+
+                            <section class="container-lg">
+                
+                                <section class="navigation-container">
+                
+                                    <section style="display: flex;align-items: center;"><section class="navItem"><a href="#"><img src="https://software.webba-creative.com/wss/img/logo-black.png" alt="logo"></a></section>
+                                    <section class="navButton" id="navBtn" style="margin-left: auto;margin-right: 40px;"><a onclick="JavaScript:navMenu()"><img src="https://software.webba-creative.com/wss/icones/navPhone-black.png" style="width: 30px;height: auto;"></a></section></section>
+                                    <section id="links">
+                                    <section class="navItem"><a href="#"><span class="actual-nav-white"><h4>Home</h4></span></a></section>
+                                    <section class="navItem"><a href="#"><h4>Presentation</h4></a></section>
+                                    <section class="navItem"><a href="#"><h4>Contact</h4></a></section>
+                                    </section>
+                
+                                </section>
+                
+                            </section>
+                
+                        </section></section>
+                        
+                        <br><hr class="hr-medium">
+
+                        <section><h2>Classical with Logo (Black)</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;">
+                            <br><br><section style="text-indent:50px"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-complete-logo"</span> <span style="color:green">id=</span><span style="color:blue">"nav-color-black"</span>></section>
+
+                            <section style="text-indent: 70px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></section>
+                    
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container"</span>></section>
+                    
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">style=</span><span style="color:blue">"display: flex;align-items: center;"</span><span>></span><span><</span>section class=<span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"logo.png"</span> <span style="color:green">alt=</span><span style="color:blue">"logo"</span>><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navButton"</span> <span style="color:green">id=</span><span style="color:blue">"navBtn"</span> style=<span style="color:blue">"margin-left: auto;margin-right: 40px;"</span>><span><</span>a <span style="color:rgb(0, 147, 181)">onclick=</span><span style="color:blue">"JavaScript:navMenu()"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/navPhone.png"</span> <span style="color:green">style=</span><span style="color:blue">"width: 30px;height: auto;"</span>><span><</span>/a><span><</span>/section><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">id=</span><span style="color:blue">"links"</span>></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>span <span style="color:green">class=</span><span style="color:blue">"actual-nav-black"</span>><span><</span>h4>Home<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Presentation<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Contact<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>/section></section>
+                                    <section style="text-indent: 100px;"> <span><</span>/section></section>
+                    
+                                <section style="text-indent: 70px;"><span><</span>/section></section>
+                    
+                                <section style="text-indent: 50px;"><span><</span>/section></section>
+                            
+                            </pre>
+
+                        <section ><h2>Example</h2><p>An example of a classical navbar with Logo (Black)</p></section>
+
+                        <section style="background-color:#c5c5c5;"><section class="navigation-complete-logo" id="nav-color-black">
+
+                            <section class="container-lg">
+                
+                                <section class="navigation-container">
+                                    
+                                    
+                                    <section style="display: flex;align-items: center;"><section class="navItem"><a href="#"><img src="https://software.webba-creative.com/wss/img/logo-white.png" alt="logo"></a></section>
+                                    <section class="navButton" id="navBtn" style="margin-left: auto;margin-right: 40px;"><a onclick="JavaScript:navMenu()"><img src="https://software.webba-creative.com/wss/icones/navPhone.png" style="width: 30px;height: auto;"></a></section></section>
+                                    <section id="links" >
+                                    <section class="navItem"><a href="#"><span class="actual-nav-black"><h4>Home</h4></a></section>
+                                    <section class="navItem"><a href="#"><h4>Presentation</h4></a></section>
+                                    <section class="navItem"><a href="#"><h4>Contact</h4></a></section>
+                                    </section>
+                
+                                </section>
+                
+                            </section>
+                
+                        </section></section>
+                        
+                        <hr class="hr-medium">
+                        
+                        <section><h2>Classical with Logo and Right Nav (White)</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;">
+                            <br><br><section style="text-indent:50px"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-complete-logo"</span> <span style="color:green">id=</span><span style="color:blue">"nav-color-white"</span>></section>
+
+                            <section style="text-indent: 70px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></section>
+                    
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container"</span>></section>
+                    
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">style=</span><span style="color:blue">"display: flex;align-items: center;"</span><span>></span><span><</span>section class=<span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"logo.png"</span> <span style="color:green">alt=</span><span style="color:blue">"logo"</span>><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navButton"</span> <span style="color:green">id=</span><span style="color:blue">"navBtn"</span> style=<span style="color:blue">"margin-left: auto;margin-right: 40px;"</span>><span><</span>a <span style="color:rgb(0, 147, 181)">onclick=</span><span style="color:blue">"JavaScript:navMenu()"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/navPhone-black.png"</span> <span style="color:green">style=</span><span style="color:blue">"width: 30px;height: auto;"</span>><span><</span>/a><span><</span>/section><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">id=</span><span style="color:blue">"links"</span>></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>span <span style="color:green">class=</span><span style="color:blue">"actual-nav-white"</span>><span><</span>h4>Home<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Presentation<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Contact<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"right-nav"</span>></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>My Account<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Contact<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>/section></section>
+                                    <section style="text-indent: 100px;"> <span><</span>/section></section>
+                    
+                                <section style="text-indent: 70px;"><span><</span>/section></section>
+                    
+                                <section style="text-indent: 50px;"><span><</span>/section></section>
+                            
+                            </pre>
+
+                        <section ><h2>Example</h2><p>An example of a classical navbar with Logo and Right Nav (White)</p></section>
+
+                        <section style="background-color:#c5c5c5;"><section class="navigation-complete-logo" id="nav-color-white">
+
+                            <section class="container-lg">
+                
+                                <section class="navigation-container">
+                                    
+                                    
+                                    <section style="display: flex;align-items: center;"><section class="navItem"><a href="#"><img src="https://software.webba-creative.com/wss/img/logo-black.png" alt="logo"></a></section>
+                                    <section class="navButton" id="navBtn" style="margin-left: auto;margin-right: 40px;"><a onclick="JavaScript:navMenu()"><img src="https://software.webba-creative.com/wss/icones/navPhone-black.png" style="width: 30px;height: auto;"></a></section></section>
+                                    <section id="links" >
+                                    <section class="navItem"><a href="#"><span class="actual-nav-white"><h4>Home</h4></span></a></section>
+                                    <section class="navItem"><a href="#"><h4>Presentation</h4></a></section>
+                                    <section class="navItem"><a href="#"><h4>Contact</h4></a></section>
+                                    <section class="right-nav">
+                                    <section class="navItem"><a href="id.php"><h4>My Account</h4></a></section>
+                                    <section class="navItem"><a href="contact.php"><h4>Contact</h4></a></section>
+                                    </section>
+                                    </section>
+                
+                                </section>
+                
+                            </section>
+                
+                        </section></section>
+                        
+                        <hr class="hr-medium">
+                        
+                        <section><h2>Classical with Logo and Right Nav (Black)</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;">
+                            <br><br><section style="text-indent:50px"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-complete-logo"</span> <span style="color:green">id=</span><span style="color:blue">"nav-color-black"</span>></section>
+
+                            <section style="text-indent: 70px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></section>
+                    
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container"</span>></section>
+                    
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">style=</span><span style="color:blue">"display: flex;align-items: center;"</span><span>></span><span><</span>section class=<span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"logo.png"</span> <span style="color:green">alt=</span><span style="color:blue">"logo"</span>><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navButton"</span> <span style="color:green">id=</span><span style="color:blue">"navBtn"</span> style=<span style="color:blue">"margin-left: auto;margin-right: 40px;"</span>><span><</span>a <span style="color:rgb(0, 147, 181)">onclick=</span><span style="color:blue">"JavaScript:navMenu()"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/navPhone.png"</span> <span style="color:green">style=</span><span style="color:blue">"width: 30px;height: auto;"</span>><span><</span>/a><span><</span>/section><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">id=</span><span style="color:blue">"links"</span>></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>span <span style="color:green">class=</span><span style="color:blue">"actual-nav-black"</span>><span><</span>h4>Home<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Presentation<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Contact<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"right-nav"</span>></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>My Account<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>h4>Contact<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>/section></section>
+                                    <section style="text-indent:120px;"><span><</span>/section></section>
+                                    <section style="text-indent: 100px;"> <span><</span>/section></section>
+                    
+                                <section style="text-indent: 70px;"><span><</span>/section></section>
+                    
+                                <section style="text-indent: 50px;"><span><</span>/section></section>
+                            
+                            </pre>
+
+                        <section ><h2>Example</h2><p>An example of a classical navbar with Logo and Right Nav (Black)</p></section>
+
+                        <section style="background-color:#c5c5c5;"><section class="navigation-complete-logo" id="nav-color-black">
+
+                            <section class="container-lg">
+                
+                                <section class="navigation-container">
+                                    
+                                    
+                                    <section style="display: flex;align-items: center;"><section class="navItem"><a href="#"><img src="https://software.webba-creative.com/wss/img/logo-white.png" alt="logo"></a></section>
+                                    <section class="navButton" id="navBtn" style="margin-left: auto;margin-right: 40px;"><a onclick="JavaScript:navMenu()"><img src="https://software.webba-creative.com/wss/icones/navPhone.png" style="width: 30px;height: auto;"></a></section></section>
+                                    <section id="links" >
+                                    <section class="navItem"><a href="#"><span class="actual-nav-black"><h4>Home</h4></a></section>
+                                    <section class="navItem"><a href="#"><h4>Presentation</h4></a></section>
+                                    <section class="navItem"><a href="#"><h4>Contact</h4></a></section>
+                                    <section class="right-nav">
+                                    <section class="navItem"><a href="id.php"><h4>My Account</h4></a></section>
+                                    <section class="navItem"><a href="contact.php"><h4>Contact</h4></a></section>
+                                    </section>
+                                    </section>
+                
+                                </section>
+                
+                            </section>
+                
+                        </section></section>
+                        
+                        <hr class="hr-medium">
+                        
+                        <section><h2>Vertical navbar with Logo (White)</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;">
+                            <br><br><section style="text-indent: 50px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-complete-logo"</span> <span style="color:green">id=</span><span style="color:blue">"nav-color-white"</span>></section>
+
+                            <section style="text-indent: 70px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></section>
+                
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container"</span>></section>
+                
+                                    <section style="text-indent: 120px;"><span><</span>section <span style="color:green">style=</span><span style="color:blue">"display: flex;align-items: center;"</span> <span style="color:green">class=</span><span style="color:blue">"navItem-logo-center"</span>><span><</span>section><span><</span>a <span style="color:green">href=</span><span style="color:blue">"test.html"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"logo"</span> <span style="color:green">alt=</span><span style="color:blue">"logo"</span> <span style="color:green">style=</span><span style="color:blue">"margin-top:5px;"</span>><span><</span>/a><span><</span>/section></section>
+                                    
+                                    <section style="text-indent: 120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navButton"</span> <span style="color:green">id=</span><span style="color:blue">"navBtn"</span> <span style="color:green">style=</span><span style="color:blue">"margin-left:auto;margin:left:40px"</span><span>></span><span><</span>a <span style="color:green">style=</span><span style="color:blue">"margin-left:auto;margin:left:50px"</span> onclick=<span style="color:blue">"JavaScript:navMenu()"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/navPhone-black.png"</span> <span style="color:green">style=</span><span style="color:blue">"width: 30px;height: auto;margin-right:40px;"</span>><span><</span>/a><span><</span>/section><span><</span>/section></section>
+                
+                                <section style="text-indent: 100px;"><span><</span>/section></section>
+                                
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container-center"</span>></section>
+                                
+                                <section style="text-indent: 120px;"><span><</span>section <span style="color:green">id=</span><span style="color:blue">"links"</span>></section>
+                                
+                                    <section style="text-indent: 140px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem-center"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"test.html"</span>><span><</span>span <span style="color:green">class=</span><span style="color:blue">"actual-nav-white"</span>><span><</span>h4>Home<span><</span>/h4></span><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent: 140px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem-center"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"test.html"</span>><span><</span>h4>Home<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent: 140px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem-center"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"test.html"</span>><span><</span>h4>Home<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                
+                                <section style="text-indent: 120px;"><span><</span>/section></section>
+                                
+                                <section style="text-indent: 100px;"><span><</span>/section></section>
+                                                    
+                                <section style="text-indent: 70px;"><span><</span>/section></section>
+                    
+                                <section style="text-indent: 50px;"><span><</span>/section></section>
+                            
+                            </pre>
+
+                        <section ><h2>Example</h2><p>An example of a vertical navbar with Logo (White)</p></section>
+
+                        <section style="background-color:#c5c5c5;"><section class="navigation-complete-logo" id="nav-color-white">
+
+                            <section class="container-lg">
+                
+                                <section class="navigation-container">
+                
+                                    <section style="display: flex;align-items: center;" class="navItem-logo-center"><section><a href="test.html"><img src="img/logo-black.png" alt="logo" style="margin-top:5px;"></a></section>
+                                    
+                                    <section class="navButton" id="navBtn" style="margin-left:auto;margin:left:40px"><a style="margin-left:auto;margin:left:50px" onclick="JavaScript:navMenu()"><img src="https://software.webba-creative.com/wss/icones/navPhone-black.png" style="width: 30px;height: auto;margin-right:40px;"></a></section></section>
+                
+                                </section>
+                                
+                                <section class="navigation-container-center">
+                                
+                                <section id="links">
+                                
+                                    <section class="navItem-center"><a href="test.html"><span class="actual-nav-white"><h4>Home</h4></span></a></section>
+                                    <section class="navItem-center"><a href="test.html"><h4>Home</h4></a></section>
+                                    <section class="navItem-center"><a href="test.html"><h4>Home</h4></a></section>
+                                
+                                
+                                </section>
+                
+                            </section></section>
+                
+                        </section></section>
+                        
+                        <hr class="hr-medium">
+                        
+                        <section><h2>Vertical navbar with Logo (Black)</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;">
+                            <br><br><section style="text-indent: 50px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-complete-logo"</span> <span style="color:green">id=</span><span style="color:blue">"nav-color-black"</span>></section>
+
+                            <section style="text-indent: 70px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"container-lg"</span>></section>
+                
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container"</span>></section>
+                
+                                    <section style="text-indent: 120px;"><span><</span>section <span style="color:green">style=</span><span style="color:blue">"display: flex;align-items: center;"</span> <span style="color:green">class=</span><span style="color:blue">"navItem-logo-center"</span>><span><</span>section><span><</span>a <span style="color:green">href=</span><span style="color:blue">"test.html"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"logo"</span> <span style="color:green">alt=</span><span style="color:blue">"logo"</span> <span style="color:green">style=</span><span style="color:blue">"margin-top:5px;"</span>><span><</span>/a><span><</span>/section></section>
+                                    
+                                    <section style="text-indent: 120px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navButton"</span> <span style="color:green">id=</span><span style="color:blue">"navBtn"</span> <span style="color:green">style=</span><span style="color:blue">"margin-left:auto;margin:left:40px"</span><span>></span><span><</span>a <span style="color:green">style=</span><span style="color:blue">"margin-left:auto;margin:left:50px"</span> onclick=<span style="color:blue">"JavaScript:navMenu()"</span>><span><</span>img <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/navPhone.png"</span> <span style="color:green">style=</span><span style="color:blue">"width: 30px;height: auto;margin-right:40px;"</span>><span><</span>/a><span><</span>/section><span><</span>/section></section>
+                
+                                <section style="text-indent: 100px;"><span><</span>/section></section>
+                                
+                                <section style="text-indent: 100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navigation-container-center"</span>></section>
+                                
+                                <section style="text-indent: 120px;"><span><</span>section <span style="color:green">id=</span><span style="color:blue">"links"</span>></section>
+                                
+                                    <section style="text-indent: 140px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem-center"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"test.html"</span>><span><</span>span <span style="color:green">class=</span><span style="color:blue">"actual-nav-black"</span>><span><</span>h4>Home<span><</span>/h4></span><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent: 140px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem-center"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"test.html"</span>><span><</span>h4>Home<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                    <section style="text-indent: 140px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"navItem-center"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"test.html"</span>><span><</span>h4>Home<span><</span>/h4><span><</span>/a><span><</span>/section></section>
+                                
+                                <section style="text-indent: 120px;"><span><</span>/section></section>
+                                
+                                <section style="text-indent: 100px;"><span><</span>/section></section>
+                                                    
+                                <section style="text-indent: 70px;"><span><</span>/section></section>
+                    
+                                <section style="text-indent: 50px;"><span><</span>/section></section>
+                            
+                            </pre>
+
+                        <section ><h2>Example</h2><p>An example of a vertical navbar with Logo (Black)</p></section>
+
+                        <section style="background-color:#c5c5c5;"><section class="navigation-complete-logo" id="nav-color-black">
+
+                            <section class="container-lg">
+                
+                                <section class="navigation-container">
+                
+                                    <section style="display: flex;align-items: center;" class="navItem-logo-center"><section><a href="test.html"><img src="img/logo-white.png" alt="logo" style="margin-top:5px;"></a></section>
+                                    
+                                    <section class="navButton" id="navBtn" style="margin-left:auto;margin:left:40px"><a style="margin-left:auto;margin:left:50px" onclick="JavaScript:navMenu()"><img src="https://software.webba-creative.com/wss/icones/navPhone.png" style="width: 30px;height: auto;margin-right:40px;"></a></section></section>
+                
+                                </section>
+                                
+                                <section class="navigation-container-center">
+                                
+                                <section id="links">
+                                
+                                    <section class="navItem-center"><a href="test.html"><span class="actual-nav-black"><h4>Home</h4></span></a></section>
+                                    <section class="navItem-center"><a href="test.html"><h4>Home</h4></a></section>
+                                    <section class="navItem-center"><a href="test.html"><h4>Home</h4></a></section>
+                                
+                                
+                                </section>
+                
+                            </section></section>
+                
+                        </section></section>
+
+                        <br><hr class="hr-medium">
+
+                        <section id="articles"><h1 style="font-size:28px;color:#B33B3B;">ARTICLES</h1><p>Small Article (Red)</p></section>
+
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;"><br>
+                        
+                            <section style="text-indent:100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"article small-article"</span> <span style="color:green">id=</span><span style="color:blue">"color-red"</span>></section>
+
+                                <section style="text-indent:150px;"><span><</span>img <span style="color:green">src=</span><span style="color:blue">"Image"</span> <span style="color:green">alt=</span><span style="color:blue">"Image"</span>></section><br>
+                                <section style="text-indent:150px;"><span><</span>h3><span style="color:blue">Titre</span><span><</span>/h3></section><br>
+                                <section style="text-indent:150px;"><span><</span>p><span style="color:blue">Short description of the article</span><span><</span>/p></section><br>
+                                <section style="text-indent:150px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"btn_cl"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>span><span style="color:blue">More</span><span><</span>span><span><</span>img <span style="color:green">class=</span><span style="color:blue">"icn"</span> <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/ESP-white.png"</span>><span><</span>/a><span><</span>/section></section><br>
+                            
+                             <section style="text-indent:100px;"><span><</span>/section></section><br>
+
+                        </pre>
+
+                        
+
+                        <section ><h2>Exemple</h2><p>An exemple of a small article (Red)</p></section>
+
+                        <section style="background-color:#c5c5c5;text-align: center;margin: auto;"><section class="article small-article" id="color-red" style="margin: auto;">
+
+                            <img src="img/img-test.jpg" alt="">
+                            <h3>Title</h3>
+                            <p>Short description of the article</p>
+                            <section class="btn_cl"><a href="" style="width:70px;"><span>More</span><img class="icn"  src="https://software.webba-creative.com/wss/icones/ESP-white.png"></a></section>
+                        
+                        </section></section>
+
+                        <section><p>Medium Article (Red)</p></section>
+
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;"><br>
+                        
+                            <section style="text-indent:100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"article medium-article"</span> <span style="color:green">id=</span><span style="color:blue">"color-red"</span>></section>
+
+                                <section style="text-indent:150px;"><span><</span>img <span style="color:green">src=</span><span style="color:blue">"Image"</span> <span style="color:green">alt=</span><span style="color:blue">"Image"</span>></section><br>
+                                <section style="text-indent:150px;"><span><</span>h3><span style="color:blue">Titre</span><span><</span>/h3></section><br>
+                                <section style="text-indent:150px;"><span><</span>p><span style="color:blue">Short description of the article</span><span><</span>/p></section><br>
+                                <section style="text-indent:150px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"btn_cl"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>span><span style="color:blue">More</span><span><</span>/span><span><</span>img <span style="color:green">class=</span><span style="color:blue">"icn"</span> <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/ESP-white.png"</span>><span><</span>/a><span><</span>/section></section><br>
+                            
+                             <section style="text-indent:100px;"><span><</span>/section></section><br>
+
+                        </pre>
+
+                        <section ><h2>Exemple</h2><p>An exemple of a medium article (Red)</p></section>
+
+                        <section style="background-color:#c5c5c5;text-align: center;margin: auto;"><section class="article medium-article" id="color-red" style="margin: auto;">
+
+                            <img src="img/img-test.jpg" alt="">
+                            <h3>Title</h3>
+                            <p>Short description of the article</p>
+                            <section class="btn_cl"><a href="" style="width:70px;"><span>More</span><img class="icn" src="https://software.webba-creative.com/wss/icones/ESP-white.png"></a></section>
+                        
+                        </section></section>
+
+                        <section><p>Large Article (Red)</p></section>
+
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-indent: 190px;"><br>
+                        
+                            <section style="text-indent:100px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"article large-article"</span> <span style="color:green">id=</span><span style="color:blue">"color-red"</span>></section>
+
+                                <section style="text-indent:150px;"><span><</span>img <span style="color:green">src=</span><span style="color:blue">"Image"</span> <span style="color:green">alt=</span><span style="color:blue">"Image"</span>></section><br>
+                                <section style="text-indent:150px;"><span><</span>h3><span style="color:blue">Titre</span><span><</span>/h3></section><br>
+                                <section style="text-indent:150px;"><span><</span>p><span style="color:blue">Short description of the article</span><span><</span>/p></section><br>
+                                <section style="text-indent:150px;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"btn_cl"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span><</span>span><span style="color:blue">More</span><span><</span>span><span><</span>img <span style="color:green">class=</span><span style="color:blue">"icn"</span> <span style="color:green">src=</span><span style="color:blue">"https://software.webba-creative.com/wss/icones/ESP-white.png"</span>><span><</span>/a><span><</span>/section></section><br>
+                            
+                             <section style="text-indent:100px;"><span><</span>/section></section><br>
+
+                        </pre>
+
+                        
+
+                        <section ><h2>Exemple</h2><p>An exemple of a large article (Red)</p></section>
+
+                        <section style="background-color:#c5c5c5;text-align: center;margin: auto;"><section class="article large-article" id="color-red" style="margin: auto;">
+
+                            <img src="img/img-test.jpg" alt="">
+                            <h3>Title</h3>
+                            <p>Short description of the article</p>
+                            <section class="btn_cl"><a href="" style="width:70px;"><span>More</span><img class="icn" src="https://software.webba-creative.com/wss/icones/ESP-white.png"></a></section>
+                        
+                        </section></section>
+                        
+
+                        <br><hr class="hr-medium">
+                        
+                        <section id="button"><h1 style="font-size:28px;color:#B33B3B;">BUTTONS</h1><h2>Classic Button</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"btn-cl"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span style="color:blue">Button</span><span><</span>/a><span><</span>/section></pre>
+                        
+                        <section ><h2>Example</h2><p>An example of a classic button</p></section>
+                        
+                         <section style="background-color:#c5c5c5;width:100%;padding-top:20px;padding-bottom:20px;";>
+                         
+                                 <section class="btn-cl" style="text-align:center;"><a>Button</a></section>
+
+                        </section>
+                        
+                        <section><h2>Classic Button Disabled</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"btn-cl disabled"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span style="color:blue">Button</span><span><</span>/a><span><</span>/section></pre>
+                        
+                        
+                        <section ><h2>Example</h2><p>An example of a classic disabled button</p></section>
+                        <section style="background-color:#c5c5c5;width:100%;padding-top:20px;padding-bottom:20px;";>
+                         
+                                 <section class="btn-cl disabled" style="text-align:center;"><a>Button</a></section>
+
+                        </section>
+        
+                        <section><h2>Outlined Button</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"btn-ol"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span style="color:blue">Button</span><span><</span>/a><span><</span>/section></pre>
+
+                        <section ><h2>Example</h2><p>An example of a outlined  button</p></section>
+                        <section style="background-color:#c5c5c5;width:100%;padding-top:20px;padding-bottom:20px;";>
+                         
+                                 <section class="btn-ol" style="text-align:center;"><a>Button</a></section>
+
+                        </section>
+
+                        <section><h2>Outlined Button Disabled</h2></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>section <span style="color:green">class=</span><span style="color:blue">"btn-ol-diasbled"</span>><span><</span>a <span style="color:green">href=</span><span style="color:blue">"#"</span>><span style="color:blue">Button</span><span><</span>/a><span><</span>/section></pre>
+                        <section ><h2>Example</h2><p>An example of a outlined disabled button</p></section>
+                         <section style="background-color:#c5c5c5;width:100%;padding-top:20px;padding-bottom:20px;";>
+                         
+                                 <section class="btn-ol-disabled" style="text-align:center;"><a>Button</a></section>
+
+                        </section>      
+                        
+                        <br><hr class="hr-medium">
+                        
+
+                        <section id="HHR"><h1 style="font-size:28px;color:#B33B3B;">HORIZONTAL HR</h1><p>Horizontal small hr</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>hr <span style="color:green">class=</span><span style="color:blue">"hr-small"</span>></pre>
+                        
+                        <section ><h2>Exemple</h2><p>An exemple of a small hr</p></section>
+                        <section style="text-align:center;background-color:#DBDBDB;padding: 20px;"><hr class="hr-small"></section>
+
+                        <section><p>Horizontal medium hr</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>hr <span style="color:green">class=</span><span style="color:blue">"hr-medium"</span>></pre>
+                        
+                        <section ><h2>Exemple</h2><p>An exemple of a medium hr</p></section>
+                        <section style="text-align:center;background-color:#DBDBDB;padding: 20px;"><hr class="hr-medium"></section>
+
+                        <section><p>Horizontal large hr</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>hr <span style="color:green">class=</span><span style="color:blue">"hr-large"</span>></pre>
+                        
+                        <section ><h2>Exemple</h2><p>An exemple of a large hr</p></section>
+                        <section style="text-align:center;background-color:#DBDBDB;padding: 20px;"><hr class="hr-large"></section>
+
+                        <br><hr class="hr-medium">
+
+                        <section id="VHR"><h1 style="font-size:28px;color:#B33B3B;">VERTICAL HR</h1><p>Vertical small hr</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>hr <span style="color:green">class=</span><span style="color:blue">"hr-vertical-small"</span>></pre>
+                        
+                        <section><h2>Exemple</h2><p>An exemple of a small hr</p></section>
+                        <section style="text-align:center;background-color:#DBDBDB;padding: 20px;"><hr class="hr-vertical-small"></section>
+
+                        <section><p>Vertical medium hr</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>hr <span style="color:green">class=</span><span style="color:blue">"hr-vertical-medium"</span>></pre>
+                        
+                        <section><h2>Exemple</h2><p>An exemple of a medium hr</p></section>
+                        <section style="text-align:center;background-color:#DBDBDB;padding: 20px;"><hr class="hr-vertical-medium"></section>
+
+                        <section><p>Vertical large hr</p></section>
+                        <pre style="overflow-x: scroll;background-color:#EBECEC;color:#B33B3B;padding-top:25px;padding-bottom:25px;text-align:center;"><span><</span>hr <span style="color:green">class=</span><span style="color:blue">"hr-vertical-large"</span>></pre>
+                        
+                        <section><h2>Exemple</h2><p>An exemple of a large hr</p></section>
+                        <section style="text-align:center;background-color:#DBDBDB;padding: 20px;"><hr class="hr-vertical-large"></section>
+
+                </section>
+                
+
+                
+
+                
+        </section>
+
+        <footer>
+
+            <div class="pied"><a href="https://www.webba-creative.com/"><img src="img/logo_footer.png"></a> <h4>© Copyright 2018 - 2021 - Tous droits réservés.</h4></div>
+
+
+        </footer>
+
+        <script src="https://software.webba-creative.com/wss/js/wss.js"></script>
+
+</body>
+
+</html>

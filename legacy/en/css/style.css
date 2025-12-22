@@ -1,0 +1,595 @@
+
+#ol-noir a
+{
+    color: black;background-color: white;
+}
+
+#ol-noir a:hover
+{
+    color: white;background-color: black;
+}
+
+
+
+#otl-noir a:hover
+{
+    color: white;border: black 2px solid;
+    background-color: black;
+}
+
+#lien-webba
+{
+    color: #A40DF8;
+    text-decoration: none;
+}
+
+#lien-webba:hover
+{
+    color: rgb(184, 113, 250);
+    text-decoration: underline;
+}
+
+#lien
+{
+    color: #B33B3B;
+    text-decoration: none;
+}
+
+#lien:hover
+{
+    color:#eb8888;
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 700px) {
+
+    #background-middle{
+        background-image: url(img/backgroung-index-middle.jpg);
+        padding-bottom: 250px;
+        margin-top: 50px;
+        padding-top: 200px;
+        margin-bottom: 0;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #background-middle-2{
+        background-image: url(img/backgroung-index-middle2.jpg);
+        padding-bottom: 200px;
+        margin-top: 0px;
+        padding-top: 150px;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #background-middle-3{
+        background-image: url(img/backgroung-index-middle3.jpg);
+        padding-bottom: 230px;
+        margin-top: 250px;
+        padding-top: 150px;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .menu-middle-centered h1
+    {
+        font-size: 70px;
+        margin-bottom: 0;
+        margin-top: 70px;
+        line-height: 90px;
+        text-align: center;
+        color: white;
+    }
+    
+    .menu-middle-centered h5
+    {
+        font-size: 20px;
+        margin-top: 10px;
+        color: rgb(124, 124, 124);
+        text-align: center;
+    }
+
+    .menu-middle-centered .btn-cl
+    {
+        margin:auto;
+        text-align: center;
+
+    }
+       
+    
+    .menu-middle-centered .btn-cl a
+    {
+        font-size: 20px;
+        margin:auto;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 30px;
+        padding-left: 30px;
+        background-color: #4968F4;
+        margin-bottom: 0;
+        text-indent: 0px;
+    }
+
+    .menu-middle-centered .btn-cl a:hover
+    {
+        font-size: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 30px;
+        padding-left: 30px;
+        background-color: #7c93f8;
+    }
+    
+    .menu-middle h1
+    {
+        font-size: 70px;
+        margin-bottom: 0;
+        margin-top: 70px;
+        line-height: 90px;
+    }
+    
+    .menu-middle h5
+    {
+        font-size: 20px;
+        margin-top: 10px;
+        color: rgb(124, 124, 124);
+    }
+    
+    .menu-middle
+    {
+        margin-left: 200px;;
+    }
+    
+    
+    .menu-middle .btn-cl a
+    {
+        font-size: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 30px;
+        padding-left: 30px;
+        background-color: #4968F4;
+        margin-bottom: 0;
+        text-indent: 0px;
+    }
+    
+    
+
+    #btn-top-ol a
+    {
+        border:#FBE264 solid 3px;
+        color: #FBE264;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    
+    #btn-top-ol a:hover
+    {
+        background-color: #FBE264;
+        color: black;
+    }
+    
+    .menu-middle .btn-cl a:hover
+    {
+        font-size: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 30px;
+        padding-left: 30px;
+        background-color: #7c93f8;
+    }
+
+
+
+
+
+
+
+
+
+
+    #background-top{
+    background-image: url(img/backgrounf-index-top.jpg);
+    height:100vh !important;
+    background-position: center;
+    background-size: cover;
+}
+
+#navTop
+{
+    width: 95%;
+}
+
+.menu-top h1
+{
+    font-size: 120px;
+    margin-bottom: 0;
+    margin-top: 60px;
+    line-height: 120px;
+}
+
+.menu-top h5
+{
+    font-size: 20px;
+    margin-top: 10px;
+    color: rgb(124, 124, 124);
+}
+
+.menu-top
+{
+    margin-left: 200px;;
+}
+
+
+.menu-top .btn-cl a
+{
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: #4968F4;
+    margin-bottom: 0;
+    text-indent: 0px;
+}
+
+#btn-top a
+{
+    background-color:#FBE264;
+    color: black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+#btn-top a:hover
+{
+    background-color: #ffee97;
+    color: black;
+}
+
+.menu-top .btn-cl a:hover
+{
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: #7c93f8;
+}
+
+
+
+
+
+.navNav
+{
+    margin-right: 0px;
+     width: 18%;
+    font-size: 15px;
+}
+
+#fixed
+{
+    position: fixed;
+}
+
+.navWSS
+{
+    width: 10%;
+    margin-left: 80px;
+    margin-top: 0px;
+    margin-right: 0;
+    left: 0;
+    margin-top: 20px;
+}
+
+
+#TitreTop
+{
+    color: white;
+}
+
+#titreBleu
+{
+    font-size: 80px;
+}
+
+#otl-noir a
+{
+    color: white;border: white 2px solid;
+}
+
+#grandCont{
+
+    margin-left: 100px;
+}
+
+.navbarTop
+    {
+        top: 0;
+    }
+
+}
+
+
+@media only screen and (max-width: 700px) {
+
+    #background-middle{
+        background-image: url(img/backgroung-index-middle-phone.jpg);
+        padding-bottom: 250px;
+        margin-top: 0px;
+        padding-top: 100px;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #background-middle-2{
+        background-image: url(img/backgroung-index-middle2-phonz.jpg);
+        padding-bottom: 250px;
+        margin-top: 0px;
+        padding-top: 100px;
+        background-position: center;
+        background-size: cover;
+        min-height: 400px;
+    }
+
+    #background-middle-3{
+        background-image: url(img/backgroung-index-middle3.jpg);
+        padding-bottom: 250px;
+        margin-top: 100px;
+        padding-top: 100px;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .menu-middle-centered h1
+    {
+        font-size: 50px;
+        margin-bottom: 0;
+        margin-top: 100px;
+        line-height: 70px;
+        text-align: center;
+        color: white;
+    }
+    
+    .menu-middle-centered h5
+    {
+        font-size: 13px;
+        margin-top: 10px;
+        color: rgb(124, 124, 124);
+        text-align: center;
+    }
+   
+    .menu-middle-centered .btn-cl 
+    {
+        text-align: center;
+        margin: auto;
+    }
+    
+    .menu-middle-centered .btn-cl a
+    {
+        font-size: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 20px;
+        padding-left: 20px;
+        background-color: #4968F4;
+        margin-bottom: 0;
+        text-align: center;
+        text-indent: 0px;
+    }
+    
+    
+    .menu-middle-centered .btn-cl a:hover
+    {
+        font-size: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 30px;
+        padding-left: 30px;
+        background-color: #7c93f8;
+    }
+
+
+
+
+    
+    .menu-middle h1
+    {
+        font-size: 40px;
+        margin-bottom: 0;
+        margin-top: 40px;
+        line-height: 40px;
+    }
+    
+    .menu-middle h5
+    {
+        font-size: 13px;
+        margin-top: 10px;
+        color: rgb(124, 124, 124);
+    }
+    
+    .menu-middle
+    {
+        margin-left: 30px;;
+    }
+    
+    
+    .menu-middle .btn-cl a
+    {
+        font-size: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 20px;
+        padding-left: 20px;
+        background-color: #4968F4;
+        margin-bottom: 0;
+        text-indent: 0px;
+    }
+    
+    
+    .menu-middle .btn-cl a:hover
+    {
+        font-size: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 30px;
+        padding-left: 30px;
+        background-color: #7c93f8;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #background-top{
+        background-image: url(img/backgrounf-index-top-phone.jpg);
+        height:100vh !important;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #navTop
+{
+    width: 95%;
+}
+
+.menu-top h1
+{
+    font-size: 70px;
+    margin-bottom: 0;
+    margin-top: 40px;
+    line-height: 80px;
+}
+
+.menu-top h5
+{
+    font-size: 13px;
+    margin-top: 10px;
+    color: rgb(124, 124, 124);
+}
+
+.menu-top
+{
+    margin-left: 30px;;
+}
+
+
+.menu-top .btn-cl a
+{
+    font-size: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: #4968F4;
+    margin-bottom: 0;
+    text-indent: 0px;
+}
+
+#btn-top a
+{
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+
+}
+
+#btn-top a:hover
+{
+    color: black;
+}
+
+#btn-top-ol a
+{
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 20px;
+    border: 0px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+
+}
+
+#btn-top-ol a:hover
+{
+    color: black;
+}
+
+.menu-top .btn-cl a:hover
+{
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: #7c93f8;
+}
+
+
+
+
+
+
+    #petitCont
+    {
+        margin-left: 0px;
+    }
+
+    .navWSS
+    {
+        width: 87%;
+        margin-left: 10px;
+        margin-top: 0px;
+        margin-right: 10px;
+
+    }
+
+    .navbarTop
+    {
+        padding-top: 20px;
+        top: 0;
+    }
+
+    .navNav
+    {
+        margin-right: 0px;
+        width: 90%;
+    }
+
+    
+    #TitreTop
+    {
+        color: black;
+    }
+    
+    #titreBleu
+    {
+        font-size: 30px;
+    }
+
+    #grandCont{
+
+        margin-left: 50px;
+    }
+
+    #otl-noir a
+    {
+        color: black;border: black 2px solid;
+    }
+    
+    }
