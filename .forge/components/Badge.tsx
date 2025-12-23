@@ -20,7 +20,7 @@ const variantStyles: Record<BadgeVariant, CSSProperties> = {
     color: 'var(--text-secondary)'
   },
   primary: {
-    backgroundColor: 'var(--bg-active)',
+    backgroundColor: 'color-mix(in srgb, var(--brand-primary) 15%, transparent)',
     color: 'var(--brand-primary)'
   },
   success: {
@@ -158,12 +158,12 @@ interface StatusBadgeProps {
 }
 
 const statusConfig: Record<StatusType, { variant: BadgeVariant; label: string }> = {
-  active: { variant: 'success', label: 'Actif' },
-  inactive: { variant: 'default', label: 'Inactif' },
-  pending: { variant: 'warning', label: 'En attente' },
-  completed: { variant: 'success', label: 'Terminé' },
-  error: { variant: 'error', label: 'Erreur' },
-  draft: { variant: 'default', label: 'Brouillon' }
+  active: { variant: 'success', label: 'Active' },
+  inactive: { variant: 'default', label: 'Inactive' },
+  pending: { variant: 'warning', label: 'Pending' },
+  completed: { variant: 'success', label: 'Completed' },
+  error: { variant: 'error', label: 'Error' },
+  draft: { variant: 'default', label: 'Draft' }
 }
 
 export function StatusBadge({ status, label, onClick }: StatusBadgeProps & { onClick?: () => void }) {
@@ -183,10 +183,10 @@ interface PriorityBadgeProps {
 }
 
 const priorityConfig: Record<PriorityType, { variant: BadgeVariant; label: string }> = {
-  low: { variant: 'default', label: 'Basse' },
-  medium: { variant: 'info', label: 'Moyenne' },
-  high: { variant: 'warning', label: 'Haute' },
-  urgent: { variant: 'error', label: 'Urgente' }
+  low: { variant: 'default', label: 'Low' },
+  medium: { variant: 'info', label: 'Medium' },
+  high: { variant: 'warning', label: 'High' },
+  urgent: { variant: 'error', label: 'Urgent' }
 }
 
 export function PriorityBadge({ priority, onClick }: PriorityBadgeProps & { onClick?: () => void }) {

@@ -196,7 +196,7 @@ function EventHoverCard({ event, accentColor, children, position = 'bottom' }: E
                 marginBottom: '0.5rem'
               }}>
                 <Link20Regular style={{ fontSize: 16 }} />
-                Lien de réunion
+                Meeting link
               </div>
             )}
 
@@ -234,7 +234,7 @@ function EventHoverCard({ event, accentColor, children, position = 'bottom' }: E
               </div>
             )}
 
-            {/* Date (si pas le même jour) */}
+            {/* Date (if not same day) */}
             {event.date && (
               <div style={{
                 fontSize: '0.6875rem',
@@ -242,7 +242,7 @@ function EventHoverCard({ event, accentColor, children, position = 'bottom' }: E
                 marginTop: '0.625rem',
                 opacity: 0.8
               }}>
-                {new Date(event.date).toLocaleDateString('fr-FR', {
+                {new Date(event.date).toLocaleDateString('en-US', {
                   weekday: 'short',
                   day: 'numeric',
                   month: 'short'
@@ -390,7 +390,7 @@ function CalendarDayCell({
               color: 'var(--text-muted)',
               paddingLeft: 4
             }}>
-              +{events.length - 3} autres
+              +{events.length - 3} more
             </div>
           )}
         </div>
@@ -687,7 +687,7 @@ export function Calendar({
   showViewToggle = true,
   showNavigation = true,
   weekStartsOn = 1,
-  locale = 'fr-FR',
+  locale = 'en-US',
   renderEvent,
   renderDayContent,
   accentColor = 'var(--brand-primary)'
@@ -868,7 +868,7 @@ export function Calendar({
               icon={<ChevronLeft20Regular />}
               onClick={goToPrevious}
               size="sm"
-              title="Mois précédent"
+              title="Previous month"
             />
 
             <span style={{
@@ -886,7 +886,7 @@ export function Calendar({
               icon={<ChevronRight20Regular />}
               onClick={goToNext}
               size="sm"
-              title="Mois suivant"
+              title="Next month"
             />
 
             {!isMobile && (
@@ -896,7 +896,7 @@ export function Calendar({
                 onClick={goToToday}
                 style={{ marginLeft: '0.25rem' }}
               >
-                Aujourd'hui
+                Today
               </Button>
             )}
           </div>
@@ -910,14 +910,14 @@ export function Calendar({
               size="xs"
               onClick={goToToday}
             >
-              Auj.
+              Today
             </Button>
           )}
           {showViewToggle && (
             <ViewToggle
               options={[
-                { value: 'month', icon: <Calendar20Regular />, label: 'Mois' },
-                { value: 'week', icon: <CalendarWeekNumbers20Regular />, label: 'Semaine' },
+                { value: 'month', icon: <Calendar20Regular />, label: 'Month' },
+                { value: 'week', icon: <CalendarWeekNumbers20Regular />, label: 'Week' },
                 { value: 'agenda', icon: <List20Regular />, label: 'Agenda' }
               ]}
               value={viewMode}
@@ -1033,7 +1033,7 @@ export function Calendar({
                   color: 'var(--text-muted)'
                 }}>
                   <Calendar20Regular style={{ fontSize: 40, marginBottom: '1rem', opacity: 0.5 }} />
-                  <p>Aucun événement dans les 14 prochains jours</p>
+                  <p>No events in the next 14 days</p>
                 </div>
               )
             }
@@ -1049,7 +1049,7 @@ export function Calendar({
                   marginBottom: '0.75rem',
                   textTransform: 'capitalize'
                 }}>
-                  {isToday(date) ? "Aujourd'hui" : date.toLocaleDateString(locale, {
+                  {isToday(date) ? "Today" : date.toLocaleDateString(locale, {
                     weekday: 'long',
                     day: 'numeric',
                     month: 'long'
@@ -1192,7 +1192,7 @@ export function MiniCalendar({
   onDateSelect,
   events = [],
   weekStartsOn = 1,
-  locale = 'fr-FR',
+  locale = 'en-US',
   accentColor = 'var(--brand-primary)'
 }: MiniCalendarProps) {
   const [currentDate, setCurrentDate] = useState(selectedDate || new Date())
@@ -1267,7 +1267,7 @@ export function MiniCalendar({
           icon={<ChevronLeft20Regular />}
           onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1))}
           size="xs"
-          title="Mois précédent"
+          title="Previous month"
         />
         <span style={{
           fontSize: '0.875rem',
@@ -1281,7 +1281,7 @@ export function MiniCalendar({
           icon={<ChevronRight20Regular />}
           onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1))}
           size="xs"
-          title="Mois suivant"
+          title="Next month"
         />
       </div>
 

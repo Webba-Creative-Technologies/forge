@@ -57,13 +57,13 @@ const SEMANTIC_COLORS = {
 export const darkTheme: ForgeTheme = {
   brandPrimary: '#A35BFF',
   brandSecondary: '#FD9173',
-  activeColor: '#BF8DFF',
+  activeColor: '', // Will be computed from brandPrimary
   bgPrimary: '#070707',
   bgSecondary: '#0c0c0c',
   bgTertiary: '#1a1a1a',
   bgDropdown: '#1f1f1f',
   bgHover: '#2a2a2a',
-  bgActive: 'rgba(163, 91, 255, 0.12)',
+  bgActive: '', // Will be computed from brandPrimary
   textPrimary: '#fafafa',
   textSecondary: '#a3a3a3',
   textMuted: '#737373',
@@ -76,13 +76,13 @@ export const darkTheme: ForgeTheme = {
 export const lightTheme: ForgeTheme = {
   brandPrimary: '#A35BFF',
   brandSecondary: '#FD9173',
-  activeColor: '#8B3DFF',
+  activeColor: '', // Will be computed from brandPrimary
   bgPrimary: '#f9f8fc',
   bgSecondary: '#fcfcfd',
   bgTertiary: '#f3f1fa',
   bgDropdown: '#fcfcfd',
   bgHover: '#ebe7f5',
-  bgActive: 'rgba(163, 91, 255, 0.12)',
+  bgActive: '', // Will be computed from brandPrimary
   textPrimary: '#1a1625',
   textSecondary: '#4a4458',
   textMuted: '#6b6680',
@@ -139,16 +139,20 @@ export function ForgeProvider({
     ...customTheme
   }), [baseTheme, customTheme])
 
+  // Compute derived colors from brandPrimary
+  const activeColor = theme.activeColor || `color-mix(in srgb, ${theme.brandPrimary} 70%, white)`
+  const bgActive = theme.bgActive || `color-mix(in srgb, ${theme.brandPrimary} 12%, transparent)`
+
   const cssVariables = useMemo(() => ({
     '--brand-primary': theme.brandPrimary,
     '--brand-secondary': theme.brandSecondary,
-    '--active-color': theme.activeColor,
+    '--active-color': activeColor,
     '--bg-primary': theme.bgPrimary,
     '--bg-secondary': theme.bgSecondary,
     '--bg-tertiary': theme.bgTertiary,
     '--bg-dropdown': theme.bgDropdown,
     '--bg-hover': theme.bgHover,
-    '--bg-active': theme.bgActive,
+    '--bg-active': bgActive,
     '--text-primary': theme.textPrimary,
     '--text-secondary': theme.textSecondary,
     '--text-muted': theme.textMuted,
@@ -172,7 +176,7 @@ export function ForgeProvider({
     '--radius-full': '9999px',
     // Logo filter for theme
     '--logo-filter': mode === 'dark' ? 'none' : 'invert(1)'
-  } as React.CSSProperties), [theme, mode])
+  } as React.CSSProperties), [theme, mode, activeColor, bgActive])
 
   const contextValue = useMemo(() => ({
     theme,

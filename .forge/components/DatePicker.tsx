@@ -16,30 +16,36 @@ interface DatePickerProps {
   locale?: string
 }
 
-const DAYS_FR = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
-const MONTHS_FR = [
-  'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+const DAYS_EN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const MONTHS_EN = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
 ]
 
 export function DatePicker({
   value,
   onChange,
   label,
-  placeholder = 'Sélectionner une date',
+  placeholder = 'Select a date',
   minDate,
   maxDate,
-  locale = 'fr-FR'
+  locale = 'en-US'
 }: DatePickerProps) {
   const [open, setOpen] = useState(false)
   const [viewDate, setViewDate] = useState(value || new Date())
   const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0 })
   const ref = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const calendarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
+      const target = e.target as Node
+      // Check if click is outside both the main container AND the calendar portal
+      const isOutsideMain = ref.current && !ref.current.contains(target)
+      const isOutsideCalendar = calendarRef.current && !calendarRef.current.contains(target)
+
+      if (isOutsideMain && isOutsideCalendar) {
         setOpen(false)
       }
     }
@@ -175,18 +181,20 @@ export function DatePicker({
       </button>
 
       {open && createPortal(
-        <div style={{
-          position: 'fixed',
-          top: dropdownPos.top,
-          left: dropdownPos.left,
-          backgroundColor: 'var(--bg-dropdown)',
-          borderRadius: 'var(--radius-md)',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-          zIndex: 9999,
-          padding: '0.75rem',
-          width: 280,
-          animation: 'scaleIn 0.15s ease-out'
-        }}>
+        <div
+          ref={calendarRef}
+          style={{
+            position: 'fixed',
+            top: dropdownPos.top,
+            left: dropdownPos.left,
+            backgroundColor: 'var(--bg-dropdown)',
+            borderRadius: 'var(--radius-md)',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+            zIndex: 9999,
+            padding: '0.75rem',
+            width: 280,
+            animation: 'scaleIn 0.15s ease-out'
+          }}>
           {/* Header */}
           <div style={{
             display: 'flex',
@@ -218,7 +226,7 @@ export function DatePicker({
               color: 'var(--text-primary)',
               fontSize: '0.875rem'
             }}>
-              {MONTHS_FR[viewDate.getMonth()]} {viewDate.getFullYear()}
+              {MONTHS_EN[viewDate.getMonth()]} {viewDate.getFullYear()}
             </span>
             <button
               type="button"
@@ -248,7 +256,7 @@ export function DatePicker({
             gap: 2,
             marginBottom: '0.25rem'
           }}>
-            {DAYS_FR.map(day => (
+            {DAYS_EN.map(day => (
               <div key={day} style={{
                 textAlign: 'center',
                 fontSize: '0.6875rem',
@@ -339,7 +347,7 @@ export function DatePicker({
                 cursor: 'pointer'
               }}
             >
-              Effacer
+              Clear
             </button>
             <button
               type="button"
@@ -357,7 +365,7 @@ export function DatePicker({
                 cursor: 'pointer'
               }}
             >
-              Aujourd'hui
+              Today
             </button>
           </div>
         </div>,

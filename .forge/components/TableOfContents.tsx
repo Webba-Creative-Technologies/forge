@@ -43,7 +43,7 @@ export function TableOfContents({
   items,
   activeId: controlledActiveId,
   onItemClick,
-  title = 'Sur cette page',
+  title = 'On this page',
   collapsible = false,
   sticky = false,
   maxHeight,
@@ -183,7 +183,7 @@ export function TableOfContents({
                 ? `2px solid ${isActive ? 'var(--brand-primary)' : 'var(--border-subtle)'}`
                 : 'none',
               borderRadius: variant === 'bordered' ? 0 : 6,
-              color: isActive ? '#BF8DFF' : 'var(--text-secondary)',
+              color: isActive ? 'var(--active-color)' : 'var(--text-secondary)',
               fontSize: level === 1 ? '0.8125rem' : '0.75rem',
               fontWeight: isActive ? 500 : 400,
               cursor: 'pointer',

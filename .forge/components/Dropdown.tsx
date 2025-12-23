@@ -253,7 +253,7 @@ export function SelectDropdown({
   value,
   options,
   onChange,
-  placeholder = 'Sélectionner...',
+  placeholder = 'Select...',
   width = '100%',
   size = 'md'
 }: SelectDropdownProps) {

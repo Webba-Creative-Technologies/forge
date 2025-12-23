@@ -53,7 +53,6 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' 
   hint?: string
   icon?: ReactNode
   onChange?: (value: string) => void
-  noMargin?: boolean
 }
 
 export function Input({
@@ -64,12 +63,11 @@ export function Input({
   required,
   disabled,
   onChange,
-  noMargin,
   style,
   ...props
 }: InputProps) {
   return (
-    <div style={{ marginBottom: noMargin ? 0 : '1rem' }}>
+    <div>
       {label && (
         <label style={labelStyle}>
           {label}
@@ -144,7 +142,7 @@ export function Textarea({
   ...props
 }: TextareaProps) {
   return (
-    <div style={{ marginBottom: '1rem' }}>
+    <div>
       {label && (
         <label style={labelStyle}>
           {label}
@@ -201,7 +199,7 @@ export function Select({
   label,
   value,
   options,
-  placeholder = 'Sélectionner...',
+  placeholder = 'Select...',
   required,
   disabled,
   onChange,
@@ -228,7 +226,7 @@ export function Select({
   }, [])
 
   return (
-    <div ref={ref} style={{ position: 'relative', marginBottom: '1rem' }}>
+    <div ref={ref} style={{ position: 'relative' }}>
       {label && (
         <label style={labelStyle}>
           {label}
@@ -343,7 +341,7 @@ interface SearchInputProps {
 export function SearchInput({
   value,
   onChange,
-  placeholder = 'Rechercher...',
+  placeholder = 'Search...',
   size = 'md',
   autoFocus,
   onKeyDown
