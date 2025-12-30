@@ -177,7 +177,8 @@ MIT License - see [LICENSE](LICENSE) for details.
 ## Support
 
 - [GitHub Issues](https://github.com/Webba-Creative-Technologies/forge/issues)
-- [Discord Community](https://discord.gg/P9aFbP7gY6)
+- [Discord Community](https://discord.gg/DwzReVGzdp)
+- [Reddit Community](https://www.reddit.com/r/webbaforge/)
 - [GitHub Sponsors](https://github.com/sponsors/Webba-Creative-Technologies)
 
 ---
