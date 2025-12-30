@@ -1,6 +1,15 @@
 import React, { useState, createContext, useContext, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
+import clarity from '@microsoft/clarity'
+import { BrowserRouter, useLocation } from 'react-router-dom'
 import App from './App'
+
+// Extend window for Clarity
+declare global {
+  interface Window {
+    clarity: (action: string, key: string, value: string) => void
+  }
+}
 import './index.css'
 import '../.forge/styles/animations.css'
 import { ForgeProvider, ToastProvider, NotificationProvider, CookieConsent, useCookieConsent, NavigationProvider } from '../.forge'
@@ -19,6 +28,25 @@ const ThemeContext = createContext<ThemeContextValue>({
 
 export function useTheme() {
   return useContext(ThemeContext)
+}
+
+// Track SPA page views in Clarity
+function ClarityTracker() {
+  const location = useLocation()
+
+  useEffect(() => {
+    // Initialize Clarity once
+    clarity.init('uo4dfnnoqy')
+  }, [])
+
+  useEffect(() => {
+    // Track page view on route change
+    if (typeof window !== 'undefined' && window.clarity) {
+      window.clarity('set', 'page', location.pathname)
+    }
+  }, [location.pathname])
+
+  return null
 }
 
 function Root() {
@@ -53,16 +81,6 @@ function Root() {
     }
   }, [consentStatus, isPreferencesAllowed, mode])
 
-  // Optional: Initialize analytics (configure in .env)
-  useEffect(() => {
-    const clarityId = import.meta.env.VITE_CLARITY_ID
-    if (clarityId) {
-      import('@microsoft/clarity').then(({ default: clarity }) => {
-        clarity.init(clarityId)
-      })
-    }
-  }, [])
-
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme }}>
       <ForgeProvider mode={mode}>
@@ -90,6 +108,9 @@ function Root() {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Root />
+    <BrowserRouter>
+      <ClarityTracker />
+      <Root />
+    </BrowserRouter>
   </React.StrictMode>
 )

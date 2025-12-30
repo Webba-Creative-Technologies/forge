@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, ReactNode } from 'react'
 import { ChevronDown16Regular, Search16Regular, Dismiss12Regular, Checkmark16Regular } from '@fluentui/react-icons'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TYPES
@@ -35,10 +36,10 @@ export function Combobox({
   options,
   value,
   onChange,
-  placeholder = 'Sélectionner...',
-  searchPlaceholder = 'Rechercher...',
+  placeholder = 'Select...',
+  searchPlaceholder = 'Search...',
   label,
-  emptyMessage = 'Aucun résultat',
+  emptyMessage = 'No results',
   disabled = false,
   clearable = false,
   creatable = false,
@@ -222,8 +223,8 @@ export function Combobox({
             marginTop: 4,
             backgroundColor: 'var(--bg-dropdown)',
             borderRadius: 'var(--radius-lg)',
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-            zIndex: 2000,
+            boxShadow: SHADOWS.elevation.dropdown,
+            zIndex: Z_INDEX.dropdown,
             overflow: 'hidden'
           }}
         >
@@ -404,9 +405,9 @@ export function MultiCombobox({
   options,
   value = [],
   onChange,
-  placeholder = 'Sélectionner...',
+  placeholder = 'Select...',
   label,
-  emptyMessage = 'Aucun résultat',
+  emptyMessage = 'No results',
   disabled = false,
   maxSelections
 }: MultiComboboxProps) {
@@ -555,8 +556,8 @@ export function MultiCombobox({
             marginTop: 4,
             backgroundColor: 'var(--bg-dropdown)',
             borderRadius: 'var(--radius-lg)',
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-            zIndex: 2000,
+            boxShadow: SHADOWS.elevation.dropdown,
+            zIndex: Z_INDEX.dropdown,
             maxHeight: 280,
             overflowY: 'auto',
             padding: 6

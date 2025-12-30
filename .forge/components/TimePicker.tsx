@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Clock20Regular, ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons'
 import { IconButton } from './Button'
 import { Button } from './Button'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TIME PICKER
@@ -161,9 +162,9 @@ export function TimePicker({
           backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: 'var(--radius-lg)',
-          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
+          boxShadow: SHADOWS.elevation.dropdown,
           padding: '1rem',
-          zIndex: 2000,
+          zIndex: Z_INDEX.dropdown,
           animation: 'fadeIn 0.15s ease'
         }}>
           <div style={{ display: 'flex', gap: 16, marginBottom: 16 }}>

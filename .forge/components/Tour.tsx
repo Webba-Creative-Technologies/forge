@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, ReactNode } from 'react'
 import { Dismiss20Regular, ArrowLeft20Regular, ArrowRight20Regular } from '@fluentui/react-icons'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TYPES
@@ -130,7 +131,7 @@ export function Tour({
       style={{
         position: 'fixed',
         inset: 0,
-        zIndex: 9999,
+        zIndex: Z_INDEX.tour,
         opacity: isVisible ? 1 : 0,
         transition: 'opacity 0.2s ease'
       }}
@@ -189,7 +190,7 @@ export function Tour({
           width: TOOLTIP_WIDTH,
           backgroundColor: 'var(--bg-secondary)',
           borderRadius: 'var(--radius-lg)',
-          boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
+          boxShadow: SHADOWS.elevation.popover,
           overflow: 'hidden'
         }}
       >
@@ -429,7 +430,7 @@ export function TourTooltipStatic({
         width: 320,
         backgroundColor: 'var(--bg-secondary)',
         borderRadius: 'var(--radius-lg)',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+        boxShadow: SHADOWS.elevation.modal,
         overflow: 'hidden'
       }}
     >

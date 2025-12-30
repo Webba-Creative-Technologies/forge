@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { SHADOWS } from '../constants'
 import {
   Play20Filled,
   Pause20Filled,
@@ -428,7 +429,7 @@ export function AudioPlayer({
                 height: isDragging ? 14 : 12,
                 backgroundColor: 'var(--brand-primary)',
                 borderRadius: '50%',
-                boxShadow: '0 1px 4px rgba(0, 0, 0, 0.2)',
+                boxShadow: SHADOWS.hard.sm,
                 transition: 'width 0.1s ease, height 0.1s ease',
                 pointerEvents: 'none'
               }}
@@ -689,7 +690,7 @@ export function MiniAudioPlayer({
                 height: 10,
                 backgroundColor: 'var(--brand-primary)',
                 borderRadius: '50%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.2)',
+                boxShadow: SHADOWS.hard.sm,
                 pointerEvents: 'none'
               }}
             />

@@ -5,6 +5,7 @@ import {
   ChevronRight20Regular,
   Calendar20Regular
 } from '@fluentui/react-icons'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 interface DatePickerProps {
   value: Date | null
@@ -189,8 +190,8 @@ export function DatePicker({
             left: dropdownPos.left,
             backgroundColor: 'var(--bg-dropdown)',
             borderRadius: 'var(--radius-md)',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-            zIndex: 9999,
+            boxShadow: SHADOWS.elevation.dropdown,
+            zIndex: Z_INDEX.overlay,
             padding: '0.75rem',
             width: 280,
             animation: 'scaleIn 0.15s ease-out'

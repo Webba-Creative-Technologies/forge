@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, ReactNode } from 'react'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TYPES
@@ -30,8 +31,8 @@ function ChartTooltip({ visible, children }: ChartTooltipProps) {
         backgroundColor: 'var(--bg-dropdown)',
         borderRadius: 'var(--radius-md)',
         padding: '0.5rem 0.75rem',
-        boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-        zIndex: 2000,
+        boxShadow: SHADOWS.elevation.popover,
+        zIndex: Z_INDEX.dropdown,
         pointerEvents: 'none',
         whiteSpace: 'nowrap',
         transform: 'translateX(-50%) scale(1)',
@@ -228,15 +229,15 @@ export function BarChart({
                     backgroundColor: 'var(--bg-dropdown)',
                     borderRadius: 'var(--radius-md)',
                     padding: '0.5rem 0.75rem',
-                    boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-                    zIndex: 2000,
+                    boxShadow: SHADOWS.elevation.popover,
+                    zIndex: Z_INDEX.dropdown,
                     whiteSpace: 'nowrap'
                   }}>
                     <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                       {item.value}
                     </div>
                     <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>
-                      {percentOfTotal}% du total
+                      {percentOfTotal}% of total
                     </div>
                     <div style={{
                       position: 'absolute',
@@ -625,6 +626,7 @@ export function DonutChart({
 }: DonutChartProps) {
   const [hasAnimated, setHasAnimated] = useState(!animated)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [isCompact, setIsCompact] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const total = data.reduce((sum, d) => sum + d.value, 0)
   const radius = (size - thickness) / 2
@@ -636,6 +638,26 @@ export function DonutChart({
       return () => clearTimeout(timer)
     }
   }, [animated])
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    // Observe parent to avoid infinite loop (our own size changes shouldn't retrigger)
+    const parent = container.parentElement
+    if (!parent) return
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const width = entry.contentRect.width
+        const shouldBeCompact = width < 350
+        setIsCompact(prev => prev !== shouldBeCompact ? shouldBeCompact : prev)
+      }
+    })
+
+    observer.observe(parent)
+    return () => observer.disconnect()
+  }, [])
 
   const defaultColors = [
     'var(--brand-primary)',
@@ -768,8 +790,8 @@ export function DonutChart({
               backgroundColor: 'var(--bg-dropdown)',
               borderRadius: 'var(--radius-md)',
               padding: '0.5rem 0.75rem',
-              boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-              zIndex: 2000,
+              boxShadow: SHADOWS.elevation.popover,
+              zIndex: Z_INDEX.dropdown,
               pointerEvents: 'none',
               whiteSpace: 'nowrap',
               textAlign: 'center'
@@ -808,9 +830,9 @@ export function DonutChart({
       {showLegend && (
         <div style={{
           display: 'flex',
-          flexDirection: legendBelow ? 'row' : 'column',
-          flexWrap: legendBelow ? 'wrap' : 'nowrap',
-          justifyContent: legendBelow ? 'center' : 'flex-start',
+          flexDirection: (isCompact || legendBelow) ? 'row' : 'column',
+          flexWrap: (isCompact || legendBelow) ? 'wrap' : 'nowrap',
+          justifyContent: (isCompact || legendBelow) ? 'center' : 'flex-start',
           gap: '0.5rem',
           overflow: 'visible'
         }}>
@@ -1243,7 +1265,7 @@ export function GroupedBarChart({
                           fontSize: '0.75rem',
                           fontWeight: 600,
                           color: 'var(--text-primary)',
-                          boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                          boxShadow: SHADOWS.medium.lg,
                           whiteSpace: 'nowrap',
                           zIndex: 10
                         }}>
@@ -1329,7 +1351,7 @@ export function GroupedBarChart({
                         padding: '0.375rem 0.625rem',
                         borderRadius: 'var(--radius-sm)',
                         fontSize: '0.75rem',
-                        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                        boxShadow: SHADOWS.medium.lg,
                         whiteSpace: 'nowrap',
                         zIndex: 10
                       }}>
@@ -1702,7 +1724,7 @@ export function MultiLineChart({
               backgroundColor: 'var(--bg-dropdown)',
               padding: '0.5rem 0.75rem',
               borderRadius: 'var(--radius-md)',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+              boxShadow: SHADOWS.medium.xl,
               zIndex: 20,
               minWidth: 120,
               pointerEvents: 'none'

@@ -390,8 +390,13 @@ hr {
   background-color: rgba(239, 68, 68, 0.1);
 }
 
+.interactive-nav {
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
 .interactive-nav:hover {
   color: var(--text-primary);
+  background-color: var(--bg-tertiary);
 }
 
 .interactive-card-subtle:hover {
@@ -656,5 +661,40 @@ hr {
 .forge-scrollbar-global::-webkit-scrollbar-thumb:hover,
 .forge-scrollbar-global *::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted, #737373);
+}
+
+/* ================================
+   Global Browser Scrollbar
+   ================================ */
+
+/* Apply thin scrollbar to all elements by default */
+*,
+*::before,
+*::after {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color, #404040) transparent;
+}
+
+/* Webkit (Chrome, Safari, Edge) - Global */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color, #404040);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted, #737373);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 

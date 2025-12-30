@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { HomePage } from './pages/HomePage'
 import { DocsLayout } from './pages/docs/DocsLayout'
@@ -16,28 +16,26 @@ import { CreatePage } from './pages/CreatePage'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/docs" element={<DocsLayout />}>
-            <Route index element={<GettingStarted />} />
-            <Route path="getting-started" element={<GettingStarted />} />
-            <Route path="installation" element={<Installation />} />
-            <Route path="design-language" element={<DesignLanguage />} />
-            <Route path="components" element={<ComponentsOverview />} />
-            <Route path="components/:componentId" element={<ComponentPage />} />
-            <Route path="ai-integration" element={<AIIntegration />} />
-            <Route path="changelog" element={<Changelog />} />
-          </Route>
-          <Route path="/blocks" element={<TemplatePage />} />
-          <Route path="/templates" element={<Navigate to="/blocks" replace />} />
-          <Route path="/playground" element={<PlaygroundPage />} />
-          <Route path="/create" element={<CreatePage />} />
-          <Route path="/terms" element={<TermsPage />} />
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/docs" element={<DocsLayout />}>
+          <Route index element={<GettingStarted />} />
+          <Route path="getting-started" element={<GettingStarted />} />
+          <Route path="installation" element={<Installation />} />
+          <Route path="design-language" element={<DesignLanguage />} />
+          <Route path="components" element={<ComponentsOverview />} />
+          <Route path="components/:componentId" element={<ComponentPage />} />
+          <Route path="ai-integration" element={<AIIntegration />} />
+          <Route path="changelog" element={<Changelog />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
+        <Route path="/blocks" element={<TemplatePage />} />
+        <Route path="/templates" element={<Navigate to="/blocks" replace />} />
+        <Route path="/playground" element={<PlaygroundPage />} />
+        <Route path="/create" element={<CreatePage />} />
+        <Route path="/terms" element={<TermsPage />} />
+      </Route>
+    </Routes>
   )
 }
 

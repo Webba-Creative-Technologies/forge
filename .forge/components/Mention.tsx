@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, KeyboardEvent } from 'react'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TYPES
@@ -249,10 +250,10 @@ export function MentionInput({
             backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: 'var(--radius-lg)',
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
+            boxShadow: SHADOWS.elevation.dropdown,
             maxHeight: 200,
             overflowY: 'auto',
-            zIndex: 2000,
+            zIndex: Z_INDEX.dropdown,
             minWidth: 220,
             animation: 'fadeIn 0.15s ease'
           }}

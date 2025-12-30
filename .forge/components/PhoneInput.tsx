@@ -1,35 +1,36 @@
 import { useState, useRef, useEffect } from 'react'
 import { ChevronDown20Regular, Search20Regular } from '@fluentui/react-icons'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // COUNTRY DATA
 // ============================================
 const COUNTRIES = [
   { code: 'FR', name: 'France', dial: '+33', flag: '🇫🇷' },
-  { code: 'BE', name: 'Belgique', dial: '+32', flag: '🇧🇪' },
-  { code: 'CH', name: 'Suisse', dial: '+41', flag: '🇨🇭' },
+  { code: 'BE', name: 'Belgium', dial: '+32', flag: '🇧🇪' },
+  { code: 'CH', name: 'Switzerland', dial: '+41', flag: '🇨🇭' },
   { code: 'CA', name: 'Canada', dial: '+1', flag: '🇨🇦' },
-  { code: 'US', name: 'États-Unis', dial: '+1', flag: '🇺🇸' },
-  { code: 'GB', name: 'Royaume-Uni', dial: '+44', flag: '🇬🇧' },
-  { code: 'DE', name: 'Allemagne', dial: '+49', flag: '🇩🇪' },
-  { code: 'ES', name: 'Espagne', dial: '+34', flag: '🇪🇸' },
-  { code: 'IT', name: 'Italie', dial: '+39', flag: '🇮🇹' },
+  { code: 'US', name: 'United States', dial: '+1', flag: '🇺🇸' },
+  { code: 'GB', name: 'United Kingdom', dial: '+44', flag: '🇬🇧' },
+  { code: 'DE', name: 'Germany', dial: '+49', flag: '🇩🇪' },
+  { code: 'ES', name: 'Spain', dial: '+34', flag: '🇪🇸' },
+  { code: 'IT', name: 'Italy', dial: '+39', flag: '🇮🇹' },
   { code: 'PT', name: 'Portugal', dial: '+351', flag: '🇵🇹' },
-  { code: 'NL', name: 'Pays-Bas', dial: '+31', flag: '🇳🇱' },
+  { code: 'NL', name: 'Netherlands', dial: '+31', flag: '🇳🇱' },
   { code: 'LU', name: 'Luxembourg', dial: '+352', flag: '🇱🇺' },
   { code: 'MC', name: 'Monaco', dial: '+377', flag: '🇲🇨' },
-  { code: 'MA', name: 'Maroc', dial: '+212', flag: '🇲🇦' },
-  { code: 'TN', name: 'Tunisie', dial: '+216', flag: '🇹🇳' },
-  { code: 'DZ', name: 'Algérie', dial: '+213', flag: '🇩🇿' },
-  { code: 'SN', name: 'Sénégal', dial: '+221', flag: '🇸🇳' },
-  { code: 'CI', name: "Côte d'Ivoire", dial: '+225', flag: '🇨🇮' },
-  { code: 'JP', name: 'Japon', dial: '+81', flag: '🇯🇵' },
-  { code: 'CN', name: 'Chine', dial: '+86', flag: '🇨🇳' },
-  { code: 'AU', name: 'Australie', dial: '+61', flag: '🇦🇺' },
-  { code: 'BR', name: 'Brésil', dial: '+55', flag: '🇧🇷' },
-  { code: 'MX', name: 'Mexique', dial: '+52', flag: '🇲🇽' },
-  { code: 'IN', name: 'Inde', dial: '+91', flag: '🇮🇳' },
-  { code: 'RU', name: 'Russie', dial: '+7', flag: '🇷🇺' }
+  { code: 'MA', name: 'Morocco', dial: '+212', flag: '🇲🇦' },
+  { code: 'TN', name: 'Tunisia', dial: '+216', flag: '🇹🇳' },
+  { code: 'DZ', name: 'Algeria', dial: '+213', flag: '🇩🇿' },
+  { code: 'SN', name: 'Senegal', dial: '+221', flag: '🇸🇳' },
+  { code: 'CI', name: "Ivory Coast", dial: '+225', flag: '🇨🇮' },
+  { code: 'JP', name: 'Japan', dial: '+81', flag: '🇯🇵' },
+  { code: 'CN', name: 'China', dial: '+86', flag: '🇨🇳' },
+  { code: 'AU', name: 'Australia', dial: '+61', flag: '🇦🇺' },
+  { code: 'BR', name: 'Brazil', dial: '+55', flag: '🇧🇷' },
+  { code: 'MX', name: 'Mexico', dial: '+52', flag: '🇲🇽' },
+  { code: 'IN', name: 'India', dial: '+91', flag: '🇮🇳' },
+  { code: 'RU', name: 'Russia', dial: '+7', flag: '🇷🇺' }
 ]
 
 export type Country = typeof COUNTRIES[number]
@@ -224,8 +225,8 @@ export function PhoneInput({
           marginTop: 4,
           backgroundColor: 'var(--bg-dropdown)',
           borderRadius: 'var(--radius-md)',
-          boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-          zIndex: 2000,
+          boxShadow: SHADOWS.elevation.dropdown,
+          zIndex: Z_INDEX.dropdown,
           maxHeight: 320,
           overflow: 'hidden',
           display: 'flex',
@@ -245,7 +246,7 @@ export function PhoneInput({
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Rechercher..."
+              placeholder="Search..."
               style={{
                 flex: 1,
                 padding: 0,
@@ -306,7 +307,7 @@ export function PhoneInput({
                 color: 'var(--text-muted)',
                 fontSize: '0.8125rem'
               }}>
-                Aucun pays trouvé
+                No country found
               </div>
             )}
           </div>

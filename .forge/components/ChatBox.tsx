@@ -10,6 +10,7 @@ import {
 } from '@fluentui/react-icons'
 import { Avatar } from './Avatar'
 import { useIsMobile } from '../hooks/useResponsive'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TYPES
@@ -617,7 +618,7 @@ export function MiniChat({
   const position = isMobile ? { bottom: 16, right: 16, left: 16 } : { bottom: 24, right: 24 }
 
   return (
-    <div style={{ position: 'fixed', zIndex: 2000, ...position }}>
+    <div style={{ position: 'fixed', zIndex: Z_INDEX.floatButton, ...position }}>
       {/* Chat window */}
       {open && (
         <div
@@ -631,7 +632,7 @@ export function MiniChat({
             flexDirection: 'column',
             backgroundColor: 'var(--bg-secondary)',
             borderRadius: isMobile ? 'var(--radius-lg)' : 'var(--radius-xl)',
-            boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
+            boxShadow: SHADOWS.elevation.modal,
             overflow: 'hidden'
           }}
         >
@@ -703,7 +704,7 @@ export function MiniChat({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 4px 20px rgba(163, 91, 255, 0.4)',
+          boxShadow: SHADOWS.glow.md,
           transition: 'transform 0.2s ease, box-shadow 0.2s ease',
           marginLeft: isMobile ? 'auto' : undefined
         }}

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { SHADOWS } from '../constants'
 import {
   Play20Filled,
   Pause20Filled,
@@ -664,7 +665,7 @@ export function VideoPlayer({
                 height: isDraggingProgress ? 16 : 14,
                 backgroundColor: 'var(--brand-primary)',
                 borderRadius: '50%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)',
+                boxShadow: SHADOWS.soft.xs,
                 transition: 'width 0.1s ease, height 0.1s ease',
                 pointerEvents: 'none'
               }}
@@ -696,13 +697,13 @@ export function VideoPlayer({
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {/* Left group: Play + Skip */}
             <ControlGroup>
-              <ControlButton onClick={togglePlay} title={isPlaying ? 'Pause (k)' : 'Play (k)'}>
+              <ControlButton onClick={togglePlay} title={isPlaying ? 'Pause (K)' : 'Play (K)'}>
                 {isPlaying ? <Pause20Filled /> : <Play20Filled />}
               </ControlButton>
-              <ControlButton onClick={() => skip(-10)} title="Reculer de 10s (j)">
+              <ControlButton onClick={() => skip(-10)} title="Rewind 10s (J)">
                 <SkipBack1020Filled />
               </ControlButton>
-              <ControlButton onClick={() => skip(10)} title="Avancer de 10s (l)">
+              <ControlButton onClick={() => skip(10)} title="Forward 10s (L)">
                 <SkipForward1020Filled />
               </ControlButton>
             </ControlGroup>
@@ -763,7 +764,7 @@ export function VideoPlayer({
               >
                 <ControlButton
                   onClick={() => setShowSpeedMenu(!showSpeedMenu)}
-                  title="Vitesse de lecture"
+                  title="Playback speed"
                   active={playbackSpeed !== 1}
                 >
                   {playbackSpeed !== 1 ? (
@@ -798,7 +799,7 @@ export function VideoPlayer({
               </ControlButton>
 
               {/* Fullscreen */}
-              <ControlButton onClick={toggleFullscreen} title={isFullscreen ? 'Quitter le plein écran (f)' : 'Plein écran (f)'}>
+              <ControlButton onClick={toggleFullscreen} title={isFullscreen ? 'Exit fullscreen (F)' : 'Fullscreen (F)'}>
                 {isFullscreen ? <FullScreenMinimize20Regular /> : <FullScreenMaximize20Regular />}
               </ControlButton>
             </ControlGroup>

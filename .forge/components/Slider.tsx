@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { SHADOWS } from '../constants'
 
 // ============================================
 // SLIDER - Modern with micro-animations
@@ -311,7 +312,7 @@ export function Slider({
           fontWeight: 600,
           color: 'var(--text-primary)',
           whiteSpace: 'nowrap',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+          boxShadow: SHADOWS.soft.lg,
           opacity: showTooltipNow ? 1 : 0,
           transition: 'all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
           pointerEvents: 'none',
@@ -542,7 +543,7 @@ export function RangeSlider({
           fontWeight: 600,
           color: 'var(--text-primary)',
           whiteSpace: 'nowrap',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+          boxShadow: SHADOWS.soft.lg,
           opacity: showTooltip ? 1 : 0,
           transition: 'all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
           pointerEvents: 'none',

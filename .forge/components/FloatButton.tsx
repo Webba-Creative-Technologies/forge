@@ -5,6 +5,7 @@ import {
   ArrowUp24Regular
 } from '@fluentui/react-icons'
 import { Tooltip } from './Tooltip'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // FLOAT BUTTON (FAB)
@@ -269,7 +270,7 @@ export function FloatButtonGroup({
               fontSize: '0.8125rem',
               fontWeight: 500,
               whiteSpace: 'nowrap',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
+              boxShadow: SHADOWS.soft.md
             }}>
               {action.label}
             </span>
@@ -328,7 +329,7 @@ export function BackToTop({
       style={{
         position: 'fixed',
         ...positionStyles,
-        zIndex: 2000,
+        zIndex: Z_INDEX.floatButton,
         width: 48,
         height: 48,
         borderRadius: '50%',
@@ -343,7 +344,7 @@ export function BackToTop({
         transform: visible ? 'scale(1)' : 'scale(0.8)',
         pointerEvents: visible ? 'auto' : 'none',
         transition: 'all 0.2s ease',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+        boxShadow: SHADOWS.elevation.fab,
         ...style
       }}
     >

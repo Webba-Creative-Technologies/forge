@@ -1,4 +1,5 @@
 import { ReactNode, useMemo, useState } from 'react'
+import { SHADOWS } from '../constants'
 
 // ============================================
 // WATERMARK
@@ -274,7 +275,7 @@ export function CopyText({
             color: 'var(--success)',
             fontSize: '0.75rem',
             borderRadius: 'var(--radius-sm)',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            boxShadow: SHADOWS.soft.sm,
             whiteSpace: 'nowrap',
             animation: 'fadeIn 0.15s ease'
           }}

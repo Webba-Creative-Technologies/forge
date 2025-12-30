@@ -36,7 +36,8 @@ import {
   ChevronRight20Regular,
   TextFont20Regular,
   BorderOutside20Regular,
-  SlideSize20Regular
+  SlideSize20Regular,
+  Drop20Regular
 } from '@fluentui/react-icons'
 
 // Footer sections
@@ -895,19 +896,23 @@ function SimpleEditor({
   selectedRadiusPreset,
   selectedSpacingPreset,
   selectedFontPreset,
+  shadowsEnabled,
   onColorPresetChange,
   onRadiusPresetChange,
   onSpacingPresetChange,
-  onFontPresetChange
+  onFontPresetChange,
+  onShadowsChange
 }: {
   selectedColorPreset: string
   selectedRadiusPreset: string
   selectedSpacingPreset: string
   selectedFontPreset: string
+  shadowsEnabled: boolean
   onColorPresetChange: (presetId: string) => void
   onRadiusPresetChange: (presetId: string) => void
   onSpacingPresetChange: (presetId: string) => void
   onFontPresetChange: (presetId: string) => void
+  onShadowsChange: (enabled: boolean) => void
 }) {
   return (
     <VStack gap="md">
@@ -1067,6 +1072,17 @@ function SimpleEditor({
           ))}
         </HStack>
       </VStack>
+
+      {/* Shadows Toggle */}
+      <VStack gap="sm">
+        <Text size="sm" weight="medium" color="secondary">Shadows</Text>
+        <HStack gap="sm" style={{ alignItems: 'center' }}>
+          <Switch checked={shadowsEnabled} onChange={onShadowsChange} />
+          <Text size="sm" color={shadowsEnabled ? 'primary' : 'muted'}>
+            {shadowsEnabled ? 'Shadows enabled' : 'Shadows disabled'}
+          </Text>
+        </HStack>
+      </VStack>
     </VStack>
   )
 }
@@ -1076,13 +1092,15 @@ function ThemePreview({
   radius,
   spacing,
   fontFamily,
-  isDark
+  isDark,
+  shadowsEnabled
 }: {
   colors: ThemeColors
   radius: RadiusValues
   spacing: SpacingValues
   fontFamily: string
   isDark: boolean
+  shadowsEnabled: boolean
 }) {
   const [switchValue, setSwitchValue] = useState(true)
   const [checkValue, setCheckValue] = useState(true)
@@ -1150,7 +1168,7 @@ function ThemePreview({
         </VStack>
 
         {/* Card with Avatar */}
-        <Card padding="md">
+        <Card padding="md" style={{ boxShadow: shadowsEnabled ? '0 1px 3px rgba(0,0,0,0.08)' : 'none' }}>
           <HStack gap="md" style={{ alignItems: 'center' }}>
             <Avatar name="John Doe" size="md" />
             <VStack gap="xs">
@@ -1199,13 +1217,13 @@ function ThemePreview({
 
         {/* Stats Cards */}
         <Grid columns={{ xs: 2 }} gap="sm">
-          <Card padding="md">
+          <Card padding="md" style={{ boxShadow: shadowsEnabled ? '0 1px 3px rgba(0,0,0,0.08)' : 'none' }}>
             <VStack gap="xs" style={{ textAlign: 'center' }}>
               <Text size="lg" weight="bold" style={{ color: 'var(--brand-primary)' }}>128</Text>
               <Text size="sm" color="muted">Projects</Text>
             </VStack>
           </Card>
-          <Card padding="md">
+          <Card padding="md" style={{ boxShadow: shadowsEnabled ? '0 1px 3px rgba(0,0,0,0.08)' : 'none' }}>
             <VStack gap="xs" style={{ textAlign: 'center' }}>
               <Text size="lg" weight="bold" style={{ color: 'var(--brand-secondary)' }}>12k</Text>
               <Text size="sm" color="muted">Followers</Text>
@@ -1238,6 +1256,7 @@ export function CreatePage() {
   const [selectedRadiusPreset, setSelectedRadiusPreset] = useState('rounded')
   const [selectedSpacingPreset, setSelectedSpacingPreset] = useState('comfortable')
   const [selectedFontPreset, setSelectedFontPreset] = useState('system')
+  const [shadowsEnabled, setShadowsEnabled] = useState(true)
 
   // Get current colors based on editing theme
   const colors = editingTheme === 'dark' ? darkColors : lightColors
@@ -1316,6 +1335,7 @@ export function CreatePage() {
     setSelectedRadiusPreset('rounded')
     setSelectedSpacingPreset('comfortable')
     setSelectedFontPreset('system')
+    setShadowsEnabled(true)
   }
 
   // Generate theme code
@@ -1337,13 +1357,21 @@ export function CreatePage() {
       ([key, value]) => value !== defaultSpacing[key as SpacingKey]
     )
     const fontChanged = fontFamily !== defaultFont
+    const shadowsChanged = !shadowsEnabled
 
     const hasLightChanges = changedLightColors.length > 0
     const hasDarkChanges = changedDarkColors.length > 0
     const hasGlobalChanges = changedRadius.length > 0 || changedSpacing.length > 0 || fontChanged
 
-    if (!hasLightChanges && !hasDarkChanges && !hasGlobalChanges) {
+    if (!hasLightChanges && !hasDarkChanges && !hasGlobalChanges && !shadowsChanged) {
       return `<ForgeProvider>
+  <App />
+</ForgeProvider>`
+    }
+
+    // If only shadows changed
+    if (!hasLightChanges && !hasDarkChanges && !hasGlobalChanges && shadowsChanged) {
+      return `<ForgeProvider shadows={false}>
   <App />
 </ForgeProvider>`
     }
@@ -1381,14 +1409,15 @@ export function CreatePage() {
       themeContent += `    dark: {\n${darkEntries.join(',\n')}\n    }`
     }
 
-    return `<ForgeProvider
+    const shadowsProp = shadowsChanged ? '\n  shadows={false}' : ''
+    return `<ForgeProvider${shadowsProp}
   theme={{
 ${themeContent}
   }}
 >
   <App />
 </ForgeProvider>`
-  }, [lightColors, darkColors, radius, spacing, fontFamily])
+  }, [lightColors, darkColors, radius, spacing, fontFamily, shadowsEnabled])
 
   // Copy to clipboard
   const copyCode = async () => {
@@ -1502,10 +1531,12 @@ ${themeContent}
                       selectedRadiusPreset={selectedRadiusPreset}
                       selectedSpacingPreset={selectedSpacingPreset}
                       selectedFontPreset={selectedFontPreset}
+                      shadowsEnabled={shadowsEnabled}
                       onColorPresetChange={applyColorPreset}
                       onRadiusPresetChange={applyRadiusPreset}
                       onSpacingPresetChange={applySpacingPreset}
                       onFontPresetChange={applyFontPreset}
+                      onShadowsChange={setShadowsEnabled}
                     />
                   )}
 
@@ -1655,6 +1686,21 @@ ${themeContent}
                           />
                         </VStack>
                       </CollapsibleSection>
+
+                      {/* Shadows Section */}
+                      <CollapsibleSection title="Shadows" icon={<Drop20Regular />} defaultOpen={false}>
+                        <VStack gap="sm">
+                          <Text size="sm" color="secondary">
+                            Enable or disable box shadows on cards and other components.
+                          </Text>
+                          <HStack gap="sm" style={{ alignItems: 'center' }}>
+                            <Switch checked={shadowsEnabled} onChange={setShadowsEnabled} />
+                            <Text size="sm" color={shadowsEnabled ? 'primary' : 'muted'}>
+                              {shadowsEnabled ? 'Shadows enabled' : 'Shadows disabled'}
+                            </Text>
+                          </HStack>
+                        </VStack>
+                      </CollapsibleSection>
                     </VStack>
                   )}
                 </VStack>
@@ -1731,7 +1777,7 @@ ${themeContent}
 
                 <TabPanels active={activeTab}>
                   <TabPanel id="preview" active={activeTab}>
-                    <ThemePreview colors={previewColors} radius={radius} spacing={spacing} fontFamily={fontFamily} isDark={previewMode === 'dark'} />
+                    <ThemePreview colors={previewColors} radius={radius} spacing={spacing} fontFamily={fontFamily} isDark={previewMode === 'dark'} shadowsEnabled={shadowsEnabled} />
                   </TabPanel>
 
                   <TabPanel id="code" active={activeTab}>

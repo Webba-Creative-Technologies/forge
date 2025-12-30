@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, ReactNode } from 'react'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TOOLTIP
@@ -125,14 +126,14 @@ export function Tooltip({
             left: coords.x,
             top: coords.y,
             transform: getTransform(),
-            zIndex: 10000,
+            zIndex: Z_INDEX.max,
             padding: '0.5rem 0.75rem',
             backgroundColor: 'var(--bg-tertiary)',
             border: '1px solid var(--border-color)',
             borderRadius: 'var(--radius-sm)',
             fontSize: '0.75rem',
             color: 'var(--text-primary)',
-            boxShadow: '0 0 4px rgba(0, 0, 0, 0.08)',
+            boxShadow: SHADOWS.elevation.popover,
             whiteSpace: 'nowrap',
             pointerEvents: 'none',
             animation: 'fadeIn 0.15s ease-out'

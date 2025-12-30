@@ -3,8 +3,22 @@
 // Webba Style System 3
 // ================================
 // Version: 2.0
-// Réutilisable dans tous les projets Webba
-// Iconographie: Fluent UI 2 (@fluentui/react-icons)
+// Reusable across all Webba projects
+// Iconography: Fluent UI 2 (@fluentui/react-icons)
+
+// ============================================
+// CONSTANTS
+// ============================================
+export {
+  Z_INDEX,
+  COLORS,
+  AVATAR_COLORS,
+  STATUS_COLORS,
+  CHART_COLORS,
+  SYNTAX_COLORS,
+  SHADOWS
+} from './constants'
+export type { ZIndexKey, ColorKey, StatusColor, ShadowSize, ShadowHardness } from './constants'
 
 // ============================================
 // THEMING
@@ -281,6 +295,8 @@ export {
   NavigationProvider,
   useNavigation
 } from './hooks/useNavigation'
+
+export { useDraggableScroll } from './hooks/useDraggableScroll'
 
 export {
   // Hooks

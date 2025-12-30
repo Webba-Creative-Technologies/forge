@@ -1,5 +1,6 @@
 import { ReactNode, useState, useRef, useEffect } from 'react'
 import { ChevronDown16Regular, Checkmark16Regular } from '@fluentui/react-icons'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TYPES
@@ -200,11 +201,11 @@ export function Dropdown({
             left: adjustedAlign === 'left' ? 0 : undefined,
             right: adjustedAlign === 'right' ? 0 : undefined,
             marginTop: 4,
-            zIndex: 9999,
+            zIndex: Z_INDEX.overlay,
             minWidth: width,
             backgroundColor: 'var(--bg-dropdown)',
             borderRadius: 'var(--radius-md)',
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
+            boxShadow: SHADOWS.elevation.dropdown,
             padding: 6,
             animation: 'scaleIn 0.15s ease-out'
           }}
@@ -332,8 +333,8 @@ export function SelectDropdown({
             marginTop: 4,
             backgroundColor: 'var(--bg-dropdown)',
             borderRadius: 'var(--radius-md)',
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-            zIndex: 9999,
+            boxShadow: SHADOWS.elevation.dropdown,
+            zIndex: Z_INDEX.overlay,
             padding: 6,
             maxHeight: 250,
             overflowY: 'auto',
@@ -414,8 +415,8 @@ export function ContextMenu({ items, x, y, onClose }: ContextMenuProps) {
         left: x,
         backgroundColor: 'var(--bg-dropdown)',
         borderRadius: 'var(--radius-md)',
-        boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-        zIndex: 9999,
+        boxShadow: SHADOWS.elevation.dropdown,
+        zIndex: Z_INDEX.overlay,
         padding: 6,
         minWidth: 200,
         animation: 'scaleIn 0.1s ease-out'

@@ -1,6 +1,7 @@
-import React, { CSSProperties, InputHTMLAttributes, TextareaHTMLAttributes, ReactNode, useState, useRef, useEffect } from 'react'
+import React, { CSSProperties, InputHTMLAttributes, TextareaHTMLAttributes, ReactNode, useState, useRef, useEffect, forwardRef } from 'react'
 import { Search20Regular, Dismiss20Regular, ChevronDown16Regular, Checkmark16Regular, Checkmark12Regular, Subtract12Regular } from '@fluentui/react-icons'
 import { SIZES } from './Button'
+import { COLORS, Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // BASE STYLES
@@ -55,7 +56,7 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' 
   onChange?: (value: string) => void
 }
 
-export function Input({
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input({
   label,
   error,
   hint,
@@ -65,13 +66,13 @@ export function Input({
   onChange,
   style,
   ...props
-}: InputProps) {
+}, ref) {
   return (
     <div>
       {label && (
         <label style={labelStyle}>
           {label}
-          {required && <span style={{ color: '#ef4444', marginLeft: 4 }}>*</span>}
+          {required && <span style={{ color: COLORS.error, marginLeft: 4 }}>*</span>}
         </label>
       )}
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
@@ -90,13 +91,14 @@ export function Input({
           </div>
         )}
         <input
+          ref={ref}
           {...props}
           disabled={disabled}
           onChange={e => onChange?.(e.target.value)}
           style={{
             ...inputStyle,
             paddingLeft: icon ? '2.5rem' : SIZES.md.padding,
-            borderColor: error ? '#ef4444' : 'var(--border-color)',
+            borderColor: error ? COLORS.error : 'var(--border-color)',
             opacity: disabled ? 0.5 : 1,
             ...style
           }}
@@ -109,7 +111,7 @@ export function Input({
         />
       </div>
       {error && (
-        <p style={{ color: '#ef4444', fontSize: '0.75rem', marginTop: '0.25rem' }}>
+        <p style={{ color: COLORS.error, fontSize: '0.75rem', marginTop: '0.25rem' }}>
           {error}
         </p>
       )}
@@ -120,7 +122,7 @@ export function Input({
       )}
     </div>
   )
-}
+})
 
 // ============================================
 // TEXTAREA
@@ -131,7 +133,7 @@ interface TextareaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>
   onChange?: (value: string) => void
 }
 
-export function Textarea({
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea({
   label,
   error,
   required,
@@ -140,23 +142,24 @@ export function Textarea({
   onChange,
   style,
   ...props
-}: TextareaProps) {
+}, ref) {
   return (
     <div>
       {label && (
         <label style={labelStyle}>
           {label}
-          {required && <span style={{ color: '#ef4444', marginLeft: 4 }}>*</span>}
+          {required && <span style={{ color: COLORS.error, marginLeft: 4 }}>*</span>}
         </label>
       )}
       <textarea
+        ref={ref}
         {...props}
         rows={rows}
         disabled={disabled}
         onChange={e => onChange?.(e.target.value)}
         style={{
           ...textareaStyle,
-          borderColor: error ? '#ef4444' : 'var(--border-color)',
+          borderColor: error ? COLORS.error : 'var(--border-color)',
           opacity: disabled ? 0.5 : 1,
           ...style
         }}
@@ -168,13 +171,13 @@ export function Textarea({
         }}
       />
       {error && (
-        <p style={{ color: '#ef4444', fontSize: '0.75rem', marginTop: '0.25rem' }}>
+        <p style={{ color: COLORS.error, fontSize: '0.75rem', marginTop: '0.25rem' }}>
           {error}
         </p>
       )}
     </div>
   )
-}
+})
 
 // ============================================
 // SELECT (Custom dropdown)
@@ -230,7 +233,7 @@ export function Select({
       {label && (
         <label style={labelStyle}>
           {label}
-          {required && <span style={{ color: '#ef4444', marginLeft: 4 }}>*</span>}
+          {required && <span style={{ color: COLORS.error, marginLeft: 4 }}>*</span>}
         </label>
       )}
 
@@ -246,7 +249,7 @@ export function Select({
           justifyContent: 'space-between',
           gap: '0.75rem',
           backgroundColor: 'var(--bg-secondary)',
-          border: `1px solid ${error ? '#ef4444' : open ? 'var(--brand-primary)' : 'var(--border-color)'}`,
+          border: `1px solid ${error ? COLORS.error : open ? 'var(--brand-primary)' : 'var(--border-color)'}`,
           borderRadius: 'var(--radius-sm)',
           color: selected ? 'var(--text-primary)' : 'var(--text-muted)',
           fontSize: SIZES.md.fontSize,
@@ -276,8 +279,8 @@ export function Select({
           marginTop: 4,
           backgroundColor: 'var(--bg-dropdown)',
           borderRadius: 8,
-          boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-          zIndex: 2000,
+          boxShadow: SHADOWS.elevation.dropdown,
+          zIndex: Z_INDEX.dropdown,
           padding: 6,
           maxHeight: 250,
           overflowY: 'auto',
@@ -318,7 +321,7 @@ export function Select({
       )}
 
       {error && (
-        <p style={{ color: '#ef4444', fontSize: '0.75rem', marginTop: '0.25rem' }}>
+        <p style={{ color: COLORS.error, fontSize: '0.75rem', marginTop: '0.25rem' }}>
           {error}
         </p>
       )}

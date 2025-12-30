@@ -6,6 +6,7 @@ import {
   Info20Regular,
   Dismiss16Regular
 } from '@fluentui/react-icons'
+import { Z_INDEX, COLORS, SHADOWS } from '../constants'
 
 // ============================================
 // TOAST TYPES
@@ -116,9 +117,11 @@ export function ToastProvider({
     <ToastContext.Provider value={{ toasts, addToast, removeToast, success, error, warning, info }}>
       {children}
       <div
+        role="region"
+        aria-label="Notifications"
         style={{
           position: 'fixed',
-          zIndex: 9999,
+          zIndex: Z_INDEX.toast,
           display: 'flex',
           flexDirection: isBottom ? 'column-reverse' : 'column',
           gap: '0.5rem',
@@ -163,10 +166,10 @@ function Toast({ toast, onClose, index, fromBottom }: ToastProps) {
   }
 
   const colors: Record<ToastType, string> = {
-    success: '#10b981',
-    error: '#ef4444',
-    warning: '#f59e0b',
-    info: '#3b82f6'
+    success: COLORS.success,
+    error: COLORS.error,
+    warning: COLORS.warning,
+    info: COLORS.info
   }
 
   const color = colors[toast.type]
@@ -180,7 +183,7 @@ function Toast({ toast, onClose, index, fromBottom }: ToastProps) {
         display: 'flex',
         alignItems: 'flex-start',
         gap: '0.75rem',
-        boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
+        boxShadow: SHADOWS.elevation.toast,
         pointerEvents: 'auto',
         animation: `${fromBottom ? 'slideInUp' : 'slideInDown'} 0.25s ease-out`,
         animationFillMode: 'both',
@@ -269,16 +272,17 @@ export function SimpleToast({ type, title, message, onClose }: SimpleToastProps)
   }
 
   const colors: Record<ToastType, string> = {
-    success: '#10b981',
-    error: '#ef4444',
-    warning: '#f59e0b',
-    info: '#3b82f6'
+    success: COLORS.success,
+    error: COLORS.error,
+    warning: COLORS.warning,
+    info: COLORS.info
   }
 
   const color = colors[type]
 
   return (
     <div
+      role="alert"
       style={{
         backgroundColor: 'var(--bg-secondary)',
         borderLeft: `4px solid ${color}`,
@@ -286,7 +290,7 @@ export function SimpleToast({ type, title, message, onClose }: SimpleToastProps)
         display: 'flex',
         alignItems: 'flex-start',
         gap: '0.75rem',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+        boxShadow: SHADOWS.elevation.toast
       }}
     >
       <div style={{ color, flexShrink: 0 }}>

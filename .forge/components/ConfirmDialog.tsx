@@ -5,6 +5,7 @@ import {
   Info20Regular,
   CheckmarkCircle20Regular
 } from '@fluentui/react-icons'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // CONFIRM DIALOG
@@ -101,7 +102,7 @@ export function ConfirmDialog({
           inset: 0,
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
           backdropFilter: 'blur(4px)',
-          zIndex: 3000,
+          zIndex: Z_INDEX.modalBackdrop,
           opacity: isVisible ? 1 : 0,
           transition: 'opacity 0.15s ease-out'
         }}
@@ -122,8 +123,8 @@ export function ConfirmDialog({
           maxWidth: 400,
           backgroundColor: 'var(--bg-secondary)',
           borderRadius: 'var(--radius-lg)',
-          boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
-          zIndex: 3001,
+          boxShadow: SHADOWS.elevation.modal,
+          zIndex: Z_INDEX.modal,
           padding: '1.5rem',
           opacity: isVisible ? 1 : 0,
           transition: 'opacity 0.15s ease-out, transform 0.15s ease-out'
@@ -328,7 +329,7 @@ export function AlertDialog({
           inset: 0,
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
           backdropFilter: 'blur(4px)',
-          zIndex: 3000,
+          zIndex: Z_INDEX.modalBackdrop,
           opacity: isVisible ? 1 : 0,
           transition: 'opacity 0.15s ease-out'
         }}
@@ -344,8 +345,8 @@ export function AlertDialog({
           maxWidth: 360,
           backgroundColor: 'var(--bg-secondary)',
           borderRadius: 'var(--radius-lg)',
-          boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
-          zIndex: 3001,
+          boxShadow: SHADOWS.elevation.modal,
+          zIndex: Z_INDEX.modal,
           padding: '1.5rem',
           opacity: isVisible ? 1 : 0,
           transition: 'opacity 0.15s ease-out, transform 0.15s ease-out'

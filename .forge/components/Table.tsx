@@ -15,6 +15,8 @@ import { Button, IconButton } from './Button'
 import { Checkbox } from './Input'
 import { Dropdown, SelectDropdown, DropdownItem } from './Dropdown'
 import { useIsMobile } from '../hooks/useResponsive'
+import { SHADOWS } from '../constants'
+import { useForge } from './ForgeProvider'
 
 // ============================================
 // TABLE TYPES
@@ -161,7 +163,7 @@ export function Table<T extends Record<string, any>>({
   subtitle,
   // Search
   searchable = true,
-  searchPlaceholder = 'Rechercher...',
+  searchPlaceholder = 'Search...',
   searchKeys,
   // Filters
   filters,
@@ -188,9 +190,10 @@ export function Table<T extends Record<string, any>>({
   compact = false,
   stickyHeader = true,
   noPadding = false,
-  emptyMessage = 'Aucune donnée',
+  emptyMessage = 'No data',
   emptyIcon
 }: TableProps<T>) {
+  const { shadows } = useForge()
   const isMobile = useIsMobile()
   const [sort, setSort] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(defaultSort || null)
   const [currentPage, setCurrentPage] = useState(1)
@@ -282,6 +285,7 @@ export function Table<T extends Record<string, any>>({
     <div style={{
       backgroundColor: 'var(--bg-secondary)',
       borderRadius: 'var(--radius-lg)',
+      boxShadow: shadows ? SHADOWS.elevation.card : undefined,
       overflow: 'hidden'
     }}>
       {/* Header */}
@@ -481,7 +485,7 @@ export function Table<T extends Record<string, any>>({
                 }}
                 className="interactive-row"
               >
-                Effacer tout
+                Clear all
               </button>
             </div>
           )}
@@ -489,19 +493,20 @@ export function Table<T extends Record<string, any>>({
       )}
 
       {/* Table */}
-      <div style={{ overflowX: 'auto', padding: noPadding ? 0 : '0 1.25rem', paddingTop: noPadding ? 0 : (!hasHeader ? '1rem' : 0), paddingBottom: noPadding ? 0 : (!pagination ? '1rem' : 0) }}>
-        {hasHeader && (
-          <div style={{
-            height: 1,
-            backgroundColor: 'var(--border-color)',
-            marginBottom: 0
-          }} />
-        )}
-        <table style={{
-          width: '100%',
-          borderCollapse: 'collapse',
-          fontSize: compact ? '0.8125rem' : '0.875rem'
-        }}>
+      <div style={{ overflowX: 'auto', paddingLeft: noPadding ? 0 : '1.25rem', paddingTop: noPadding ? 0 : (!hasHeader ? '1rem' : 0), paddingBottom: noPadding ? 0 : (!pagination ? '1rem' : 0) }}>
+        <div style={{ display: 'inline-block', minWidth: '100%', paddingRight: noPadding ? 0 : '1.25rem', boxSizing: 'border-box' }}>
+          {/* Divider after header */}
+          {hasHeader && (
+            <div style={{
+              height: 1,
+              backgroundColor: 'var(--border-color)'
+            }} />
+          )}
+          <table style={{
+            width: '100%',
+            borderCollapse: 'collapse',
+            fontSize: compact ? '0.8125rem' : '0.875rem'
+          }}>
           <thead>
             <tr style={{
               backgroundColor: 'var(--bg-tertiary)',
@@ -604,7 +609,7 @@ export function Table<T extends Record<string, any>>({
                       color: 'var(--text-muted)',
                       fontSize: '0.875rem'
                     }}>
-                      {searchQuery ? `Aucun résultat pour "${searchQuery}"` : emptyMessage}
+                      {searchQuery ? `No results for "${searchQuery}"` : emptyMessage}
                     </span>
                   </div>
                 </td>
@@ -697,6 +702,7 @@ export function Table<T extends Record<string, any>>({
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Footer with pagination */}
@@ -810,12 +816,14 @@ interface SimpleTableProps {
 }
 
 export function SimpleTable({ headers, rows, compact = false }: SimpleTableProps) {
+  const { shadows } = useForge()
   const cellPadding = compact ? '0.5rem 0.75rem' : '0.875rem 1rem'
 
   return (
     <div style={{
       backgroundColor: 'var(--bg-secondary)',
       borderRadius: 'var(--radius-lg)',
+      boxShadow: shadows ? SHADOWS.elevation.card : undefined,
       overflow: 'hidden'
     }}>
       <div style={{ overflowX: 'auto', maxWidth: '100%' }}>

@@ -101,6 +101,7 @@ interface ForgeContextValue {
   setTheme: (theme: Partial<ForgeTheme>) => void
   isDark: boolean
   mode: ThemeMode
+  shadows: boolean
 }
 
 const ForgeContext = createContext<ForgeContextValue | null>(null)
@@ -113,7 +114,8 @@ export function useForge() {
       theme: darkTheme,
       setTheme: () => {},
       isDark: true,
-      mode: 'dark' as ThemeMode
+      mode: 'dark' as ThemeMode,
+      shadows: true
     }
   }
   return context
@@ -126,12 +128,14 @@ interface ForgeProviderProps {
   children: ReactNode
   theme?: Partial<ForgeTheme>
   mode?: ThemeMode
+  shadows?: boolean
 }
 
 export function ForgeProvider({
   children,
   theme: customTheme,
-  mode = 'dark'
+  mode = 'dark',
+  shadows = true
 }: ForgeProviderProps) {
   const baseTheme = mode === 'light' ? lightTheme : darkTheme
   const theme = useMemo(() => ({
@@ -182,8 +186,9 @@ export function ForgeProvider({
     theme,
     setTheme: () => {}, // TODO: Add dynamic theme switching
     isDark: mode === 'dark',
-    mode
-  }), [theme, mode])
+    mode,
+    shadows
+  }), [theme, mode, shadows])
 
   // Inject CSS variables globally so portals can access them
   useEffect(() => {

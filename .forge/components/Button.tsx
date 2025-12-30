@@ -1,4 +1,5 @@
 import { CSSProperties, ReactNode, ButtonHTMLAttributes, useState } from 'react'
+import { COLORS, SHADOWS } from '../constants'
 
 // ============================================
 // SIZE STANDARDS (consistent heights across app)
@@ -69,10 +70,10 @@ export function Button({
     },
     danger: {
       backgroundColor: 'transparent',
-      color: '#ef4444',
+      color: COLORS.error,
       borderWidth: 1,
       borderStyle: 'solid',
-      borderColor: '#ef4444'
+      borderColor: COLORS.error
     }
   }
 
@@ -91,9 +92,9 @@ export function Button({
       color: 'var(--text-primary)'
     },
     danger: {
-      backgroundColor: '#ef4444',
+      backgroundColor: COLORS.error,
       color: 'white',
-      borderColor: '#ef4444'
+      borderColor: COLORS.error
     }
   }
 
@@ -196,8 +197,8 @@ export function IconButton({
     },
     danger: {
       bg: 'transparent',
-      bgHover: 'rgba(239, 68, 68, 0.1)',
-      color: '#ef4444'
+      bgHover: `${COLORS.error}1a`,
+      color: COLORS.error
     },
     inverted: {
       bg: 'rgba(255, 255, 255, 0.1)',
@@ -287,8 +288,8 @@ export function GradientButton({
         opacity: isDisabled ? 0.5 : 1,
         transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease',
         boxShadow: hovered && !isDisabled
-          ? '0 4px 20px rgba(163, 91, 255, 0.5), 0 4px 20px rgba(253, 145, 115, 0.5)'
-          : '0 4px 12px rgba(163, 91, 255, 0.25), 0 4px 12px rgba(253, 145, 115, 0.15)',
+          ? SHADOWS.glow.lg
+          : SHADOWS.glow.md,
         boxSizing: 'border-box',
         lineHeight: 1,
         height: s.height,

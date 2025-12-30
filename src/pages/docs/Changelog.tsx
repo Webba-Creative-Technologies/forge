@@ -33,6 +33,36 @@ interface ChangelogEntry {
 
 const changelog: ChangelogEntry[] = [
   {
+    version: '3.0.2',
+    date: 'December 2025',
+    type: 'minor',
+    changes: [
+      // New Features
+      { category: 'feature', description: 'Added SHADOWS constants with elevation presets (card, dropdown, modal, popover, toast) and hardness levels (soft, medium, hard)' },
+      { category: 'feature', description: 'Added Z_INDEX constants for consistent layering across all components' },
+      { category: 'feature', description: 'Exported new constants: COLORS, AVATAR_COLORS, STATUS_COLORS, CHART_COLORS, SYNTAX_COLORS' },
+      { category: 'feature', description: 'Added `shadows` prop to ForgeProvider to globally enable/disable shadows' },
+      { category: 'feature', description: 'Added shadows toggle to the Create page (Simple and Advanced modes)' },
+      { category: 'feature', description: 'Exported `useDraggableScroll` hook for horizontal scroll containers' },
+      // Accessibility
+      { category: 'improvement', description: 'Modal now has proper ARIA attributes (role="dialog", aria-modal, aria-labelledby, aria-describedby)' },
+      { category: 'improvement', description: 'Added `ariaLabel` prop to Modal for accessible labeling without title' },
+      // Shadows
+      { category: 'improvement', description: 'Applied consistent shadows to 30+ components (Modal, Toast, Tooltip, Dropdown, Popover, Charts, etc.)' },
+      { category: 'improvement', description: 'Card, Navbar, AppSidebar, and Table components now have configurable shadows' },
+      // Styling
+      { category: 'improvement', description: 'Added global thin scrollbar styles for all browsers (webkit and Firefox)' },
+      { category: 'improvement', description: 'Fixed `.interactive-nav` hover state to include background color' },
+      // API Improvements
+      { category: 'improvement', description: 'Moved `useDraggableScroll` from Tabs to dedicated hook file for reusability' },
+      // Internationalization
+      { category: 'improvement', description: 'Translated all remaining French text to English (PhoneInput country names, Table, Charts, Utilities, etc.)' },
+      // Bug Fixes
+      { category: 'fix', description: 'Fixed Table horizontal scroll issue - content no longer clips on the right side' },
+      { category: 'fix', description: 'Fixed PillTabs/SegmentedTabs hover state not working properly' }
+    ]
+  },
+  {
     version: '3.0.1',
     date: 'December 2025',
     type: 'patch',

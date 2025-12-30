@@ -1,5 +1,6 @@
 import { ReactNode, useState } from 'react'
 import { Person20Regular } from '@fluentui/react-icons'
+import { STATUS_COLORS, AVATAR_COLORS, Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // AVATAR
@@ -22,18 +23,11 @@ const sizeStyles = {
   xl: { width: 64, height: 64, fontSize: '1.25rem', statusSize: 16 }
 }
 
-const statusColors = {
-  online: '#10b981',
-  offline: '#6b7280',
-  away: '#f59e0b',
-  busy: '#ef4444'
-}
-
 const statusLabels = {
-  online: 'En ligne',
-  offline: 'Hors ligne',
-  away: 'Absent',
-  busy: 'Occupé'
+  online: 'Online',
+  offline: 'Offline',
+  away: 'Away',
+  busy: 'Busy'
 }
 
 function getInitials(name: string): string {
@@ -46,15 +40,11 @@ function getInitials(name: string): string {
 }
 
 function stringToColor(str: string): string {
-  const colors = [
-    '#A35BFF', '#FD9173', '#10b981', '#3b82f6',
-    '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'
-  ]
   let hash = 0
   for (let i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash)
   }
-  return colors[Math.abs(hash) % colors.length]
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length]
 }
 
 export function Avatar({
@@ -140,7 +130,7 @@ export function Avatar({
           width: statusSize,
           height: statusSize,
           borderRadius: 'var(--radius-full)',
-          backgroundColor: statusColors[status],
+          backgroundColor: STATUS_COLORS[status],
           border: '2px solid var(--bg-primary)',
           boxShadow: '0 0 0 1px rgba(0,0,0,0.1)'
         }} />
@@ -154,7 +144,7 @@ export function Avatar({
             bottom: '100%',
             left: '50%',
             marginBottom: 8,
-            zIndex: 2000,
+            zIndex: Z_INDEX.dropdown,
             pointerEvents: 'none',
             transform: 'translateX(-50%)'
           }}
@@ -164,7 +154,7 @@ export function Avatar({
               position: 'relative',
               backgroundColor: 'var(--bg-dropdown)',
               borderRadius: 'var(--radius-md)',
-              boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
+              boxShadow: SHADOWS.elevation.popover,
               padding: '0.5rem 0.75rem',
               whiteSpace: 'nowrap',
               animation: 'fadeIn 0.15s ease-out'
@@ -204,7 +194,7 @@ export function Avatar({
                 width: 6,
                 height: 6,
                 borderRadius: 'var(--radius-full)',
-                backgroundColor: statusColors[status]
+                backgroundColor: STATUS_COLORS[status]
               }} />
               <span style={{
                 fontSize: '0.75rem',
@@ -310,7 +300,7 @@ export function AvatarStack({
                 left: '50%',
                 transform: 'translateX(-50%)',
                 marginTop: 8,
-                zIndex: 1000
+                zIndex: Z_INDEX.dropdown
               }}
             >
               <div
@@ -318,7 +308,7 @@ export function AvatarStack({
                   position: 'relative',
                   backgroundColor: 'var(--bg-dropdown)',
                   borderRadius: 'var(--radius-md)',
-                  boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
+                  boxShadow: SHADOWS.elevation.popover,
                   padding: '0.5rem',
                   minWidth: 160,
                   animation: 'fadeIn 0.15s ease-out'
@@ -471,7 +461,7 @@ export function AvatarCard({
                   width: 6,
                   height: 6,
                   borderRadius: 'var(--radius-full)',
-                  backgroundColor: statusColors[status]
+                  backgroundColor: STATUS_COLORS[status]
                 }} />
                 <span style={{
                   fontSize: config.subtitleFontSize,

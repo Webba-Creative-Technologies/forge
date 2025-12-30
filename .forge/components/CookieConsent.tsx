@@ -1,6 +1,7 @@
 import { useState, useEffect, ReactNode } from 'react'
 import { Cookies20Regular, Dismiss20Regular } from '@fluentui/react-icons'
 import { Button, IconButton } from './Button'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // COOKIE CONSENT
@@ -181,7 +182,7 @@ export function CookieConsent({
         style={{
           position: 'fixed',
           ...positionStyles[position],
-          zIndex: 9999,
+          zIndex: Z_INDEX.cookieConsent,
           backgroundColor: 'var(--bg-secondary)',
           padding: '1.25rem 2rem',
           display: 'flex',
@@ -258,11 +259,11 @@ export function CookieConsent({
         style={{
           position: 'fixed',
           ...positionStyles[position.includes('bottom') ? position : 'bottom-right'],
-          zIndex: 9999,
+          zIndex: Z_INDEX.cookieConsent,
           backgroundColor: 'var(--bg-secondary)',
           borderRadius: 'var(--radius-lg)',
           padding: '1.25rem',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+          boxShadow: SHADOWS.medium.xl,
           maxWidth: 380
         }}
       >
@@ -318,7 +319,7 @@ export function CookieConsent({
           position: 'fixed',
           inset: 0,
           backgroundColor: 'rgba(0, 0, 0, 0.6)',
-          zIndex: 9998
+          zIndex: Z_INDEX.modalBackdrop
         }}
       />
       {/* Modal */}
@@ -329,7 +330,7 @@ export function CookieConsent({
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          zIndex: 9999,
+          zIndex: Z_INDEX.modal,
           backgroundColor: 'var(--bg-secondary)',
           borderRadius: 'var(--radius-lg)',
           padding: '1.5rem',
@@ -337,7 +338,7 @@ export function CookieConsent({
           maxWidth: 480,
           maxHeight: '90vh',
           overflowY: 'auto',
-          boxShadow: '0 16px 48px rgba(0, 0, 0, 0.4)'
+          boxShadow: SHADOWS.elevation.modal
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>

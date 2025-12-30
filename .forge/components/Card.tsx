@@ -2,6 +2,8 @@ import React, { CSSProperties, ReactNode, useState } from 'react'
 import { ArrowRight16Regular, ArrowUp16Regular, ArrowDown16Regular } from '@fluentui/react-icons'
 import { Button } from './Button'
 import { Text } from './Typography'
+import { SHADOWS } from '../constants'
+import { useForge } from './ForgeProvider'
 
 // ============================================
 // CARD (Base container)
@@ -31,6 +33,7 @@ export function Card({
   className,
   style
 }: CardProps) {
+  const { shadows } = useForge()
   const [isHovered, setIsHovered] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
 
@@ -72,6 +75,7 @@ export function Card({
         borderRadius: 'var(--radius-lg)',
         padding: paddingStyles[padding],
         border: variant === 'outlined' ? '1px solid var(--border-color)' : undefined,
+        boxShadow: shadows && variant === 'default' ? SHADOWS.elevation.card : undefined,
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.15s cubic-bezier(0.4, 0, 0.2, 1)',
         transform: isInteractive && isPressed ? 'scale(0.99)' : undefined,
@@ -144,6 +148,7 @@ export function ImageCard({
   className,
   style
 }: ImageCardProps) {
+  const { shadows } = useForge()
   const [isHovered, setIsHovered] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
 
@@ -162,7 +167,7 @@ export function ImageCard({
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.15s cubic-bezier(0.4, 0, 0.2, 1)',
         transform: isPressed ? 'scale(0.99)' : isHovered ? 'translateY(-2px)' : 'translateY(0)',
-        boxShadow: isHovered ? '0 8px 24px rgba(0, 0, 0, 0.15)' : 'none',
+        boxShadow: shadows && isHovered ? SHADOWS.soft.lg : SHADOWS.none,
         ...style
       }}
     >
@@ -234,6 +239,7 @@ export function HorizontalCard({
   className,
   style
 }: HorizontalCardProps) {
+  const { shadows } = useForge()
   const [isHovered, setIsHovered] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
 
@@ -250,6 +256,7 @@ export function HorizontalCard({
         gap: '1rem',
         backgroundColor: isHovered ? 'var(--bg-tertiary)' : 'var(--bg-secondary)',
         borderRadius: 'var(--radius-lg)',
+        boxShadow: shadows ? SHADOWS.elevation.card : undefined,
         overflow: 'hidden',
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.15s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -321,6 +328,7 @@ export function ActionCard({
   className,
   style
 }: ActionCardProps) {
+  const { shadows } = useForge()
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -332,6 +340,7 @@ export function ActionCard({
       style={{
         backgroundColor: isHovered && onClick ? 'var(--bg-tertiary)' : 'var(--bg-secondary)',
         borderRadius: 'var(--radius-lg)',
+        boxShadow: shadows ? SHADOWS.elevation.card : undefined,
         overflow: 'hidden',
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.15s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -401,6 +410,7 @@ export function StatCard({
   changeLabel,
   onClick
 }: StatCardProps) {
+  const { shadows } = useForge()
   const [isHovered, setIsHovered] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
 
@@ -416,6 +426,7 @@ export function StatCard({
           ? 'var(--bg-tertiary)'
           : 'var(--bg-secondary)',
         borderRadius: 'var(--radius-lg)',
+        boxShadow: shadows ? SHADOWS.elevation.card : undefined,
         overflow: 'hidden',
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.15s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -531,6 +542,7 @@ interface MiniStatProps {
 }
 
 export function MiniStat({ icon, value, label, color, onClick }: MiniStatProps) {
+  const { shadows } = useForge()
   const [isHovered, setIsHovered] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
 
@@ -546,6 +558,7 @@ export function MiniStat({ icon, value, label, color, onClick }: MiniStatProps) 
           ? 'var(--bg-tertiary)'
           : 'var(--bg-secondary)',
         borderRadius: 'var(--radius-lg)',
+        boxShadow: shadows ? SHADOWS.elevation.card : undefined,
         padding: '1rem',
         display: 'flex',
         alignItems: 'center',
@@ -671,6 +684,7 @@ interface InfoCardProps {
 }
 
 export function InfoCard({ children, title, icon, padding = 'md' }: InfoCardProps) {
+  const { shadows } = useForge()
   const paddingStyles = {
     sm: '1rem',
     md: '1.25rem',
@@ -681,6 +695,7 @@ export function InfoCard({ children, title, icon, padding = 'md' }: InfoCardProp
     <div style={{
       background: 'var(--bg-secondary)',
       borderRadius: 'var(--radius-lg)',
+      boxShadow: shadows ? SHADOWS.elevation.card : undefined,
       padding: paddingStyles[padding]
     }}>
       {(title || icon) && (
@@ -722,12 +737,14 @@ interface SectionProps {
 }
 
 export function Section({ title, action, children, noPadding, delay = 0 }: SectionProps & { delay?: number }) {
+  const { shadows } = useForge()
   return (
     <div
       className="animate-slideInUp"
       style={{
         backgroundColor: 'var(--bg-secondary)',
         borderRadius: 'var(--radius-lg)',
+        boxShadow: shadows ? SHADOWS.elevation.card : undefined,
         padding: noPadding ? 0 : '1.25rem',
         animationDelay: `${delay}ms`,
         animationFillMode: 'backwards',

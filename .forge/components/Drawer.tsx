@@ -2,6 +2,8 @@ import { ReactNode, useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { Dismiss20Regular, ChevronDown20Regular, Search20Regular, Navigation20Regular } from '@fluentui/react-icons'
 import { useIsMobile } from '../hooks/useResponsive'
 import { useNavigation } from '../hooks/useNavigation'
+import { Z_INDEX, SHADOWS } from '../constants'
+import { useForge } from './ForgeProvider'
 
 // ============================================
 // APP SIDEBAR (Navigation drawer like Webba CS)
@@ -47,6 +49,8 @@ interface AppSidebarProps {
   height?: string // Custom height (default: '100dvh')
   accentColor?: string
   rounded?: boolean // Only used in drawer mode
+  // Force desktop mode (for previews/demos)
+  forceDesktop?: boolean
 }
 
 export function AppSidebar({
@@ -60,7 +64,7 @@ export function AppSidebar({
   onNavigate,
   showHeader = true,
   showSearch = true,
-  searchPlaceholder = 'Rechercher...',
+  searchPlaceholder = 'Search...',
   searchShortcut = 'Ctrl+K',
   onSearchClick,
   footerContent,
@@ -68,8 +72,10 @@ export function AppSidebar({
   width = 280,
   height = '100dvh',
   accentColor,
-  rounded = true
+  rounded = true,
+  forceDesktop = false
 }: AppSidebarProps) {
+  const { shadows } = useForge()
   const isMobile = useIsMobile()
   const navigation = useNavigation()
   const [localMobileMenuOpen, setLocalMobileMenuOpen] = useState(false)
@@ -78,6 +84,12 @@ export function AppSidebar({
 
   // Detect container width with ResizeObserver
   useEffect(() => {
+    // Skip detection if forceDesktop is enabled
+    if (forceDesktop) {
+      setIsContainerMobile(false)
+      return
+    }
+
     if (!containerRef.current) return
 
     const parent = containerRef.current.parentElement
@@ -120,10 +132,10 @@ export function AppSidebar({
       // Reset parent style on unmount
       if (parent) parent.style.flexDirection = ''
     }
-  }, [])
+  }, [forceDesktop])
 
-  // Combined mobile state
-  const isResponsiveMobile = isContainerMobile
+  // Combined mobile state (forceDesktop overrides)
+  const isResponsiveMobile = forceDesktop ? false : isContainerMobile
 
   // Report sidebar visibility to navigation context
   // Sidebar is visible when: inline mode AND not in responsive mobile (or no navbar in mobile)
@@ -149,6 +161,9 @@ export function AppSidebar({
 
   // Responsive width for drawer mode
   const responsiveWidth = mode === 'drawer' && isMobile ? 'calc(100vw - 48px)' : width
+
+  // Hover state for inline hover effects (no CSS dependency)
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   // Collapsible state for items with children
   const [expandedItems, setExpandedItems] = useState<Set<string>>(() => {
@@ -362,14 +377,15 @@ export function AppSidebar({
         top: 0,
         bottom: 0,
         [position]: 0,
-        zIndex: 3001,
+        zIndex: Z_INDEX.drawer,
         borderRadius,
         boxShadow: position === 'right'
           ? '-8px 0 32px rgba(0, 0, 0, 0.4)'
           : '8px 0 32px rgba(0, 0, 0, 0.4)',
         animation: `slideIn${position === 'right' ? 'Right' : 'Left'} 0.25s ease-out`
       } : {
-        position: 'relative'
+        position: 'relative',
+        boxShadow: shadows ? SHADOWS.soft.sm : undefined
       })
     }}>
       {/* Logo */}
@@ -467,24 +483,25 @@ export function AppSidebar({
                     <button
                       ref={(el) => { if (el) buttonRefs.current.set(item.id, el) }}
                       onClick={() => handleItemClick(item)}
-                      className={isActive || hasActiveChild ? undefined : 'interactive-nav'}
+                      onMouseEnter={() => setHoveredId(item.id)}
+                      onMouseLeave={() => setHoveredId(null)}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.75rem',
                         width: '100%',
                         padding: '0.75rem',
-                        backgroundColor: 'transparent',
+                        backgroundColor: (!isActive && !hasActiveChild && hoveredId === item.id) ? 'var(--bg-tertiary)' : 'transparent',
                         border: 'none',
                         borderRadius: 'var(--radius-md)',
-                        color: isActive ? resolvedAccentColor : hasActiveChild ? 'var(--text-primary)' : 'var(--text-primary)',
+                        color: isActive ? resolvedAccentColor : (hoveredId === item.id ? 'var(--text-primary)' : 'var(--text-primary)'),
                         fontSize: '0.8125rem',
                         fontWeight: isActive || hasActiveChild ? 500 : 400,
                         cursor: 'pointer',
                         textAlign: 'left',
                         position: 'relative',
                         zIndex: 1,
-                        transition: 'color 0.15s ease'
+                        transition: 'color 0.15s ease, background-color 0.15s ease'
                       }}
                     >
                       <span style={{ fontSize: 20, display: 'flex' }}>{item.icon}</span>
@@ -533,24 +550,25 @@ export function AppSidebar({
                               key={child.id}
                               ref={(el) => { if (el) buttonRefs.current.set(child.id, el) }}
                               onClick={() => handleItemClick(child)}
-                              className={isChildItemActive ? undefined : 'interactive-nav'}
+                              onMouseEnter={() => setHoveredId(child.id)}
+                              onMouseLeave={() => setHoveredId(null)}
                               style={{
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '0.625rem',
                                 width: '100%',
                                 padding: '0.5rem 0.75rem',
-                                backgroundColor: 'transparent',
+                                backgroundColor: (!isChildItemActive && hoveredId === child.id) ? 'var(--bg-tertiary)' : 'transparent',
                                 border: 'none',
                                 borderRadius: 'var(--radius-sm)',
-                                color: isChildItemActive ? resolvedAccentColor : 'var(--text-secondary)',
+                                color: isChildItemActive ? resolvedAccentColor : (hoveredId === child.id ? 'var(--text-primary)' : 'var(--text-secondary)'),
                                 fontSize: '0.8rem',
                                 fontWeight: isChildItemActive ? 500 : 400,
                                 cursor: 'pointer',
                                 textAlign: 'left',
                                 position: 'relative',
                                 zIndex: 1,
-                                transition: 'color 0.15s ease'
+                                transition: 'color 0.15s ease, background-color 0.15s ease'
                               }}
                             >
                                 {child.icon && (
@@ -592,14 +610,15 @@ export function AppSidebar({
               <button
                 key={item.id}
                 onClick={() => handleItemClick(item)}
-                className={isActive ? undefined : 'interactive-nav'}
+                onMouseEnter={() => setHoveredId(`bottom-${item.id}`)}
+                onMouseLeave={() => setHoveredId(null)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.75rem',
                   width: '100%',
                   padding: '0.75rem',
-                  backgroundColor: isActive ? 'var(--bg-active, var(--bg-tertiary))' : 'transparent',
+                  backgroundColor: isActive ? 'var(--bg-active, var(--bg-tertiary))' : (hoveredId === `bottom-${item.id}` ? 'var(--bg-tertiary)' : 'transparent'),
                   border: 'none',
                   borderRadius: 'var(--radius-md)',
                   color: isActive ? resolvedAccentColor : 'var(--text-primary)',
@@ -643,7 +662,7 @@ export function AppSidebar({
             position: 'fixed',
             inset: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            zIndex: 3000,
+            zIndex: Z_INDEX.modalBackdrop,
             animation: 'fadeIn 0.2s ease-out'
           }}
         />
@@ -677,7 +696,7 @@ export function AppSidebar({
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '0 1rem',
-          zIndex: 1000
+          zIndex: Z_INDEX.sticky
         }}>
           {/* Logo */}
           {logo && (
@@ -718,7 +737,7 @@ export function AppSidebar({
                 position: 'fixed',
                 inset: 0,
                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                zIndex: 3000,
+                zIndex: Z_INDEX.modalBackdrop,
                 animation: 'fadeIn 0.2s ease-out'
               }}
             />
@@ -731,7 +750,7 @@ export function AppSidebar({
               width: 280,
               maxWidth: '80vw',
               backgroundColor: 'var(--bg-secondary)',
-              zIndex: 3001,
+              zIndex: Z_INDEX.drawer,
               display: 'flex',
               flexDirection: 'column',
               animation: 'slideInRight 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -1055,7 +1074,7 @@ export function Sheet({
             position: 'fixed',
             inset: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.6)',
-            zIndex: 3000,
+            zIndex: Z_INDEX.modalBackdrop,
             cursor: closeOnOverlayClick ? 'pointer' : 'default',
             opacity: hasEntered && !isClosing ? 1 : 0,
             transition: 'opacity 0.3s ease'
@@ -1077,7 +1096,7 @@ export function Sheet({
           boxShadow: isFullWidth ? 'none' : position === 'right'
             ? '-12px 0 40px rgba(0, 0, 0, 0.5)'
             : '12px 0 40px rgba(0, 0, 0, 0.5)',
-          zIndex: 3001,
+          zIndex: Z_INDEX.drawer,
           display: 'flex',
           flexDirection: 'column',
           transform: hasEntered && !isClosing
@@ -1230,7 +1249,7 @@ export function BottomSheet({ open, onClose, title, children }: BottomSheetProps
           position: 'fixed',
           inset: 0,
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 3000,
+          zIndex: Z_INDEX.modalBackdrop,
           animation: 'fadeIn 0.2s ease-out'
         }}
       />
@@ -1241,11 +1260,11 @@ export function BottomSheet({ open, onClose, title, children }: BottomSheetProps
         bottom: 0,
         backgroundColor: 'var(--bg-secondary)',
         borderRadius: '16px 16px 0 0',
-        zIndex: 3001,
+        zIndex: Z_INDEX.drawer,
         maxHeight: '90vh',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
+        boxShadow: SHADOWS.elevation.modal,
         animation: 'slideInBottom 0.3s ease-out'
       }}>
         {/* Handle */}

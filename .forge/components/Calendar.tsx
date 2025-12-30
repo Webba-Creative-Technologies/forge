@@ -13,6 +13,7 @@ import {
 import { IconButton, Button } from './Button'
 import { ViewToggle } from './Tabs'
 import { useIsMobile } from '../hooks/useResponsive'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // EVENT HOVER CARD (Rich tooltip for events)
@@ -125,11 +126,11 @@ function EventHoverCard({ event, accentColor, children, position = 'bottom' }: E
             top: coords.top,
             left: coords.left,
             transform: coords.actualPosition === 'top' ? 'translate(-50%, -100%)' : 'translate(-50%, 0)',
-            zIndex: 10000,
+            zIndex: Z_INDEX.max,
             width: 280,
             backgroundColor: 'var(--bg-dropdown)',
             borderRadius: 'var(--radius-lg)',
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
+            boxShadow: SHADOWS.elevation.popover,
             padding: '0.875rem',
             display: 'flex',
             gap: '0.75rem'

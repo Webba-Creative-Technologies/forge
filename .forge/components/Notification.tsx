@@ -9,6 +9,7 @@ import {
 import { IconButton } from './Button'
 import { Button } from './Button'
 import { Text } from './Typography'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TYPES
@@ -117,7 +118,7 @@ export function NotificationProvider({
           display: 'flex',
           flexDirection: position.startsWith('top') ? 'column' : 'column-reverse',
           gap: 12,
-          zIndex: 2000,
+          zIndex: Z_INDEX.dropdown,
           maxWidth: 400,
           width: '100%',
           pointerEvents: 'none'
@@ -178,7 +179,7 @@ function NotificationItem({ notification, onDismiss, index }: NotificationItemPr
       style={{
         backgroundColor: hovered ? 'var(--bg-tertiary)' : 'var(--bg-secondary)',
         borderRadius: 'var(--radius-lg)',
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
+        boxShadow: SHADOWS.elevation.toast,
         padding: '1rem',
         pointerEvents: 'auto',
         opacity: isVisible && !isLeaving ? 1 : 0,

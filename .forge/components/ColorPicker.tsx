@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { ChevronDown16Regular } from '@fluentui/react-icons'
 import { useIsMobile } from '../hooks/useResponsive'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // PRESET COLORS (Webba palette)
@@ -14,13 +15,13 @@ export const PRESET_COLORS = [
 
 export const PROJECT_COLORS = [
   { name: 'Violet', value: '#A35BFF' },
-  { name: 'Corail', value: '#FD9173' },
-  { name: 'Vert', value: '#10b981' },
-  { name: 'Bleu', value: '#3b82f6' },
+  { name: 'Coral', value: '#FD9173' },
+  { name: 'Green', value: '#10b981' },
+  { name: 'Blue', value: '#3b82f6' },
   { name: 'Orange', value: '#f59e0b' },
-  { name: 'Rouge', value: '#ef4444' },
+  { name: 'Red', value: '#ef4444' },
   { name: 'Indigo', value: '#6366f1' },
-  { name: 'Rose', value: '#ec4899' },
+  { name: 'Pink', value: '#ec4899' },
   { name: 'Cyan', value: '#06b6d4' },
   { name: 'Lime', value: '#84cc16' }
 ]
@@ -142,8 +143,8 @@ export function ColorPicker({
           padding: '0.75rem',
           backgroundColor: 'var(--bg-dropdown)',
           borderRadius: 'var(--radius-md)',
-          boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
-          zIndex: 2000,
+          boxShadow: SHADOWS.elevation.dropdown,
+          zIndex: Z_INDEX.dropdown,
           animation: 'scaleIn 0.15s ease-out'
         }}>
           {/* Color grid */}

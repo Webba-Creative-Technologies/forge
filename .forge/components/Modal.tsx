@@ -1,5 +1,6 @@
-import { CSSProperties, ReactNode, useEffect } from 'react'
+import { CSSProperties, ReactNode, useEffect, useId } from 'react'
 import { Dismiss20Regular } from '@fluentui/react-icons'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // MODAL (with compound components)
@@ -12,6 +13,8 @@ interface ModalProps {
   children: ReactNode
   width?: 'sm' | 'md' | 'lg' | number
   showCloseButton?: boolean
+  /** Accessible label for the modal (used if no title) */
+  ariaLabel?: string
 }
 
 export function Modal({
@@ -21,8 +24,12 @@ export function Modal({
   subtitle,
   children,
   width = 'md',
-  showCloseButton = true
+  showCloseButton = true,
+  ariaLabel
 }: ModalProps) {
+  const titleId = useId()
+  const descId = useId()
+
   // Close on Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -63,12 +70,17 @@ export function Modal({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 3000,
+        zIndex: Z_INDEX.modalBackdrop,
         padding: '1rem',
         animation: 'fadeIn 0.15s ease-out'
       }}
     >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? titleId : undefined}
+        aria-describedby={subtitle ? descId : undefined}
+        aria-label={!title ? ariaLabel : undefined}
         onClick={e => e.stopPropagation()}
         style={{
           backgroundColor: 'var(--bg-secondary)',
@@ -79,7 +91,7 @@ export function Modal({
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
+          boxShadow: SHADOWS.elevation.modal,
           animation: 'scaleIn 0.2s ease-out'
         }}
       >
@@ -93,21 +105,27 @@ export function Modal({
           }}>
             <div>
               {title && (
-                <h2 style={{
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  color: 'var(--text-primary)',
-                  margin: 0
-                }}>
+                <h2
+                  id={titleId}
+                  style={{
+                    fontSize: '1.1rem',
+                    fontWeight: 600,
+                    color: 'var(--text-primary)',
+                    margin: 0
+                  }}
+                >
                   {title}
                 </h2>
               )}
               {subtitle && (
-                <p style={{
-                  fontSize: '0.8125rem',
-                  color: 'var(--text-muted)',
-                  margin: '0.25rem 0 0 0'
-                }}>
+                <p
+                  id={descId}
+                  style={{
+                    fontSize: '0.8125rem',
+                    color: 'var(--text-muted)',
+                    margin: '0.25rem 0 0 0'
+                  }}
+                >
                   {subtitle}
                 </p>
               )}
@@ -115,6 +133,7 @@ export function Modal({
             {showCloseButton && (
               <button
                 onClick={onClose}
+                aria-label="Close modal"
                 className="interactive-icon"
                 style={{
                   width: 32,

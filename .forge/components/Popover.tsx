@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, ReactNode } from 'react'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // POPOVER
@@ -140,12 +141,12 @@ export function Popover({
             top: coords.top,
             left: coords.left,
             transform: getTransform(),
-            zIndex: 2000,
+            zIndex: Z_INDEX.popover,
             width: getWidth(),
             backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: 'var(--radius-md)',
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
+            boxShadow: SHADOWS.elevation.popover,
             padding: '0.75rem',
             animation: 'scaleIn 0.15s ease-out'
           }}
@@ -270,12 +271,12 @@ export function HoverCard({
             top: coords.top,
             left: coords.left,
             transform: position === 'top' ? 'translate(-50%, -100%)' : 'translate(-50%, 0)',
-            zIndex: 2000,
+            zIndex: Z_INDEX.popover,
             minWidth: 150,
             backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: 'var(--radius-md)',
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
+            boxShadow: SHADOWS.elevation.popover,
             padding: '0.75rem',
             animation: 'fadeIn 0.15s ease-out'
           }}

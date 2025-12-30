@@ -8,7 +8,8 @@ import {
   Badge,
   Divider,
   Animate,
-  CodeBlock
+  CodeBlock,
+  SHADOWS
 } from '../../../.forge'
 import {
   Color24Regular,
@@ -306,32 +307,149 @@ export function DesignLanguage() {
         </SectionHeading>
 
         <Text color="secondary">
-          Shadows create depth and establish visual hierarchy between elements.
+          Shadows create depth and establish visual hierarchy. We provide three hardness levels (soft, medium, hard)
+          and six size scales (xs to 2xl), plus special presets for common use cases.
         </Text>
 
-        <Grid columns={{ xs: 1, md: 3 }} gap="lg">
-          <Card padding="lg" style={{ boxShadow: 'var(--shadow-sm)' }}>
-            <VStack gap="sm" style={{ textAlign: 'center' }}>
-              <Text weight="medium">Small</Text>
-              <Text size="xs" color="muted" style={{ fontFamily: 'monospace' }}>--shadow-sm</Text>
-              <Text size="sm" color="secondary">Subtle elevation for buttons, inputs</Text>
-            </VStack>
-          </Card>
-          <Card padding="lg" style={{ boxShadow: 'var(--shadow-md)' }}>
-            <VStack gap="sm" style={{ textAlign: 'center' }}>
-              <Text weight="medium">Medium</Text>
-              <Text size="xs" color="muted" style={{ fontFamily: 'monospace' }}>--shadow-md</Text>
-              <Text size="sm" color="secondary">Cards, dropdowns, popovers</Text>
-            </VStack>
-          </Card>
-          <Card padding="lg" style={{ boxShadow: 'var(--shadow-lg)' }}>
-            <VStack gap="sm" style={{ textAlign: 'center' }}>
-              <Text weight="medium">Large</Text>
-              <Text size="xs" color="muted" style={{ fontFamily: 'monospace' }}>--shadow-lg</Text>
-              <Text size="sm" color="secondary">Modals, floating elements</Text>
-            </VStack>
-          </Card>
-        </Grid>
+        {/* Soft Shadows */}
+        <VStack gap="md">
+          <Heading level={4}>Soft Shadows</Heading>
+          <Text size="sm" color="muted">High blur, subtle effect - great for light interfaces</Text>
+          <Grid columns={{ xs: 2, md: 3, lg: 6 }} gap="md">
+            {(['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((size) => (
+              <Card key={size} padding="md" style={{ boxShadow: SHADOWS.soft[size], textAlign: 'center' }}>
+                <VStack gap="xs">
+                  <Text weight="medium">{size.toUpperCase()}</Text>
+                  <Text size="xs" color="muted" style={{ fontFamily: 'monospace', fontSize: '0.65rem' }}>soft.{size}</Text>
+                </VStack>
+              </Card>
+            ))}
+          </Grid>
+        </VStack>
+
+        {/* Medium Shadows */}
+        <VStack gap="md">
+          <Heading level={4}>Medium Shadows</Heading>
+          <Text size="sm" color="muted">Balanced shadows - versatile for most cases</Text>
+          <Grid columns={{ xs: 2, md: 3, lg: 6 }} gap="md">
+            {(['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((size) => (
+              <Card key={size} padding="md" style={{ boxShadow: SHADOWS.medium[size], textAlign: 'center' }}>
+                <VStack gap="xs">
+                  <Text weight="medium">{size.toUpperCase()}</Text>
+                  <Text size="xs" color="muted" style={{ fontFamily: 'monospace', fontSize: '0.65rem' }}>medium.{size}</Text>
+                </VStack>
+              </Card>
+            ))}
+          </Grid>
+        </VStack>
+
+        {/* Hard Shadows */}
+        <VStack gap="md">
+          <Heading level={4}>Hard Shadows</Heading>
+          <Text size="sm" color="muted">Less blur, sharp edges - more dramatic effect</Text>
+          <Grid columns={{ xs: 2, md: 3, lg: 6 }} gap="md">
+            {(['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((size) => (
+              <Card key={size} padding="md" style={{ boxShadow: SHADOWS.hard[size], textAlign: 'center' }}>
+                <VStack gap="xs">
+                  <Text weight="medium">{size.toUpperCase()}</Text>
+                  <Text size="xs" color="muted" style={{ fontFamily: 'monospace', fontSize: '0.65rem' }}>hard.{size}</Text>
+                </VStack>
+              </Card>
+            ))}
+          </Grid>
+        </VStack>
+
+        {/* Brand & Glow */}
+        <VStack gap="md">
+          <Heading level={4}>Brand & Glow Effects</Heading>
+          <Text size="sm" color="muted">Colored shadows for emphasis and brand elements</Text>
+          <Grid columns={{ xs: 2, md: 3, lg: 6 }} gap="md">
+            {(['sm', 'md', 'lg'] as const).map((size) => (
+              <Card key={`brand-${size}`} padding="md" style={{ boxShadow: SHADOWS.brand[size], textAlign: 'center' }}>
+                <VStack gap="xs">
+                  <Text weight="medium">Brand {size.toUpperCase()}</Text>
+                  <Text size="xs" color="muted" style={{ fontFamily: 'monospace', fontSize: '0.65rem' }}>brand.{size}</Text>
+                </VStack>
+              </Card>
+            ))}
+            {(['sm', 'md', 'lg'] as const).map((size) => (
+              <Card key={`glow-${size}`} padding="md" style={{ boxShadow: SHADOWS.glow[size], textAlign: 'center' }}>
+                <VStack gap="xs">
+                  <Text weight="medium">Glow {size.toUpperCase()}</Text>
+                  <Text size="xs" color="muted" style={{ fontFamily: 'monospace', fontSize: '0.65rem' }}>glow.{size}</Text>
+                </VStack>
+              </Card>
+            ))}
+          </Grid>
+        </VStack>
+
+        {/* Inner Shadows */}
+        <VStack gap="md">
+          <Heading level={4}>Inner Shadows</Heading>
+          <Text size="sm" color="muted">Inset shadows for pressed states and inputs</Text>
+          <Grid columns={{ xs: 1, md: 3 }} gap="md">
+            {(['sm', 'md', 'lg'] as const).map((size) => (
+              <div key={size} style={{
+                padding: '1.25rem',
+                backgroundColor: 'var(--bg-tertiary)',
+                borderRadius: 'var(--radius-md)',
+                boxShadow: SHADOWS.inner[size],
+                textAlign: 'center'
+              }}>
+                <VStack gap="xs">
+                  <Text weight="medium">Inner {size.toUpperCase()}</Text>
+                  <Text size="xs" color="muted" style={{ fontFamily: 'monospace', fontSize: '0.65rem' }}>inner.{size}</Text>
+                </VStack>
+              </div>
+            ))}
+          </Grid>
+        </VStack>
+
+        {/* Elevation Presets */}
+        <VStack gap="md">
+          <Heading level={4}>Elevation Presets</Heading>
+          <Text size="sm" color="muted">Pre-configured shadows for common UI elements</Text>
+          <Grid columns={{ xs: 2, md: 4 }} gap="md">
+            {Object.entries(SHADOWS.elevation).map(([name, value]) => (
+              <Card key={name} padding="md" style={{ boxShadow: value, textAlign: 'center' }}>
+                <VStack gap="xs">
+                  <Text weight="medium" size="sm" style={{ textTransform: 'capitalize' }}>{name}</Text>
+                  <Text size="xs" color="muted" style={{ fontFamily: 'monospace', fontSize: '0.6rem' }}>elevation.{name}</Text>
+                </VStack>
+              </Card>
+            ))}
+          </Grid>
+        </VStack>
+
+        {/* Usage Example */}
+        <Card padding="lg" style={{ backgroundColor: 'var(--bg-tertiary)' }}>
+          <VStack gap="md">
+            <Heading level={4}>Usage</Heading>
+            <CodeBlock
+              code={`import { SHADOWS } from 'wss3-forge'
+
+// Direct usage with inline styles
+<Card style={{ boxShadow: SHADOWS.soft.md }}>
+  Soft medium shadow
+</Card>
+
+// Elevation presets for common cases
+<div style={{ boxShadow: SHADOWS.elevation.card }}>Card</div>
+<div style={{ boxShadow: SHADOWS.elevation.modal }}>Modal</div>
+<div style={{ boxShadow: SHADOWS.elevation.dropdown }}>Dropdown</div>
+
+// Brand-colored shadow for emphasis
+<Button style={{ boxShadow: SHADOWS.brand.md }}>
+  Brand Button
+</Button>
+
+// Glow effect for focus states
+<Input style={{ boxShadow: SHADOWS.glow.sm }} />`}
+              language="tsx"
+              showCopyButton
+            />
+          </VStack>
+        </Card>
       </VStack>
 
       <Divider />

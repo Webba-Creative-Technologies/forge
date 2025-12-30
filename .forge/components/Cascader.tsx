@@ -7,6 +7,7 @@ import {
   Checkmark16Regular
 } from '@fluentui/react-icons'
 import { IconButton } from './Button'
+import { Z_INDEX, SHADOWS } from '../constants'
 
 // ============================================
 // TYPES
@@ -250,8 +251,8 @@ export function Cascader({
           backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: 'var(--radius-lg)',
-          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
-          zIndex: 2000,
+          boxShadow: SHADOWS.elevation.dropdown,
+          zIndex: Z_INDEX.dropdown,
           animation: 'fadeIn 0.15s ease',
           overflow: 'hidden',
           minWidth: '100%'
@@ -272,7 +273,7 @@ export function Cascader({
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Rechercher..."
+                  placeholder="Search..."
                   autoFocus
                   style={{
                     flex: 1,
@@ -389,7 +390,7 @@ export function Cascader({
               color: 'var(--text-muted)',
               fontSize: '0.875rem'
             }}>
-              Aucun résultat
+              No results
             </div>
           )}
         </div>

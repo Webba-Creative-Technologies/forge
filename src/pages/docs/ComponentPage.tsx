@@ -42,6 +42,7 @@ import {
   Breadcrumbs,
   Stepper,
   Navbar,
+  AppSidebar,
   Modal,
   ConfirmDialog,
   Sheet,
@@ -139,6 +140,8 @@ import {
   Warning20Regular,
   Folder20Regular,
   Star20Regular,
+  Home20Regular,
+  Person20Regular,
   DocumentText20Filled,
   Grid20Regular,
   List20Regular
@@ -182,7 +185,7 @@ function NotificationPreview() {
         type: 'info',
         title: 'New Message',
         message: 'You have a new message from John',
-        actions: [{ label: 'View', onClick: () => {} }],
+        actions: [{ label: 'View', onClick: () => { } }],
         duration: 8000
       })}>
         With Action
@@ -558,7 +561,7 @@ const componentDocs: Record<string, {
           <Card
             title="My Card"
             subtitle="Description"
-            action={{ label: 'View all', onClick: () => {} }}
+            action={{ label: 'View all', onClick: () => { } }}
           >
             Content here
           </Card>
@@ -865,7 +868,7 @@ const componentDocs: Record<string, {
       {
         title: 'Basic Switch',
         code: `<Switch label="Enable notifications" checked={enabled} onChange={setEnabled} />`,
-        render: <Switch label="Enable notifications" checked={false} onChange={() => {}} />
+        render: <Switch label="Enable notifications" checked={false} onChange={() => { }} />
       },
       {
         title: 'With Description',
@@ -875,7 +878,7 @@ const componentDocs: Record<string, {
   checked={darkMode}
   onChange={setDarkMode}
 />`,
-        render: <Switch label="Dark mode" description="Enable dark theme across the application" checked={true} onChange={() => {}} />
+        render: <Switch label="Dark mode" description="Enable dark theme across the application" checked={true} onChange={() => { }} />
       },
       {
         title: 'Sizes',
@@ -886,9 +889,9 @@ const componentDocs: Record<string, {
 </VStack>`,
         render: (
           <VStack gap="md">
-            <Switch size="sm" label="Small" checked={false} onChange={() => {}} />
-            <Switch size="md" label="Medium (default)" checked={true} onChange={() => {}} />
-            <Switch size="lg" label="Large" checked={false} onChange={() => {}} />
+            <Switch size="sm" label="Small" checked={false} onChange={() => { }} />
+            <Switch size="md" label="Medium (default)" checked={true} onChange={() => { }} />
+            <Switch size="lg" label="Large" checked={false} onChange={() => { }} />
           </VStack>
         )
       },
@@ -904,9 +907,9 @@ const componentDocs: Record<string, {
         render: (
           <Card padding="lg" style={{ width: '100%' }}>
             <VStack gap="lg">
-              <Switch label="Email notifications" description="Receive email updates" checked={true} onChange={() => {}} />
-              <Switch label="Push notifications" description="Receive push alerts" checked={false} onChange={() => {}} />
-              <Switch label="Marketing emails" checked={false} onChange={() => {}} disabled />
+              <Switch label="Email notifications" description="Receive email updates" checked={true} onChange={() => { }} />
+              <Switch label="Push notifications" description="Receive push alerts" checked={false} onChange={() => { }} />
+              <Switch label="Marketing emails" checked={false} onChange={() => { }} disabled />
             </VStack>
           </Card>
         )
@@ -948,7 +951,7 @@ const componentDocs: Record<string, {
       {
         title: 'Basic Slider',
         code: `<Slider label="Volume" value={volume} onChange={setVolume} />`,
-        render: <Slider label="Volume" value={50} onChange={() => {}} />
+        render: <Slider label="Volume" value={50} onChange={() => { }} />
       },
       {
         title: 'With Custom Range',
@@ -961,7 +964,7 @@ const componentDocs: Record<string, {
   onChange={setPrice}
   formatValue={(v) => \`$\${v}\`}
 />`,
-        render: <Slider label="Price" min={0} max={1000} step={50} value={500} onChange={() => {}} formatValue={(v) => `$${v}`} />
+        render: <Slider label="Price" min={0} max={1000} step={50} value={500} onChange={() => { }} formatValue={(v) => `$${v}`} />
       },
       {
         title: 'Sizes',
@@ -972,9 +975,9 @@ const componentDocs: Record<string, {
 </VStack>`,
         render: (
           <VStack gap="lg" style={{ width: '100%' }}>
-            <Slider size="sm" label="Small" value={30} onChange={() => {}} />
-            <Slider size="md" label="Medium" value={50} onChange={() => {}} />
-            <Slider size="lg" label="Large" value={70} onChange={() => {}} />
+            <Slider size="sm" label="Small" value={30} onChange={() => { }} />
+            <Slider size="md" label="Medium" value={50} onChange={() => { }} />
+            <Slider size="lg" label="Large" value={70} onChange={() => { }} />
           </VStack>
         )
       },
@@ -986,7 +989,7 @@ const componentDocs: Record<string, {
   onChange={setProgress}
   color="var(--color-success)"
 />`,
-        render: <Slider label="Progress" value={75} onChange={() => {}} color="var(--color-success)" />
+        render: <Slider label="Progress" value={75} onChange={() => { }} color="var(--color-success)" />
       }
     ]
   },
@@ -1091,9 +1094,9 @@ const componentDocs: Record<string, {
 </HStack>`,
         render: (
           <HStack gap="sm" style={{ flexWrap: 'wrap' }}>
-            <Badge onRemove={() => {}}>React</Badge>
-            <Badge variant="primary" onRemove={() => {}}>TypeScript</Badge>
-            <Badge variant="success" onRemove={() => {}}>Vite</Badge>
+            <Badge onRemove={() => { }}>React</Badge>
+            <Badge variant="primary" onRemove={() => { }}>TypeScript</Badge>
+            <Badge variant="success" onRemove={() => { }}>Vite</Badge>
           </HStack>
         )
       }
@@ -1147,7 +1150,7 @@ const componentDocs: Record<string, {
   onChange={setActiveTab}
   stretchLine
 />`,
-        render: <Tabs tabs={[{ id: 'overview', label: 'Overview' }, { id: 'features', label: 'Features' }, { id: 'pricing', label: 'Pricing' }]} active="overview" onChange={() => {}} stretchLine />
+        render: <Tabs tabs={[{ id: 'overview', label: 'Overview' }, { id: 'features', label: 'Features' }, { id: 'pricing', label: 'Pricing' }]} active="overview" onChange={() => { }} stretchLine />
       },
       {
         title: 'Pills Variant',
@@ -1161,7 +1164,7 @@ const componentDocs: Record<string, {
   onChange={setActiveTab}
   variant="pills"
 />`,
-        render: <Tabs tabs={[{ id: 'all', label: 'All' }, { id: 'active', label: 'Active' }, { id: 'completed', label: 'Completed' }]} active="all" onChange={() => {}} variant="pills" />
+        render: <Tabs tabs={[{ id: 'all', label: 'All' }, { id: 'active', label: 'Active' }, { id: 'completed', label: 'Completed' }]} active="all" onChange={() => { }} variant="pills" />
       },
       {
         title: 'Full Width',
@@ -1176,7 +1179,7 @@ const componentDocs: Record<string, {
   fullWidth
   stretchLine
 />`,
-        render: <Tabs tabs={[{ id: 'tab1', label: 'Tab 1' }, { id: 'tab2', label: 'Tab 2' }, { id: 'tab3', label: 'Tab 3' }]} active="tab1" onChange={() => {}} fullWidth stretchLine />
+        render: <Tabs tabs={[{ id: 'tab1', label: 'Tab 1' }, { id: 'tab2', label: 'Tab 2' }, { id: 'tab3', label: 'Tab 3' }]} active="tab1" onChange={() => { }} fullWidth stretchLine />
       }
     ]
   },
@@ -1219,7 +1222,7 @@ const componentDocs: Record<string, {
   selected="all"
   onChange={setFilter}
 />`,
-        render: <Pills options={[{ id: 'all', label: 'All' }, { id: 'active', label: 'Active', count: 12 }, { id: 'pending', label: 'Pending', count: 3 }, { id: 'archived', label: 'Archived' }]} selected="all" onChange={() => {}} />
+        render: <Pills options={[{ id: 'all', label: 'All' }, { id: 'active', label: 'Active', count: 12 }, { id: 'pending', label: 'Pending', count: 3 }, { id: 'archived', label: 'Archived' }]} selected="all" onChange={() => { }} />
       },
       {
         title: 'PillTabs with Sliding Indicator',
@@ -1233,7 +1236,7 @@ const componentDocs: Record<string, {
   value="overview"
   onChange={setTab}
 />`,
-        render: <PillTabs tabs={[{ value: 'overview', label: 'Overview' }, { value: 'analytics', label: 'Analytics' }, { value: 'reports', label: 'Reports' }, { value: 'settings', label: 'Settings' }]} value="overview" onChange={() => {}} />
+        render: <PillTabs tabs={[{ value: 'overview', label: 'Overview' }, { value: 'analytics', label: 'Analytics' }, { value: 'reports', label: 'Reports' }, { value: 'settings', label: 'Settings' }]} value="overview" onChange={() => { }} />
       },
       {
         title: 'ViewToggle for Icons',
@@ -1245,7 +1248,7 @@ const componentDocs: Record<string, {
   value="grid"
   onChange={setView}
 />`,
-        render: <ViewToggle options={[{ value: 'grid', icon: <Grid20Regular />, label: 'Grid view' }, { value: 'list', icon: <List20Regular />, label: 'List view' }]} value="grid" onChange={() => {}} />
+        render: <ViewToggle options={[{ value: 'grid', icon: <Grid20Regular />, label: 'Grid view' }, { value: 'list', icon: <List20Regular />, label: 'List view' }]} value="grid" onChange={() => { }} />
       }
     ]
   },
@@ -1416,11 +1419,13 @@ const componentDocs: Record<string, {
             ]}
             columns={[
               { key: 'name', header: 'Name' },
-              { key: 'status', header: 'Status', render: (value: string) => (
-                <Badge variant={value === 'Active' ? 'success' : 'default'}>
-                  {value}
-                </Badge>
-              )}
+              {
+                key: 'status', header: 'Status', render: (value: string) => (
+                  <Badge variant={value === 'Active' ? 'success' : 'default'}>
+                    {value}
+                  </Badge>
+                )
+              }
             ]}
             pagination={false}
             searchable={false}
@@ -1569,27 +1574,31 @@ const componentDocs: Record<string, {
 />`,
         render: (
           <Table
-              data={[
-                { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-                { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
-                { id: 3, name: 'Bob Wilson', email: 'bob@example.com', role: 'Editor' }
-              ]}
-              columns={[
-                { key: 'name', header: 'Name' },
-                { key: 'email', header: 'Email' },
-                { key: 'role', header: 'Role', render: (value: string) => (
+            data={[
+              { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+              { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+              { id: 3, name: 'Bob Wilson', email: 'bob@example.com', role: 'Editor' }
+            ]}
+            columns={[
+              { key: 'name', header: 'Name' },
+              { key: 'email', header: 'Email' },
+              {
+                key: 'role', header: 'Role', render: (value: string) => (
                   <Badge variant={value === 'Admin' ? 'primary' : value === 'Editor' ? 'warning' : 'default'}>{value}</Badge>
-                )},
-                { key: 'actions', header: 'Actions', render: () => (
+                )
+              },
+              {
+                key: 'actions', header: 'Actions', render: () => (
                   <HStack gap="xs">
                     <IconButton icon={<Edit20Regular />} size="sm" variant="ghost" title="Edit" />
                     <IconButton icon={<Delete20Regular />} size="sm" variant="danger" title="Delete" />
                   </HStack>
-                )}
-              ]}
-              pagination={false}
-              searchable={false}
-            />
+                )
+              }
+            ]}
+            pagination={false}
+            searchable={false}
+          />
         )
       },
       {
@@ -2700,7 +2709,7 @@ console.log(greeting)`}
   onChange={setQuery}
   placeholder="Search..."
 />`,
-        render: <SearchInput value="" onChange={() => {}} placeholder="Search..." />
+        render: <SearchInput value="" onChange={() => { }} placeholder="Search..." />
       },
       {
         title: 'Small Size',
@@ -2710,7 +2719,7 @@ console.log(greeting)`}
   placeholder="Quick search..."
   size="sm"
 />`,
-        render: <SearchInput value="" onChange={() => {}} placeholder="Quick search..." size="sm" />
+        render: <SearchInput value="" onChange={() => { }} placeholder="Quick search..." size="sm" />
       },
       {
         title: 'With Pre-filled Value',
@@ -2719,7 +2728,7 @@ console.log(greeting)`}
   onChange={setQuery}
   placeholder="Search..."
 />`,
-        render: <SearchInput value="React components" onChange={() => {}} placeholder="Search..." />
+        render: <SearchInput value="React components" onChange={() => { }} placeholder="Search..." />
       }
     ]
   },
@@ -2753,7 +2762,7 @@ console.log(greeting)`}
   totalPages={10}
   onPageChange={setPage}
 />`,
-        render: <Pagination currentPage={1} totalPages={10} onPageChange={() => {}} />
+        render: <Pagination currentPage={1} totalPages={10} onPageChange={() => { }} />
       },
       {
         title: 'Middle Page',
@@ -2762,7 +2771,7 @@ console.log(greeting)`}
   totalPages={10}
   onPageChange={setPage}
 />`,
-        render: <Pagination currentPage={5} totalPages={10} onPageChange={() => {}} />
+        render: <Pagination currentPage={5} totalPages={10} onPageChange={() => { }} />
       },
       {
         title: 'Simple Pagination',
@@ -2771,7 +2780,7 @@ console.log(greeting)`}
   totalPages={10}
   onPageChange={setPage}
 />`,
-        render: <SimplePagination currentPage={3} totalPages={10} onPageChange={() => {}} />
+        render: <SimplePagination currentPage={3} totalPages={10} onPageChange={() => { }} />
       }
     ]
   },
@@ -3417,7 +3426,7 @@ console.log(greeting)`}
   checked={agreed}
   onChange={setAgreed}
 />`,
-        render: <Checkbox label="I agree to the terms" checked={false} onChange={() => {}} />
+        render: <Checkbox label="I agree to the terms" checked={false} onChange={() => { }} />
       },
       {
         title: 'Multiple Checkboxes',
@@ -3428,9 +3437,9 @@ console.log(greeting)`}
 </VStack>`,
         render: (
           <VStack gap="sm">
-            <Checkbox label="Email notifications" checked={false} onChange={() => {}} />
-            <Checkbox label="SMS notifications" checked={false} onChange={() => {}} />
-            <Checkbox label="Push notifications" checked={true} onChange={() => {}} />
+            <Checkbox label="Email notifications" checked={false} onChange={() => { }} />
+            <Checkbox label="SMS notifications" checked={false} onChange={() => { }} />
+            <Checkbox label="Push notifications" checked={true} onChange={() => { }} />
           </VStack>
         )
       },
@@ -3441,9 +3450,9 @@ console.log(greeting)`}
 <Checkbox label="Disabled" checked={false} onChange={...} disabled />`,
         render: (
           <VStack gap="sm">
-            <Checkbox label="Unchecked" checked={false} onChange={() => {}} />
-            <Checkbox label="Checked" checked={true} onChange={() => {}} />
-            <Checkbox label="Disabled" checked={false} onChange={() => {}} disabled />
+            <Checkbox label="Unchecked" checked={false} onChange={() => { }} />
+            <Checkbox label="Checked" checked={true} onChange={() => { }} />
+            <Checkbox label="Disabled" checked={false} onChange={() => { }} disabled />
           </VStack>
         )
       }
@@ -3484,9 +3493,9 @@ console.log(greeting)`}
 </VStack>`,
         render: (
           <VStack gap="sm">
-            <Radio name="plan" label="Free" value="free" checked={false} onChange={() => {}} />
-            <Radio name="plan" label="Pro" value="pro" checked={true} onChange={() => {}} />
-            <Radio name="plan" label="Enterprise" value="enterprise" checked={false} onChange={() => {}} />
+            <Radio name="plan" label="Free" value="free" checked={false} onChange={() => { }} />
+            <Radio name="plan" label="Pro" value="pro" checked={true} onChange={() => { }} />
+            <Radio name="plan" label="Enterprise" value="enterprise" checked={false} onChange={() => { }} />
           </VStack>
         )
       },
@@ -3499,9 +3508,9 @@ console.log(greeting)`}
 </HStack>`,
         render: (
           <HStack gap="lg" style={{ flexWrap: 'wrap' }}>
-            <Radio name="size" label="Small" value="sm" checked={false} onChange={() => {}} />
-            <Radio name="size" label="Medium" value="md" checked={true} onChange={() => {}} />
-            <Radio name="size" label="Large" value="lg" checked={false} onChange={() => {}} />
+            <Radio name="size" label="Small" value="sm" checked={false} onChange={() => { }} />
+            <Radio name="size" label="Medium" value="md" checked={true} onChange={() => { }} />
+            <Radio name="size" label="Large" value="lg" checked={false} onChange={() => { }} />
           </HStack>
         )
       },
@@ -3511,8 +3520,8 @@ console.log(greeting)`}
 <Radio name="opt" label="Disabled" value="b" checked={false} onChange={...} disabled />`,
         render: (
           <VStack gap="sm">
-            <Radio name="disabled" label="Available" value="a" checked={true} onChange={() => {}} />
-            <Radio name="disabled" label="Disabled option" value="b" checked={false} onChange={() => {}} disabled />
+            <Radio name="disabled" label="Available" value="a" checked={true} onChange={() => { }} />
+            <Radio name="disabled" label="Disabled option" value="b" checked={false} onChange={() => { }} disabled />
           </VStack>
         )
       }
@@ -3557,7 +3566,7 @@ console.log(greeting)`}
   onChange={setDate}
   label="Select date"
 />`,
-        render: <DatePicker value={null} onChange={() => {}} label="Select date" />
+        render: <DatePicker value={null} onChange={() => { }} label="Select date" />
       },
       {
         title: 'With Placeholder',
@@ -3567,7 +3576,7 @@ console.log(greeting)`}
   label="Birthday"
   placeholder="Choose your birthday"
 />`,
-        render: <DatePicker value={null} onChange={() => {}} label="Birthday" placeholder="Choose your birthday" />
+        render: <DatePicker value={null} onChange={() => { }} label="Birthday" placeholder="Choose your birthday" />
       },
       {
         title: 'Pre-selected Date',
@@ -3576,7 +3585,7 @@ console.log(greeting)`}
   onChange={setDate}
   label="Event date"
 />`,
-        render: <DatePicker value={new Date()} onChange={() => {}} label="Event date" />
+        render: <DatePicker value={new Date()} onChange={() => { }} label="Event date" />
       }
     ]
   },
@@ -3619,7 +3628,7 @@ console.log(greeting)`}
   onChange={setColor}
   label="Brand color"
 />`,
-        render: <ColorPicker value="#A35BFF" onChange={() => {}} label="Brand color" />
+        render: <ColorPicker value="#A35BFF" onChange={() => { }} label="Brand color" />
       },
       {
         title: 'With Hex Input',
@@ -3629,7 +3638,7 @@ console.log(greeting)`}
   label="Custom color"
   showInput
 />`,
-        render: <ColorPicker value="#10b981" onChange={() => {}} label="Custom color" showInput />
+        render: <ColorPicker value="#10b981" onChange={() => { }} label="Custom color" showInput />
       },
       {
         title: 'Custom Colors',
@@ -3639,7 +3648,7 @@ console.log(greeting)`}
   label="Theme color"
   colors={['#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff']}
 />`,
-        render: <ColorPicker value="#ff0000" onChange={() => {}} label="Theme color" colors={['#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff']} />
+        render: <ColorPicker value="#ff0000" onChange={() => { }} label="Theme color" colors={['#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff']} />
       }
     ]
   },
@@ -3681,7 +3690,7 @@ console.log(greeting)`}
   label="Drop images here"
   description="or click to browse"
 />`,
-        render: <FileUpload onFilesSelected={() => {}} accept="image/*" label="Drop images here" description="or click to browse" />
+        render: <FileUpload onFilesSelected={() => { }} accept="image/*" label="Drop images here" description="or click to browse" />
       },
       {
         title: 'Multiple Files',
@@ -3691,7 +3700,7 @@ console.log(greeting)`}
   maxFiles={5}
   label="Upload documents"
 />`,
-        render: <FileUpload onFilesSelected={() => {}} multiple maxFiles={5} label="Upload documents" />
+        render: <FileUpload onFilesSelected={() => { }} multiple maxFiles={5} label="Upload documents" />
       },
       {
         title: 'Button Variant',
@@ -3700,7 +3709,7 @@ console.log(greeting)`}
   variant="button"
   accept=".pdf,.doc,.docx"
 />`,
-        render: <FileUpload onFilesSelected={() => {}} variant="button" accept=".pdf,.doc,.docx" />
+        render: <FileUpload onFilesSelected={() => { }} variant="button" accept=".pdf,.doc,.docx" />
       },
       {
         title: 'Compact Variant',
@@ -3709,7 +3718,7 @@ console.log(greeting)`}
   variant="compact"
   accept="image/*"
 />`,
-        render: <FileUpload onFilesSelected={() => {}} variant="compact" accept="image/*" />
+        render: <FileUpload onFilesSelected={() => { }} variant="compact" accept="image/*" />
       }
     ]
   },
@@ -3750,7 +3759,7 @@ console.log(greeting)`}
   onChange={setTags}
   placeholder="Add tags..."
 />`,
-        render: <TagInput value={['React', 'TypeScript']} onChange={() => {}} placeholder="Add tags..." />
+        render: <TagInput value={['React', 'TypeScript']} onChange={() => { }} placeholder="Add tags..." />
       },
       {
         title: 'With Max Tags',
@@ -3760,7 +3769,7 @@ console.log(greeting)`}
   placeholder="Add up to 5 tags..."
   maxTags={5}
 />`,
-        render: <TagInput value={['Design', 'UI', 'UX']} onChange={() => {}} placeholder="Add up to 5 tags..." maxTags={5} />
+        render: <TagInput value={['Design', 'UI', 'UX']} onChange={() => { }} placeholder="Add up to 5 tags..." maxTags={5} />
       }
     ]
   },
@@ -3800,7 +3809,7 @@ console.log(greeting)`}
   onChange={setQuantity}
   label="Quantity"
 />`,
-        render: <NumberInput value={1} onChange={() => {}} label="Quantity" />
+        render: <NumberInput value={1} onChange={() => { }} label="Quantity" />
       },
       {
         title: 'With Min/Max',
@@ -3812,7 +3821,7 @@ console.log(greeting)`}
   step={5}
   label="Volume"
 />`,
-        render: <NumberInput value={50} onChange={() => {}} min={0} max={100} step={5} label="Volume" />
+        render: <NumberInput value={50} onChange={() => { }} min={0} max={100} step={5} label="Volume" />
       }
     ]
   },
@@ -3849,7 +3858,7 @@ console.log(greeting)`}
   length={6}
   onComplete={(code) => console.log('Code:', code)}
 />`,
-        render: <OTPInput length={6} onComplete={() => {}} />
+        render: <OTPInput length={6} onComplete={() => { }} />
       },
       {
         title: 'PIN Code (4 digits)',
@@ -3857,7 +3866,7 @@ console.log(greeting)`}
   length={4}
   onComplete={(pin) => console.log('PIN:', pin)}
 />`,
-        render: <OTPInput length={4} onComplete={() => {}} />
+        render: <OTPInput length={4} onComplete={() => { }} />
       }
     ]
   },
@@ -3893,7 +3902,7 @@ console.log(greeting)`}
   onChange={setPhone}
   label="Phone number"
 />`,
-        render: <PhoneInput value="" onChange={() => {}} label="Phone number" />
+        render: <PhoneInput value="" onChange={() => { }} label="Phone number" />
       },
       {
         title: 'With Default Country',
@@ -3903,7 +3912,7 @@ console.log(greeting)`}
   defaultCountry="FR"
   label="Numéro de téléphone"
 />`,
-        render: <PhoneInput value="" onChange={() => {}} defaultCountry="FR" label="Numéro de téléphone" />
+        render: <PhoneInput value="" onChange={() => { }} defaultCountry="FR" label="Numéro de téléphone" />
       }
     ]
   },
@@ -3948,7 +3957,7 @@ console.log(greeting)`}
   activeId="home"
   onNavigate={(id) => console.log(id)}
 />`,
-        render: <Navbar items={[{ id: 'home', label: 'Home' }, { id: 'products', label: 'Products' }, { id: 'about', label: 'About' }]} activeId="home" onNavigate={() => {}} sticky={false} />
+        render: <Navbar items={[{ id: 'home', label: 'Home' }, { id: 'products', label: 'Products' }, { id: 'about', label: 'About' }]} activeId="home" onNavigate={() => { }} sticky={false} forceDesktop />
       },
       {
         title: 'Without Search',
@@ -3961,7 +3970,124 @@ console.log(greeting)`}
   activeId="docs"
   showSearch={false}
 />`,
-        render: <Navbar items={[{ id: 'home', label: 'Home' }, { id: 'docs', label: 'Docs' }, { id: 'contact', label: 'Contact' }]} activeId="docs" showSearch={false} sticky={false} />
+        render: <Navbar items={[{ id: 'home', label: 'Home' }, { id: 'docs', label: 'Docs' }, { id: 'contact', label: 'Contact' }]} activeId="docs" showSearch={false} sticky={false} forceDesktop />
+      }
+    ]
+  },
+  appsidebar: {
+    name: 'AppSidebar',
+    description: 'Application sidebar with navigation. Supports inline mode (always visible) or drawer mode (slide-in panel). Auto-adapts to mobile with responsive behavior.',
+    importCode: `import { AppSidebar } from 'wss3-forge'
+import type { NavSection } from 'wss3-forge'`,
+    basicUsage: `const sections: NavSection[] = [
+  {
+    title: 'Main',
+    items: [
+      { id: 'dashboard', icon: <Home20Regular />, label: 'Dashboard' },
+      { id: 'projects', icon: <Folder20Regular />, label: 'Projects', badge: 5 }
+    ]
+  }
+]
+
+<AppSidebar
+  sections={sections}
+  activeId="dashboard"
+  onNavigate={(id) => console.log(id)}
+/>`,
+    usage: [
+      'Use inline mode for permanent sidebars',
+      'Use drawer mode for mobile or temporary panels',
+      'Supports nested navigation with children',
+      'Auto-adapts to mobile with hamburger menu',
+      'Integrates with Navbar for shared mobile menu'
+    ],
+    props: [
+      { name: 'mode', type: '"inline" | "drawer"', default: '"inline"', description: 'Display mode' },
+      { name: 'open', type: 'boolean', default: 'true', description: 'Open state (drawer mode)' },
+      { name: 'onClose', type: '() => void', default: '-', description: 'Close handler (drawer mode)' },
+      { name: 'position', type: '"left" | "right"', default: '"left"', description: 'Position (drawer mode)' },
+      { name: 'logo', type: 'ReactNode', default: '-', description: 'Logo element' },
+      { name: 'sections', type: 'NavSection[]', default: '-', description: 'Navigation sections' },
+      { name: 'activeId', type: 'string', default: '-', description: 'Active item ID' },
+      { name: 'onNavigate', type: '(id: string) => void', default: '-', description: 'Navigation handler' },
+      { name: 'showHeader', type: 'boolean', default: 'true', description: 'Show logo and search' },
+      { name: 'showSearch', type: 'boolean', default: 'true', description: 'Show search button' },
+      { name: 'searchPlaceholder', type: 'string', default: '"Rechercher..."', description: 'Search placeholder text' },
+      { name: 'onSearchClick', type: '() => void', default: '-', description: 'Search click handler' },
+      { name: 'footerContent', type: 'ReactNode', default: '-', description: 'Footer content' },
+      { name: 'bottomItems', type: 'NavItem[]', default: '-', description: 'Bottom navigation items' },
+      { name: 'width', type: 'number', default: '280', description: 'Sidebar width in pixels' },
+      { name: 'height', type: 'string', default: '"100dvh"', description: 'Sidebar height' },
+      { name: 'accentColor', type: 'string', default: 'var(--active-color)', description: 'Active item accent color' }
+    ],
+    examples: [
+      {
+        title: 'Basic Sidebar',
+        code: `<AppSidebar
+  sections={[{
+    items: [
+      { id: 'home', icon: <Home20Regular />, label: 'Home' },
+      { id: 'settings', icon: <Settings20Regular />, label: 'Settings' }
+    ]
+  }]}
+  activeId="home"
+  onNavigate={(id) => console.log(id)}
+  showSearch={false}
+  showHeader={false}
+  height="300px"
+/>`,
+        render: <div style={{ display: 'flex', width: '100%', height: 300, border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}><AppSidebar sections={[{ items: [{ id: 'home', icon: <Home20Regular />, label: 'Home' }, { id: 'settings', icon: <Settings20Regular />, label: 'Settings' }] }]} activeId="home" onNavigate={() => { }} showSearch={false} showHeader={false} height="100%" forceDesktop /><div style={{ flex: 1, padding: '1.5rem', backgroundColor: 'var(--bg-primary)' }}><Text color="muted">Content area</Text></div></div>
+      },
+      {
+        title: 'With Sections',
+        code: `<AppSidebar
+  sections={[
+    {
+      title: 'Main',
+      items: [
+        { id: 'dashboard', icon: <Home20Regular />, label: 'Dashboard' },
+        { id: 'projects', icon: <Folder20Regular />, label: 'Projects', badge: 3 }
+      ]
+    },
+    {
+      title: 'Account',
+      items: [
+        { id: 'profile', icon: <Person20Regular />, label: 'Profile' },
+        { id: 'settings', icon: <Settings20Regular />, label: 'Settings' }
+      ]
+    }
+  ]}
+  activeId="dashboard"
+  showSearch={false}
+  showHeader={false}
+  height="350px"
+/>`,
+        render: <div style={{ display: 'flex', width: '100%', height: 350, border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}><AppSidebar sections={[{ title: 'Main', items: [{ id: 'dashboard', icon: <Home20Regular />, label: 'Dashboard' }, { id: 'projects', icon: <Folder20Regular />, label: 'Projects', badge: 3 }] }, { title: 'Account', items: [{ id: 'profile', icon: <Person20Regular />, label: 'Profile' }, { id: 'settings', icon: <Settings20Regular />, label: 'Settings' }] }]} activeId="dashboard" onNavigate={() => { }} showSearch={false} showHeader={false} height="100%" forceDesktop /><div style={{ flex: 1, padding: '1.5rem', backgroundColor: 'var(--bg-primary)' }}><Text color="muted">Content area</Text></div></div>
+      },
+      {
+        title: 'With Nested Items',
+        code: `<AppSidebar
+  sections={[{
+    items: [
+      { id: 'home', icon: <Home20Regular />, label: 'Home' },
+      {
+        id: 'settings',
+        icon: <Settings20Regular />,
+        label: 'Settings',
+        defaultOpen: true,
+        children: [
+          { id: 'profile', icon: <Person20Regular />, label: 'Profile' },
+          { id: 'security', icon: <Settings20Regular />, label: 'Security' }
+        ]
+      }
+    ]
+  }]}
+  activeId="profile"
+  showSearch={false}
+  showHeader={false}
+  height="300px"
+/>`,
+        render: <div style={{ display: 'flex', width: '100%', height: 300, border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}><AppSidebar sections={[{ items: [{ id: 'home', icon: <Home20Regular />, label: 'Home' }, { id: 'settings', icon: <Settings20Regular />, label: 'Settings', defaultOpen: true, children: [{ id: 'profile', icon: <Person20Regular />, label: 'Profile' }, { id: 'security', icon: <Settings20Regular />, label: 'Security' }] }] }]} activeId="profile" onNavigate={() => { }} showSearch={false} showHeader={false} height="100%" forceDesktop /><div style={{ flex: 1, padding: '1.5rem', backgroundColor: 'var(--bg-primary)' }}><Text color="muted">Content area</Text></div></div>
       }
     ]
   },
@@ -4201,12 +4327,12 @@ console.log(greeting)`}
               <VStack gap="lg">
                 <VStack gap="sm">
                   <Text weight="medium">Appearance</Text>
-                  <Switch label="Dark Mode" checked={true} onChange={() => {}} />
+                  <Switch label="Dark Mode" checked={true} onChange={() => { }} />
                 </VStack>
                 <VStack gap="sm">
                   <Text weight="medium">Notifications</Text>
-                  <Switch label="Email notifications" checked={true} onChange={() => {}} />
-                  <Switch label="Push notifications" checked={false} onChange={() => {}} />
+                  <Switch label="Email notifications" checked={true} onChange={() => { }} />
+                  <Switch label="Push notifications" checked={false} onChange={() => { }} />
                 </VStack>
               </VStack>
             </div>
@@ -4515,10 +4641,12 @@ console.log(greeting)`}
                 label: 'src',
                 icon: <Folder20Regular />,
                 children: [
-                  { id: 'components', label: 'components', icon: <Folder20Regular />, children: [
-                    { id: 'Button.tsx', label: 'Button.tsx', icon: <DocumentText20Filled /> },
-                    { id: 'Card.tsx', label: 'Card.tsx', icon: <DocumentText20Filled /> }
-                  ]},
+                  {
+                    id: 'components', label: 'components', icon: <Folder20Regular />, children: [
+                      { id: 'Button.tsx', label: 'Button.tsx', icon: <DocumentText20Filled /> },
+                      { id: 'Card.tsx', label: 'Card.tsx', icon: <DocumentText20Filled /> }
+                    ]
+                  },
                   { id: 'index.tsx', label: 'index.tsx', icon: <DocumentText20Filled /> }
                 ]
               },
@@ -4544,11 +4672,13 @@ console.log(greeting)`}
           <TreeView
             data={[
               { id: 'dashboard', label: 'Dashboard' },
-              { id: 'settings', label: 'Settings', children: [
-                { id: 'profile', label: 'Profile' },
-                { id: 'security', label: 'Security' },
-                { id: 'notifications', label: 'Notifications' }
-              ]}
+              {
+                id: 'settings', label: 'Settings', children: [
+                  { id: 'profile', label: 'Profile' },
+                  { id: 'security', label: 'Security' },
+                  { id: 'notifications', label: 'Notifications' }
+                ]
+              }
             ]}
           />
         )
@@ -4591,7 +4721,7 @@ console.log(greeting)`}
         render: (
           <MiniCalendar
             selectedDate={new Date()}
-            onDateSelect={() => {}}
+            onDateSelect={() => { }}
           />
         )
       },
@@ -4612,8 +4742,8 @@ console.log(greeting)`}
                 { id: '1', title: 'Team Meeting', date: new Date(), color: 'var(--brand-primary)' },
                 { id: '2', title: 'Project Review', date: new Date(Date.now() + 86400000), color: 'var(--color-success)' }
               ]}
-              onDateSelect={() => {}}
-              onEventClick={() => {}}
+              onDateSelect={() => { }}
+              onEventClick={() => { }}
             />
           </div>
         )
@@ -4769,7 +4899,7 @@ console.log(greeting)`}
           <Banner
             variant="brand"
             title="New feature available"
-            action={{ label: 'Learn more', onClick: () => {} }}
+            action={{ label: 'Learn more', onClick: () => { } }}
           >
             We've added new customization options.
           </Banner>
@@ -4792,7 +4922,7 @@ console.log(greeting)`}
   🎉 Version 2.0 is here! Check out the new features.
 </AnnouncementBanner>`,
         render: (
-          <AnnouncementBanner onClick={() => {}}>
+          <AnnouncementBanner onClick={() => { }}>
             🎉 Version 2.0 is here! Check out the new features.
           </AnnouncementBanner>
         )
@@ -4863,8 +4993,8 @@ notify({
             title="New message from John"
             message="Hey, are you available for a quick call?"
             actions={[
-              { label: 'Reply', onClick: () => {} },
-              { label: 'Dismiss', onClick: () => {}, variant: 'ghost' }
+              { label: 'Reply', onClick: () => { } },
+              { label: 'Dismiss', onClick: () => { }, variant: 'ghost' }
             ]}
           />
         )
@@ -4882,7 +5012,7 @@ notify({
             type="success"
             title="File uploaded"
             message="document.pdf has been uploaded successfully"
-            onClose={() => {}}
+            onClose={() => { }}
           />
         )
       }
@@ -6055,7 +6185,7 @@ notify({
         title: 'Interactive Rating',
         code: `<Rating value={3} onChange={setRating} max={5} />`,
         render: (
-          <Rating value={3} onChange={() => {}} max={5} />
+          <Rating value={3} onChange={() => { }} max={5} />
         )
       },
       {
@@ -6281,12 +6411,12 @@ export function ComponentPage() {
         <VStack gap="lg">
           <VStack gap="sm">
             <Text weight="medium">Appearance</Text>
-            <Switch label="Dark Mode" checked={true} onChange={() => {}} />
+            <Switch label="Dark Mode" checked={true} onChange={() => { }} />
           </VStack>
           <VStack gap="sm">
             <Text weight="medium">Notifications</Text>
-            <Switch label="Email notifications" checked={true} onChange={() => {}} />
-            <Switch label="Push notifications" checked={false} onChange={() => {}} />
+            <Switch label="Email notifications" checked={true} onChange={() => { }} />
+            <Switch label="Push notifications" checked={false} onChange={() => { }} />
           </VStack>
         </VStack>
       </Sheet>
@@ -6317,841 +6447,879 @@ export function ComponentPage() {
       />
 
       <VStack gap="2rem" style={{ gap: '3rem' }}>
-      <Animate type="fadeIn">
-        <VStack gap="md">
-          <HStack gap="sm" style={{ justifyContent: 'space-between', width: '100%', flexWrap: 'wrap' }}>
-            <Badge variant="primary">Component</Badge>
-            <HStack gap="sm">
-              {hasPlayground && (
+        <Animate type="fadeIn">
+          <VStack gap="md">
+            <HStack gap="sm" style={{ justifyContent: 'space-between', width: '100%', flexWrap: 'wrap' }}>
+              <Badge variant="primary">Component</Badge>
+              <HStack gap="sm">
+                {hasPlayground && (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    icon={<Play20Regular />}
+                    onClick={() => navigate(`/playground?component=${componentId}`)}
+                  >
+                    Playground
+                  </Button>
+                )}
                 <Button
-                  variant="secondary"
+                  variant="ghost"
                   size="sm"
-                  icon={<Play20Regular />}
-                  onClick={() => navigate(`/playground?component=${componentId}`)}
+                  icon={<DocumentText20Regular />}
+                  onClick={handleDownloadMarkdown}
                 >
-                  Playground
+                  Download .md
                 </Button>
-              )}
-              <Button
-                variant="ghost"
-                size="sm"
-                icon={<DocumentText20Regular />}
-                onClick={handleDownloadMarkdown}
-              >
-                Download .md
-              </Button>
+              </HStack>
             </HStack>
-          </HStack>
-          <Heading level={1}>{docs.name || displayName}</Heading>
-          <Text size="lg" color="secondary">
-            {docs.description}
-          </Text>
-        </VStack>
-      </Animate>
+            <Heading level={1}>{docs.name || displayName}</Heading>
+            <Text size="lg" color="secondary">
+              {docs.description}
+            </Text>
+          </VStack>
+        </Animate>
 
-      <Animate type="slideInUp" delay={100}>
-        <div id="import">
-          <CodeBlock code={docs.importCode} language="tsx" showCopyButton showLineNumbers={false} />
-        </div>
-      </Animate>
-
-      {/* Usage Section */}
-      {docs.usage.length > 0 && (
-        <Animate type="slideInUp" delay={150}>
-          <div id="usage-guidelines">
-            <VStack gap="md">
-              <SectionHeading id="usage-guidelines" level={2}>Usage</SectionHeading>
-              <Card padding="lg" variant="subtle">
-                <VStack gap="sm">
-                  {docs.usage.map((item, index) => (
-                    <HStack key={index} gap="sm" style={{ alignItems: 'flex-start' }}>
-                      <Text color="primary" style={{ lineHeight: 1.6 }}>•</Text>
-                      <Text color="secondary" style={{ lineHeight: 1.6 }}>{item}</Text>
-                    </HStack>
-                  ))}
-                </VStack>
-              </Card>
-            </VStack>
+        <Animate type="slideInUp" delay={100}>
+          <div id="import">
+            <CodeBlock code={docs.importCode} language="tsx" showCopyButton showLineNumbers={false} />
           </div>
         </Animate>
-      )}
 
-      <Divider />
-
-      <Animate type="slideInUp" delay={200}>
-        <div id="usage">
-          <Tabs
-          tabs={[
-            { id: 'preview', label: 'Preview', icon: <Eye20Regular /> },
-            { id: 'code', label: 'Code', icon: <Code20Regular /> },
-            { id: 'props', label: 'API Reference', icon: <Document20Regular /> }
-          ]}
-          active={activeTab}
-          onChange={setActiveTab}
-          stretchLine
-        />
-
-        <TabPanels active={activeTab}>
-          <TabPanel id="preview" active={activeTab}>
-            <Card padding="lg" style={{ marginTop: '1rem', paddingTop: '4rem', paddingBottom: '4rem', position: 'relative', zIndex: 10, overflow: 'visible', backgroundColor: componentId && ['pills', 'footer', 'skeleton', 'copytext', 'copybutton', 'fileupload', 'stepper', 'slider'].includes(componentId) ? 'var(--bg-secondary)' : 'var(--bg-tertiary)' }}>
-              <div style={{ width: '100%', maxWidth: componentId && ['navbar', 'table', 'calendar', 'footer'].includes(componentId) ? '100%' : componentId && ['card', 'statcard', 'imagecard', 'horizontalcard', 'actioncard'].includes(componentId) ? '500px' : '600px', margin: '0 auto' }}>
-                <VStack gap="md" style={{ alignItems: componentId && ['input', 'textarea', 'select', 'slider', 'searchinput', 'datepicker', 'taginput', 'numberinput', 'phoneinput', 'fileupload', 'tabs', 'stepper', 'navbar', 'card', 'statcard', 'imagecard', 'horizontalcard', 'actioncard', 'grid', 'table', 'timeline', 'accordion', 'treeview', 'descriptions', 'calendar', 'toast', 'skeleton', 'banner', 'notification', 'barchart', 'linechart', 'imagegallery', 'carousel', 'videoplayer', 'audioplayer', 'divider', 'texttruncate', 'codeblock', 'footer'].includes(componentId) ? 'stretch' : 'center' }}>
-                  {componentId === 'button' && (
-                    <HStack gap="sm" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
-                      <Button variant="primary">Primary</Button>
-                      <Button variant="secondary">Secondary</Button>
-                      <Button variant="ghost">Ghost</Button>
-                      <Button variant="danger">Danger</Button>
-                    </HStack>
-                  )}
-                  {componentId === 'iconbutton' && (
-                    <HStack gap="md" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
-                      <IconButton icon={<Settings20Regular />} variant="ghost" title="Settings" />
-                      <IconButton icon={<Edit20Regular />} variant="subtle" title="Edit" />
-                      <IconButton icon={<Delete20Regular />} variant="danger" title="Delete" />
-                      <IconButton icon={<Heart20Regular />} variant="ghost" title="Like" />
-                      <IconButton icon={<Share20Regular />} variant="ghost" title="Share" />
-                    </HStack>
-                  )}
-                  {componentId === 'gradientbutton' && (
-                    <VStack gap="md" style={{ alignItems: 'center' }}>
-                      <GradientButton icon={<Rocket20Regular />}>Get Started</GradientButton>
-                      <HStack gap="sm" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
-                        <GradientButton size="sm">Small</GradientButton>
-                        <GradientButton size="md">Medium</GradientButton>
-                        <GradientButton size="lg">Large</GradientButton>
+        {/* Usage Section */}
+        {docs.usage.length > 0 && (
+          <Animate type="slideInUp" delay={150}>
+            <div id="usage-guidelines">
+              <VStack gap="md">
+                <SectionHeading id="usage-guidelines" level={2}>Usage</SectionHeading>
+                <Card padding="lg" variant="subtle">
+                  <VStack gap="sm">
+                    {docs.usage.map((item, index) => (
+                      <HStack key={index} gap="sm" style={{ alignItems: 'flex-start' }}>
+                        <Text color="primary" style={{ lineHeight: 1.6 }}>•</Text>
+                        <Text color="secondary" style={{ lineHeight: 1.6 }}>{item}</Text>
                       </HStack>
-                    </VStack>
-                  )}
-                  {componentId === 'floatbutton' && (
-                    <VStack gap="lg" style={{ alignItems: 'center' }}>
-                      <HStack gap="lg" style={{ justifyContent: 'center' }}>
-                        <VStack gap="xs" style={{ alignItems: 'center' }}>
-                          <FloatButton variant="primary" icon={<Add20Regular />} />
-                          <Text size="xs" color="muted">Primary</Text>
-                        </VStack>
-                        <VStack gap="xs" style={{ alignItems: 'center' }}>
-                          <FloatButton variant="secondary" icon={<Edit20Regular />} />
-                          <Text size="xs" color="muted">Secondary</Text>
-                        </VStack>
-                        <VStack gap="xs" style={{ alignItems: 'center' }}>
-                          <FloatButton variant="gradient" icon={<Rocket20Regular />} />
-                          <Text size="xs" color="muted">Gradient</Text>
-                        </VStack>
-                      </HStack>
-                    </VStack>
-                  )}
-                  {componentId === 'card' && (
-                    <VStack gap="md" style={{ width: '100%' }}>
-                      <Card padding="lg">Default card with content</Card>
-                      <Card padding="lg" variant="subtle">Subtle variant</Card>
-                      <Card padding="lg" hoverable>Hoverable card</Card>
-                    </VStack>
-                  )}
-                  {componentId === 'statcard' && (
-                    <Grid columns={{ xs: 1, sm: 2 }} gap="md" style={{ width: '100%' }}>
-                      <StatCard icon={<People20Regular />} label="Users" value="1,234" color="var(--brand-primary)" change={12.5} />
-                      <StatCard icon={<Money20Regular />} label="Revenue" value="$45K" color="var(--color-success)" change={8.3} />
-                    </Grid>
-                  )}
-                  {componentId === 'imagecard' && (
-                    <ImageCard
-                      image="https://picsum.photos/400/200?random=10"
-                      title="Product Name"
-                      subtitle="$99.00"
-                      description="A brief description of the product"
-                      badge={<Badge variant="success">New</Badge>}
-                    />
-                  )}
-                  {componentId === 'vstack' && (
-                    <HStack gap="xl" style={{ width: '100%', flexWrap: 'wrap', justifyContent: 'center' }}>
-                      <VStack gap="sm">
-                        <Text size="sm" color="muted">VStack</Text>
-                        <Card padding="sm">1</Card>
-                        <Card padding="sm">2</Card>
-                        <Card padding="sm">3</Card>
-                      </VStack>
-                      <VStack gap="sm">
-                        <Text size="sm" color="muted">HStack</Text>
-                        <HStack gap="sm">
-                          <Card padding="sm">A</Card>
-                          <Card padding="sm">B</Card>
-                          <Card padding="sm">C</Card>
+                    ))}
+                  </VStack>
+                </Card>
+              </VStack>
+            </div>
+          </Animate>
+        )}
+
+        <Divider />
+
+        <Animate type="slideInUp" delay={200}>
+          <div id="usage">
+            <Tabs
+              tabs={[
+                { id: 'preview', label: 'Preview', icon: <Eye20Regular /> },
+                { id: 'code', label: 'Code', icon: <Code20Regular /> },
+                { id: 'props', label: 'API Reference', icon: <Document20Regular /> }
+              ]}
+              active={activeTab}
+              onChange={setActiveTab}
+              stretchLine
+            />
+
+            <TabPanels active={activeTab}>
+              <TabPanel id="preview" active={activeTab}>
+                <Card padding="lg" style={{ marginTop: '1rem', paddingTop: '4rem', paddingBottom: '4rem', position: 'relative', zIndex: 10, overflow: 'visible', backgroundColor: componentId && ['pills', 'footer', 'skeleton', 'copytext', 'copybutton', 'fileupload', 'stepper', 'slider', 'tabs'].includes(componentId) ? 'var(--bg-secondary)' : 'var(--bg-tertiary)' }}>
+                  <div style={{ width: '100%', maxWidth: componentId && ['navbar', 'appsidebar', 'table', 'calendar', 'footer'].includes(componentId) ? '100%' : componentId && ['card', 'statcard', 'imagecard', 'horizontalcard', 'actioncard'].includes(componentId) ? '500px' : '600px', margin: '0 auto' }}>
+                    <VStack gap="md" style={{ alignItems: componentId && ['input', 'textarea', 'select', 'slider', 'searchinput', 'datepicker', 'taginput', 'numberinput', 'phoneinput', 'fileupload', 'tabs', 'stepper', 'navbar', 'card', 'statcard', 'imagecard', 'horizontalcard', 'actioncard', 'grid', 'table', 'timeline', 'accordion', 'treeview', 'descriptions', 'calendar', 'toast', 'skeleton', 'banner', 'notification', 'barchart', 'linechart', 'imagegallery', 'carousel', 'videoplayer', 'audioplayer', 'divider', 'texttruncate', 'codeblock', 'footer'].includes(componentId) ? 'stretch' : 'center' }}>
+                      {componentId === 'button' && (
+                        <HStack gap="sm" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
+                          <Button variant="primary">Primary</Button>
+                          <Button variant="secondary">Secondary</Button>
+                          <Button variant="ghost">Ghost</Button>
+                          <Button variant="danger">Danger</Button>
                         </HStack>
-                      </VStack>
-                    </HStack>
-                  )}
-                  {componentId === 'grid' && (
-                    <Grid columns={3} gap="sm" style={{ width: '100%', textAlign: 'center' }}>
-                      <Card padding="md">1</Card>
-                      <Card padding="md">2</Card>
-                      <Card padding="md">3</Card>
-                      <Card padding="md">4</Card>
-                      <Card padding="md">5</Card>
-                      <Card padding="md">6</Card>
-                    </Grid>
-                  )}
-                  {componentId === 'input' && (
-                    <VStack gap="md" style={{ width: '100%' }}>
-                      <Input label="Name" placeholder="Enter your name..." />
-                      <Input label="Email" type="email" placeholder="Enter your email..." />
-                      <Input label="Password" type="password" placeholder="Enter password..." />
-                    </VStack>
-                  )}
-                  {componentId === 'textarea' && (
-                    <VStack gap="md" style={{ width: '100%' }}>
-                      <Textarea label="Description" placeholder="Enter description..." rows={4} />
-                    </VStack>
-                  )}
-                  {componentId === 'select' && (
-                    <VStack gap="md" style={{ width: '100%' }}>
-                      <Select
-                        label="Country"
-                        placeholder="Select a country"
-                        options={[
-                          { value: 'us', label: 'United States' },
-                          { value: 'ca', label: 'Canada' },
-                          { value: 'uk', label: 'United Kingdom' }
-                        ]}
-                      />
-                    </VStack>
-                  )}
-                  {componentId === 'checkbox' && (
-                    <Checkbox label="Accept terms and conditions" checked={previewCheckbox} onChange={setPreviewCheckbox} />
-                  )}
-                  {componentId === 'radio' && (
-                    <VStack gap="sm">
-                      <Radio name="preview" label="Option A" value="a" checked={previewRadio === 'a'} onChange={() => setPreviewRadio('a')} />
-                      <Radio name="preview" label="Option B" value="b" checked={previewRadio === 'b'} onChange={() => setPreviewRadio('b')} />
-                      <Radio name="preview" label="Option C" value="c" checked={previewRadio === 'c'} onChange={() => setPreviewRadio('c')} />
-                    </VStack>
-                  )}
-                  {componentId === 'switch' && (
-                    <Switch label="Enable notifications" checked={previewSwitch} onChange={setPreviewSwitch} />
-                  )}
-                  {componentId === 'slider' && (
-                    <Slider label="Volume" value={previewSlider} onChange={setPreviewSlider} />
-                  )}
-                  {componentId === 'searchinput' && (
-                    <SearchInput placeholder="Search..." value={previewSearch} onChange={setPreviewSearch} />
-                  )}
-                  {componentId === 'datepicker' && (
-                    <DatePicker value={previewDate} onChange={setPreviewDate} label="Select date" />
-                  )}
-                  {componentId === 'colorpicker' && (
-                    <ColorPicker value={previewColor} onChange={setPreviewColor} label="Choose color" />
-                  )}
-                  {componentId === 'taginput' && (
-                    <TagInput value={previewTags} onChange={setPreviewTags} placeholder="Add tags..." />
-                  )}
-                  {componentId === 'numberinput' && (
-                    <NumberInput value={previewNumber} onChange={(val) => setPreviewNumber(val === '' ? 0 : val)} label="Quantity" min={0} max={100} />
-                  )}
-                  {componentId === 'otpinput' && (
-                    <OTPInput length={6} onComplete={(code) => console.log('OTP:', code)} />
-                  )}
-                  {componentId === 'phoneinput' && (
-                    <PhoneInput value={previewPhone} onChange={setPreviewPhone} label="Phone number" />
-                  )}
-                  {componentId === 'fileupload' && (
-                    <FileUpload onFilesSelected={() => {}} accept="image/*" label="Drop files here" description="or click to browse" />
-                  )}
-                  {componentId === 'tabs' && (
-                    <Tabs tabs={[{ id: 'tab1', label: 'Overview' }, { id: 'tab2', label: 'Features' }, { id: 'tab3', label: 'Pricing' }]} active={previewTabActive} onChange={setPreviewTabActive} stretchLine />
-                  )}
-                  {componentId === 'pills' && (
-                    <VStack gap="xl" style={{ width: '100%', alignItems: 'center' }}>
-                      <VStack gap="sm" style={{ alignItems: 'center' }}>
-                        <Text size="sm" color="muted">Pills (Filter)</Text>
-                        <Pills
-                          options={[
-                            { id: 'all', label: 'All' },
-                            { id: 'active', label: 'Active', count: 12 },
-                            { id: 'pending', label: 'Pending', count: 3 },
-                            { id: 'archived', label: 'Archived' }
-                          ]}
-                          selected={previewPillsSelected}
-                          onChange={setPreviewPillsSelected}
-                        />
-                      </VStack>
-                      <VStack gap="sm" style={{ alignItems: 'center' }}>
-                        <Text size="sm" color="muted">PillTabs (Navigation)</Text>
-                        <PillTabs
-                          tabs={[
-                            { value: 'overview', label: 'Overview' },
-                            { value: 'analytics', label: 'Analytics' },
-                            { value: 'reports', label: 'Reports' },
-                            { value: 'settings', label: 'Settings' }
-                          ]}
-                          value={previewPillTabsValue}
-                          onChange={setPreviewPillTabsValue}
-                        />
-                      </VStack>
-                      <VStack gap="sm" style={{ alignItems: 'center' }}>
-                        <Text size="sm" color="muted">ViewToggle (Icons)</Text>
-                        <ViewToggle
-                          options={[
-                            { value: 'grid', icon: <Grid20Regular />, label: 'Grid view' },
-                            { value: 'list', icon: <List20Regular />, label: 'List view' }
-                          ]}
-                          value={previewViewToggle}
-                          onChange={setPreviewViewToggle}
-                        />
-                      </VStack>
-                    </VStack>
-                  )}
-                  {componentId === 'pagination' && (
-                    <Pagination currentPage={previewPage} totalPages={10} onPageChange={setPreviewPage} />
-                  )}
-                  {componentId === 'breadcrumbs' && (
-                    <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Docs', href: '#' }, { label: 'Components' }]} />
-                  )}
-                  {componentId === 'stepper' && (
-                    <VStack gap="md" style={{ width: '100%' }}>
-                      <Stepper steps={[{ id: 'account', title: 'Account' }, { id: 'profile', title: 'Profile' }, { id: 'review', title: 'Review' }]} currentStep={previewStep} />
-                      <HStack gap="sm" style={{ justifyContent: 'center' }}>
-                        <Button variant="secondary" size="sm" onClick={() => setPreviewStep(Math.max(0, previewStep - 1))} disabled={previewStep === 0}>Previous</Button>
-                        <Button variant="primary" size="sm" onClick={() => setPreviewStep(Math.min(2, previewStep + 1))} disabled={previewStep === 2}>Next</Button>
-                      </HStack>
-                    </VStack>
-                  )}
-                  {componentId === 'navbar' && (
-                    <Navbar items={[{ id: 'home', label: 'Home' }, { id: 'products', label: 'Products' }, { id: 'about', label: 'About' }]} activeId={previewNavActive} onNavigate={setPreviewNavActive} sticky={false} />
-                  )}
-                  {componentId === 'footer' && (
-                    <Footer tagline="A modern React component library." sections={[{ title: 'Resources', links: [{ label: 'Docs', href: '#' }, { label: 'Components', href: '#' }] }, { title: 'Company', links: [{ label: 'About', href: '#' }, { label: 'Contact', href: '#' }] }]} copyright="© 2025 Webba. All rights reserved." />
-                  )}
-                  {componentId === 'modal' && (
-                    <Button onClick={() => setPreviewModalOpen(true)}>Open Modal</Button>
-                  )}
-                  {componentId === 'confirmdialog' && (
-                    <Button variant="danger" onClick={() => setPreviewConfirmOpen(true)}>Delete Item</Button>
-                  )}
-                  {componentId === 'sheet' && (
-                    <Button onClick={() => setPreviewSheetOpen(true)}>Open Sheet</Button>
-                  )}
-                  {componentId === 'dropdown' && (
-                    <Dropdown
-                      trigger={<Button variant="secondary">Actions</Button>}
-                      items={[
-                        { id: 'edit', label: 'Edit', icon: <Edit20Regular /> },
-                        { id: 'copy', label: 'Copy', icon: <Copy20Regular /> },
-                        { id: 'share', label: 'Share', icon: <Share20Regular /> },
-                        { id: 'divider', label: '', divider: true },
-                        { id: 'delete', label: 'Delete', icon: <Delete20Regular />, destructive: true }
-                      ]}
-                    />
-                  )}
-                  {componentId === 'tooltip' && (
-                    <HStack gap="lg">
-                      <Tooltip content="Edit this item" position="top"><IconButton icon={<Edit20Regular />} /></Tooltip>
-                      <Tooltip content="Delete permanently" position="bottom"><IconButton icon={<Delete20Regular />} variant="danger" /></Tooltip>
-                      <Tooltip content="Share with others" position="right"><IconButton icon={<Share20Regular />} /></Tooltip>
-                    </HStack>
-                  )}
-                  {componentId === 'popover' && (
-                    <Popover
-                      trigger={<Button variant="secondary">View Profile</Button>}
-                      content={
-                        <VStack gap="sm" style={{ minWidth: 200 }}>
-                          <HStack gap="sm">
-                            <div style={{ width: 40, height: 40, borderRadius: 'var(--radius-full)', background: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 600 }}>JD</div>
-                            <VStack gap="xs">
-                              <Text weight="medium">John Doe</Text>
-                              <Text size="sm" color="muted">john@example.com</Text>
+                      )}
+                      {componentId === 'iconbutton' && (
+                        <HStack gap="md" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
+                          <IconButton icon={<Settings20Regular />} variant="ghost" title="Settings" />
+                          <IconButton icon={<Edit20Regular />} variant="subtle" title="Edit" />
+                          <IconButton icon={<Delete20Regular />} variant="danger" title="Delete" />
+                          <IconButton icon={<Heart20Regular />} variant="ghost" title="Like" />
+                          <IconButton icon={<Share20Regular />} variant="ghost" title="Share" />
+                        </HStack>
+                      )}
+                      {componentId === 'gradientbutton' && (
+                        <VStack gap="md" style={{ alignItems: 'center' }}>
+                          <GradientButton icon={<Rocket20Regular />}>Get Started</GradientButton>
+                          <HStack gap="sm" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <GradientButton size="sm">Small</GradientButton>
+                            <GradientButton size="md">Medium</GradientButton>
+                            <GradientButton size="lg">Large</GradientButton>
+                          </HStack>
+                        </VStack>
+                      )}
+                      {componentId === 'floatbutton' && (
+                        <VStack gap="lg" style={{ alignItems: 'center' }}>
+                          <HStack gap="lg" style={{ justifyContent: 'center' }}>
+                            <VStack gap="xs" style={{ alignItems: 'center' }}>
+                              <FloatButton variant="primary" icon={<Add20Regular />} />
+                              <Text size="xs" color="muted">Primary</Text>
+                            </VStack>
+                            <VStack gap="xs" style={{ alignItems: 'center' }}>
+                              <FloatButton variant="secondary" icon={<Edit20Regular />} />
+                              <Text size="xs" color="muted">Secondary</Text>
+                            </VStack>
+                            <VStack gap="xs" style={{ alignItems: 'center' }}>
+                              <FloatButton variant="gradient" icon={<Rocket20Regular />} />
+                              <Text size="xs" color="muted">Gradient</Text>
                             </VStack>
                           </HStack>
-                          <Divider />
-                          <Button size="sm" fullWidth variant="secondary">View Full Profile</Button>
                         </VStack>
-                      }
-                    />
-                  )}
-                  {componentId === 'commandbar' && (
-                    <Button onClick={() => setPreviewCommandBarOpen(true)} icon={<Search20Regular />}>Open Command Bar</Button>
-                  )}
-                  {componentId === 'badge' && (
-                    <VStack gap="lg" style={{ width: '100%' }}>
-                      <HStack gap="sm" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
-                        <Badge>Default</Badge>
-                        <Badge variant="primary">Primary</Badge>
-                        <Badge variant="success">Success</Badge>
-                        <Badge variant="warning">Warning</Badge>
-                        <Badge variant="error">Error</Badge>
-                      </HStack>
-                      <HStack gap="sm" style={{ justifyContent: 'center' }}>
-                        <Badge dot variant="success">Online</Badge>
-                        <Badge dot variant="warning">Away</Badge>
-                        <Badge dot variant="error">Busy</Badge>
-                      </HStack>
-                    </VStack>
-                  )}
-                  {componentId === 'table' && (
-                    <Table
-                      title="Team Members"
-                      data={[
-                        { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-                        { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
-                        { id: 3, name: 'Bob Wilson', email: 'bob@example.com', role: 'Editor' },
-                        { id: 4, name: 'Alice Brown', email: 'alice@example.com', role: 'User' }
-                      ]}
-                      columns={[
-                        { key: 'name', header: 'Name' },
-                        { key: 'email', header: 'Email' },
-                        { key: 'role', header: 'Role', render: (value: string) => (
-                          <Badge variant={value === 'Admin' ? 'primary' : value === 'Editor' ? 'warning' : 'default'}>{value}</Badge>
-                        )},
-                        { key: 'actions', header: 'Actions', render: () => (
-                          <HStack gap="xs">
-                            <IconButton icon={<Edit20Regular />} size="sm" variant="ghost" title="Edit" />
-                            <IconButton icon={<Delete20Regular />} size="sm" variant="danger" title="Delete" />
+                      )}
+                      {componentId === 'card' && (
+                        <VStack gap="md" style={{ width: '100%' }}>
+                          <Card padding="lg">Default card with content</Card>
+                          <Card padding="lg" variant="subtle">Subtle variant</Card>
+                          <Card padding="lg" hoverable>Hoverable card</Card>
+                        </VStack>
+                      )}
+                      {componentId === 'statcard' && (
+                        <Grid columns={{ xs: 1, sm: 2 }} gap="md" style={{ width: '100%' }}>
+                          <StatCard icon={<People20Regular />} label="Users" value="1,234" color="var(--brand-primary)" change={12.5} />
+                          <StatCard icon={<Money20Regular />} label="Revenue" value="$45K" color="var(--color-success)" change={8.3} />
+                        </Grid>
+                      )}
+                      {componentId === 'imagecard' && (
+                        <ImageCard
+                          image="https://picsum.photos/400/200?random=10"
+                          title="Product Name"
+                          subtitle="$99.00"
+                          description="A brief description of the product"
+                          badge={<Badge variant="success">New</Badge>}
+                        />
+                      )}
+                      {componentId === 'vstack' && (
+                        <HStack gap="xl" style={{ width: '100%', flexWrap: 'wrap', justifyContent: 'center' }}>
+                          <VStack gap="sm">
+                            <Text size="sm" color="muted">VStack</Text>
+                            <Card padding="sm">1</Card>
+                            <Card padding="sm">2</Card>
+                            <Card padding="sm">3</Card>
+                          </VStack>
+                          <VStack gap="sm">
+                            <Text size="sm" color="muted">HStack</Text>
+                            <HStack gap="sm">
+                              <Card padding="sm">A</Card>
+                              <Card padding="sm">B</Card>
+                              <Card padding="sm">C</Card>
+                            </HStack>
+                          </VStack>
+                        </HStack>
+                      )}
+                      {componentId === 'grid' && (
+                        <Grid columns={3} gap="sm" style={{ width: '100%', textAlign: 'center' }}>
+                          <Card padding="md">1</Card>
+                          <Card padding="md">2</Card>
+                          <Card padding="md">3</Card>
+                          <Card padding="md">4</Card>
+                          <Card padding="md">5</Card>
+                          <Card padding="md">6</Card>
+                        </Grid>
+                      )}
+                      {componentId === 'input' && (
+                        <VStack gap="md" style={{ width: '100%' }}>
+                          <Input label="Name" placeholder="Enter your name..." />
+                          <Input label="Email" type="email" placeholder="Enter your email..." />
+                          <Input label="Password" type="password" placeholder="Enter password..." />
+                        </VStack>
+                      )}
+                      {componentId === 'textarea' && (
+                        <VStack gap="md" style={{ width: '100%' }}>
+                          <Textarea label="Description" placeholder="Enter description..." rows={4} />
+                        </VStack>
+                      )}
+                      {componentId === 'select' && (
+                        <VStack gap="md" style={{ width: '100%' }}>
+                          <Select
+                            label="Country"
+                            placeholder="Select a country"
+                            options={[
+                              { value: 'us', label: 'United States' },
+                              { value: 'ca', label: 'Canada' },
+                              { value: 'uk', label: 'United Kingdom' }
+                            ]}
+                          />
+                        </VStack>
+                      )}
+                      {componentId === 'checkbox' && (
+                        <Checkbox label="Accept terms and conditions" checked={previewCheckbox} onChange={setPreviewCheckbox} />
+                      )}
+                      {componentId === 'radio' && (
+                        <VStack gap="sm">
+                          <Radio name="preview" label="Option A" value="a" checked={previewRadio === 'a'} onChange={() => setPreviewRadio('a')} />
+                          <Radio name="preview" label="Option B" value="b" checked={previewRadio === 'b'} onChange={() => setPreviewRadio('b')} />
+                          <Radio name="preview" label="Option C" value="c" checked={previewRadio === 'c'} onChange={() => setPreviewRadio('c')} />
+                        </VStack>
+                      )}
+                      {componentId === 'switch' && (
+                        <Switch label="Enable notifications" checked={previewSwitch} onChange={setPreviewSwitch} />
+                      )}
+                      {componentId === 'slider' && (
+                        <Slider label="Volume" value={previewSlider} onChange={setPreviewSlider} />
+                      )}
+                      {componentId === 'searchinput' && (
+                        <SearchInput placeholder="Search..." value={previewSearch} onChange={setPreviewSearch} />
+                      )}
+                      {componentId === 'datepicker' && (
+                        <DatePicker value={previewDate} onChange={setPreviewDate} label="Select date" />
+                      )}
+                      {componentId === 'colorpicker' && (
+                        <ColorPicker value={previewColor} onChange={setPreviewColor} label="Choose color" />
+                      )}
+                      {componentId === 'taginput' && (
+                        <TagInput value={previewTags} onChange={setPreviewTags} placeholder="Add tags..." />
+                      )}
+                      {componentId === 'numberinput' && (
+                        <NumberInput value={previewNumber} onChange={(val) => setPreviewNumber(val === '' ? 0 : val)} label="Quantity" min={0} max={100} />
+                      )}
+                      {componentId === 'otpinput' && (
+                        <OTPInput length={6} onComplete={(code) => console.log('OTP:', code)} />
+                      )}
+                      {componentId === 'phoneinput' && (
+                        <PhoneInput value={previewPhone} onChange={setPreviewPhone} label="Phone number" />
+                      )}
+                      {componentId === 'fileupload' && (
+                        <FileUpload onFilesSelected={() => { }} accept="image/*" label="Drop files here" description="or click to browse" />
+                      )}
+                      {componentId === 'tabs' && (
+                        <Tabs tabs={[{ id: 'tab1', label: 'Overview' }, { id: 'tab2', label: 'Features' }, { id: 'tab3', label: 'Pricing' }]} active={previewTabActive} onChange={setPreviewTabActive} stretchLine />
+                      )}
+                      {componentId === 'pills' && (
+                        <VStack gap="xl" style={{ width: '100%', alignItems: 'center' }}>
+                          <VStack gap="sm" style={{ alignItems: 'center' }}>
+                            <Text size="sm" color="muted">Pills (Filter)</Text>
+                            <Pills
+                              options={[
+                                { id: 'all', label: 'All' },
+                                { id: 'active', label: 'Active', count: 12 },
+                                { id: 'pending', label: 'Pending', count: 3 },
+                                { id: 'archived', label: 'Archived' }
+                              ]}
+                              selected={previewPillsSelected}
+                              onChange={setPreviewPillsSelected}
+                            />
+                          </VStack>
+                          <VStack gap="sm" style={{ alignItems: 'center' }}>
+                            <Text size="sm" color="muted">PillTabs (Navigation)</Text>
+                            <PillTabs
+                              tabs={[
+                                { value: 'overview', label: 'Overview' },
+                                { value: 'analytics', label: 'Analytics' },
+                                { value: 'reports', label: 'Reports' },
+                                { value: 'settings', label: 'Settings' }
+                              ]}
+                              value={previewPillTabsValue}
+                              onChange={setPreviewPillTabsValue}
+                            />
+                          </VStack>
+                          <VStack gap="sm" style={{ alignItems: 'center' }}>
+                            <Text size="sm" color="muted">ViewToggle (Icons)</Text>
+                            <ViewToggle
+                              options={[
+                                { value: 'grid', icon: <Grid20Regular />, label: 'Grid view' },
+                                { value: 'list', icon: <List20Regular />, label: 'List view' }
+                              ]}
+                              value={previewViewToggle}
+                              onChange={setPreviewViewToggle}
+                            />
+                          </VStack>
+                        </VStack>
+                      )}
+                      {componentId === 'pagination' && (
+                        <Pagination currentPage={previewPage} totalPages={10} onPageChange={setPreviewPage} />
+                      )}
+                      {componentId === 'breadcrumbs' && (
+                        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Docs', href: '#' }, { label: 'Components' }]} />
+                      )}
+                      {componentId === 'stepper' && (
+                        <VStack gap="md" style={{ width: '100%' }}>
+                          <Stepper steps={[{ id: 'account', title: 'Account' }, { id: 'profile', title: 'Profile' }, { id: 'review', title: 'Review' }]} currentStep={previewStep} />
+                          <HStack gap="sm" style={{ justifyContent: 'center' }}>
+                            <Button variant="secondary" size="sm" onClick={() => setPreviewStep(Math.max(0, previewStep - 1))} disabled={previewStep === 0}>Previous</Button>
+                            <Button variant="primary" size="sm" onClick={() => setPreviewStep(Math.min(2, previewStep + 1))} disabled={previewStep === 2}>Next</Button>
                           </HStack>
-                        )}
-                      ]}
-                      searchable
-                      pagination={false}
-                      globalActions={
-                        <>
-                          <Button variant="ghost" size="sm" icon={<Filter20Regular />}>Filter</Button>
-                          <Button variant="primary" size="sm" icon={<Add20Regular />}>Add</Button>
-                        </>
-                      }
-                    />
-                  )}
-                  {componentId === 'avatar' && (
-                    <VStack gap="lg">
-                      <HStack gap="md" style={{ alignItems: 'center' }}>
-                        <Avatar name="John Doe" size="xs" />
-                        <Avatar name="Jane Smith" size="sm" />
-                        <Avatar name="Bob Wilson" size="md" />
-                        <Avatar name="Alice Brown" size="lg" />
-                      </HStack>
-                      <HStack gap="md">
-                        <Avatar name="Online" status="online" />
-                        <Avatar name="Away" status="away" />
-                        <Avatar name="Busy" status="busy" />
-                      </HStack>
-                      <AvatarStack users={[{ name: 'Alice' }, { name: 'Bob' }, { name: 'Charlie' }, { name: 'Diana' }]} max={3} />
-                    </VStack>
-                  )}
-                  {componentId === 'timeline' && (
-                    <Timeline
-                      items={[
-                        { id: '1', title: 'Order placed', status: 'completed', date: 'Jan 15' },
-                        { id: '2', title: 'Processing', status: 'completed', date: 'Jan 16' },
-                        { id: '3', title: 'Shipped', status: 'current', date: 'Jan 17' },
-                        { id: '4', title: 'Delivered', status: 'upcoming', date: 'Jan 18' }
-                      ]}
-                    />
-                  )}
-                  {componentId === 'accordion' && (
-                    <Accordion>
-                      <AccordionItem id="1" title="What is Forge?">
-                        <Text color="secondary">Forge is a modern React component library.</Text>
-                      </AccordionItem>
-                      <AccordionItem id="2" title="How to install?">
-                        <Text color="secondary">Copy the .forge folder to your project.</Text>
-                      </AccordionItem>
-                      <AccordionItem id="3" title="Is it free?">
-                        <Text color="secondary">Yes, completely free to use.</Text>
-                      </AccordionItem>
-                    </Accordion>
-                  )}
-                  {componentId === 'treeview' && (
-                    <TreeView
-                      data={[
-                        {
-                          id: 'src',
-                          label: 'src',
-                          icon: <Folder20Regular />,
-                          children: [
-                            { id: 'components', label: 'components', icon: <Folder20Regular />, children: [
-                              { id: 'Button.tsx', label: 'Button.tsx', icon: <DocumentText20Filled /> },
-                              { id: 'Card.tsx', label: 'Card.tsx', icon: <DocumentText20Filled /> }
-                            ]},
-                            { id: 'index.tsx', label: 'index.tsx', icon: <DocumentText20Filled /> }
-                          ]
-                        }
-                      ]}
-                      defaultExpanded={['src', 'components']}
-                    />
-                  )}
-                  {componentId === 'calendar' && (
-                    <MiniCalendar selectedDate={new Date()} onDateSelect={() => {}} />
-                  )}
-                  {componentId === 'descriptions' && (
-                    <Descriptions
-                      items={[
-                        { label: 'Name', value: 'John Doe' },
-                        { label: 'Email', value: 'john@example.com' },
-                        { label: 'Role', value: 'Administrator' },
-                        { label: 'Status', value: <Badge variant="success">Active</Badge> }
-                      ]}
-                      columns={2}
-                    />
-                  )}
-                  {componentId === 'toast' && (
-                    <ToastPreview />
-                  )}
-                  {componentId === 'spinner' && (
-                    <HStack gap="xl" style={{ alignItems: 'center' }}>
-                      <Spinner size="xs" />
-                      <Spinner size="sm" />
-                      <Spinner size="md" />
-                      <Spinner size="lg" />
-                      <Spinner size="md" label="Loading..." />
-                    </HStack>
-                  )}
-                  {componentId === 'skeleton' && (
-                    <VStack gap="lg">
-                      <HStack gap="md" style={{ alignItems: 'center' }}>
-                        <Skeleton variant="circular" width={48} height={48} />
-                        <VStack gap="sm" style={{ flex: 1 }}>
-                          <Skeleton width="60%" height={16} />
-                          <Skeleton width="40%" height={12} />
                         </VStack>
-                      </HStack>
-                      <SkeletonText lines={3} />
-                    </VStack>
-                  )}
-                  {componentId === 'banner' && (
-                    <VStack gap="md">
-                      <Banner variant="info" title="Information">
-                        This is an informational message for your users.
-                      </Banner>
-                      <Banner variant="success" title="Success">
-                        Your operation completed successfully.
-                      </Banner>
-                      <Banner variant="warning" title="Warning" dismissible>
-                        Please review your settings before continuing.
-                      </Banner>
-                    </VStack>
-                  )}
-                  {componentId === 'notification' && (
-                    <NotificationPreview />
-                  )}
-                  {componentId === 'splashscreen' && (
-                    <SplashScreenPreview />
-                  )}
-                  {componentId === 'barchart' && (
-                    <BarChart
-                      data={[
-                        { label: 'Jan', value: 65 },
-                        { label: 'Feb', value: 85 },
-                        { label: 'Mar', value: 120 },
-                        { label: 'Apr', value: 90 },
-                        { label: 'May', value: 150 }
-                      ]}
-                      height={180}
-                    />
-                  )}
-                  {componentId === 'linechart' && (
-                    <LineChart
-                      data={[30, 45, 35, 60, 50, 75, 65]}
-                      labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
-                      height={160}
-                    />
-                  )}
-                  {componentId === 'donutchart' && (
-                    <DonutChart
-                      data={[
-                        { label: 'Direct', value: 45, color: '#A35BFF' },
-                        { label: 'Organic', value: 30, color: '#10b981' },
-                        { label: 'Referral', value: 15, color: '#3b82f6' },
-                        { label: 'Social', value: 10, color: '#f59e0b' }
-                      ]}
-                      size={160}
-                    />
-                  )}
-                  {componentId === 'progressring' && (
-                    <HStack gap="xl" style={{ alignItems: 'center' }}>
-                      <ProgressRing value={25} size={80} color="#ef4444" label="Storage" />
-                      <ProgressRing value={60} size={90} color="#f59e0b" label="Memory" />
-                      <ProgressRing value={85} size={100} color="#10b981" label="CPU" />
-                    </HStack>
-                  )}
-                  {componentId === 'imagegallery' && (
-                    <ImageGallery
-                      images={[
-                        { src: 'https://picsum.photos/seed/1/800/600', title: 'Mountain View' },
-                        { src: 'https://picsum.photos/seed/2/800/600', title: 'Ocean Sunset' },
-                        { src: 'https://picsum.photos/seed/3/800/600', title: 'Forest Path' },
-                        { src: 'https://picsum.photos/seed/4/800/600', title: 'City Lights' },
-                        { src: 'https://picsum.photos/seed/5/800/600', title: 'Desert Dunes' },
-                        { src: 'https://picsum.photos/seed/6/800/600', title: 'Lake Reflection' }
-                      ]}
-                      columns={3}
-                      aspectRatio="4/3"
-                    />
-                  )}
-                  {componentId === 'carousel' && (
-                    <ImageCarousel
-                      images={[
-                        { src: 'https://picsum.photos/seed/c1/800/400', caption: 'Beautiful landscape' },
-                        { src: 'https://picsum.photos/seed/c2/800/400', caption: 'City skyline' },
-                        { src: 'https://picsum.photos/seed/c3/800/400', caption: 'Nature photography' }
-                      ]}
-                      autoPlay
-                      interval={5000}
-                    />
-                  )}
-                  {componentId === 'videoplayer' && (
-                    <VideoPlayer
-                      src="https://www.w3schools.com/html/mov_bbb.mp4"
-                      poster="https://picsum.photos/seed/video/640/360"
-                    />
-                  )}
-                  {componentId === 'audioplayer' && (
-                    <VStack gap="md">
-                      <AudioPlayer
-                        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-                        title="SoundHelix Song 1"
-                        artist="T. Schürger"
-                        cover="https://picsum.photos/seed/audio/200/200"
-                      />
-                      <MiniAudioPlayer
-                        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-                        title="SoundHelix Song 2"
-                      />
-                    </VStack>
-                  )}
-                  {componentId === 'divider' && (
-                    <VStack gap="lg">
-                      <VStack gap="md">
-                        <Text>Content above</Text>
-                        <Divider />
-                        <Text>Content below</Text>
-                      </VStack>
-                      <Divider label="Or continue with" />
-                      <HStack gap={16} style={{ height: 40, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text>Item 1</Text>
-                        <VerticalDivider />
-                        <Text>Item 2</Text>
-                        <VerticalDivider />
-                        <Text>Item 3</Text>
-                      </HStack>
-                      <SectionDivider label="Features" icon={<Star20Regular />} />
-                    </VStack>
-                  )}
-                  {componentId === 'scrollindicator' && (
-                    <Card style={{ padding: '1.5rem' }}>
-                      <Text size="sm" color="muted">
-                        Le ScrollIndicator est une barre fixe en haut ou en bas de la page qui indique la progression du scroll.
-                        Scrollez cette page pour voir l'effet (si activé globalement).
-                      </Text>
-                    </Card>
-                  )}
-                  {componentId === 'watermark' && (
-                    <Watermark text="CONFIDENTIAL" opacity={0.1}>
-                      <Card style={{ padding: '2rem', minHeight: 200 }}>
-                        <Heading size="sm">Secret Document</Heading>
-                        <Text style={{ marginTop: 8 }}>This content is protected with a watermark overlay.</Text>
-                      </Card>
-                    </Watermark>
-                  )}
-                  {componentId === 'highlight' && (
-                    <VStack gap="md">
-                      <Text>
-                        <Highlight
-                          text="The quick brown fox jumps over the lazy dog"
-                          query="fox"
+                      )}
+                      {componentId === 'navbar' && (
+                        <Navbar items={[{ id: 'home', label: 'Home' }, { id: 'products', label: 'Products' }, { id: 'about', label: 'About' }]} activeId={previewNavActive} onNavigate={setPreviewNavActive} sticky={false} forceDesktop />
+                      )}
+                      {componentId === 'appsidebar' && (
+                        <div style={{ display: 'flex', width: '100%', minHeight: 400, border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
+                          <AppSidebar
+                            sections={[
+                              {
+                                title: 'Main',
+                                items: [
+                                  { id: 'dashboard', icon: <Home20Regular />, label: 'Dashboard' },
+                                  { id: 'projects', icon: <Folder20Regular />, label: 'Projects', badge: 3 }
+                                ]
+                              },
+                              {
+                                title: 'Account',
+                                items: [
+                                  { id: 'profile', icon: <Person20Regular />, label: 'Profile' },
+                                  { id: 'settings', icon: <Settings20Regular />, label: 'Settings' }
+                                ]
+                              }
+                            ]}
+                            activeId={previewNavActive}
+                            onNavigate={setPreviewNavActive}
+                            showSearch={false}
+                            showHeader={false}
+                            height="100%"
+                            width={240}
+                            forceDesktop
+                          />
+                          <div style={{ flex: 1, padding: '2rem', backgroundColor: 'var(--bg-primary)' }}>
+                            <Text color="muted">Main content area</Text>
+                          </div>
+                        </div>
+                      )}
+                      {componentId === 'footer' && (
+                        <Footer tagline="A modern React component library." sections={[{ title: 'Resources', links: [{ label: 'Docs', href: '#' }, { label: 'Components', href: '#' }] }, { title: 'Company', links: [{ label: 'About', href: '#' }, { label: 'Contact', href: '#' }] }]} copyright="© 2025 Webba. All rights reserved." />
+                      )}
+                      {componentId === 'modal' && (
+                        <Button onClick={() => setPreviewModalOpen(true)}>Open Modal</Button>
+                      )}
+                      {componentId === 'confirmdialog' && (
+                        <Button variant="danger" onClick={() => setPreviewConfirmOpen(true)}>Delete Item</Button>
+                      )}
+                      {componentId === 'sheet' && (
+                        <Button onClick={() => setPreviewSheetOpen(true)}>Open Sheet</Button>
+                      )}
+                      {componentId === 'dropdown' && (
+                        <Dropdown
+                          trigger={<Button variant="secondary">Actions</Button>}
+                          items={[
+                            { id: 'edit', label: 'Edit', icon: <Edit20Regular /> },
+                            { id: 'copy', label: 'Copy', icon: <Copy20Regular /> },
+                            { id: 'share', label: 'Share', icon: <Share20Regular /> },
+                            { id: 'divider', label: '', divider: true },
+                            { id: 'delete', label: 'Delete', icon: <Delete20Regular />, destructive: true }
+                          ]}
                         />
-                      </Text>
-                      <Text>
-                        <Highlight
-                          text="React is a JavaScript library. React makes UI development easy."
-                          query="React"
+                      )}
+                      {componentId === 'tooltip' && (
+                        <HStack gap="lg">
+                          <Tooltip content="Edit this item" position="top"><IconButton icon={<Edit20Regular />} /></Tooltip>
+                          <Tooltip content="Delete permanently" position="bottom"><IconButton icon={<Delete20Regular />} variant="danger" /></Tooltip>
+                          <Tooltip content="Share with others" position="right"><IconButton icon={<Share20Regular />} /></Tooltip>
+                        </HStack>
+                      )}
+                      {componentId === 'popover' && (
+                        <Popover
+                          trigger={<Button variant="secondary">View Profile</Button>}
+                          content={
+                            <VStack gap="sm" style={{ minWidth: 200 }}>
+                              <HStack gap="sm">
+                                <div style={{ width: 40, height: 40, borderRadius: 'var(--radius-full)', background: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 600 }}>JD</div>
+                                <VStack gap="xs">
+                                  <Text weight="medium">John Doe</Text>
+                                  <Text size="sm" color="muted">john@example.com</Text>
+                                </VStack>
+                              </HStack>
+                              <Divider />
+                              <Button size="sm" fullWidth variant="secondary">View Full Profile</Button>
+                            </VStack>
+                          }
                         />
-                      </Text>
-                      <Text>
-                        <Highlight
-                          text="Important: This action cannot be undone"
-                          query="cannot be undone"
-                          highlightBg="rgba(239, 68, 68, 0.3)"
-                          highlightColor="var(--error)"
+                      )}
+                      {componentId === 'commandbar' && (
+                        <Button onClick={() => setPreviewCommandBarOpen(true)} icon={<Search20Regular />}>Open Command Bar</Button>
+                      )}
+                      {componentId === 'badge' && (
+                        <VStack gap="lg" style={{ width: '100%' }}>
+                          <HStack gap="sm" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <Badge>Default</Badge>
+                            <Badge variant="primary">Primary</Badge>
+                            <Badge variant="success">Success</Badge>
+                            <Badge variant="warning">Warning</Badge>
+                            <Badge variant="error">Error</Badge>
+                          </HStack>
+                          <HStack gap="sm" style={{ justifyContent: 'center' }}>
+                            <Badge dot variant="success">Online</Badge>
+                            <Badge dot variant="warning">Away</Badge>
+                            <Badge dot variant="error">Busy</Badge>
+                          </HStack>
+                        </VStack>
+                      )}
+                      {componentId === 'table' && (
+                        <Table
+                          title="Team Members"
+                          data={[
+                            { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+                            { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+                            { id: 3, name: 'Bob Wilson', email: 'bob@example.com', role: 'Editor' },
+                            { id: 4, name: 'Alice Brown', email: 'alice@example.com', role: 'User' }
+                          ]}
+                          columns={[
+                            { key: 'name', header: 'Name' },
+                            { key: 'email', header: 'Email' },
+                            {
+                              key: 'role', header: 'Role', render: (value: string) => (
+                                <Badge variant={value === 'Admin' ? 'primary' : value === 'Editor' ? 'warning' : 'default'}>{value}</Badge>
+                              )
+                            },
+                            {
+                              key: 'actions', header: 'Actions', render: () => (
+                                <HStack gap="xs">
+                                  <IconButton icon={<Edit20Regular />} size="sm" variant="ghost" title="Edit" />
+                                  <IconButton icon={<Delete20Regular />} size="sm" variant="danger" title="Delete" />
+                                </HStack>
+                              )
+                            }
+                          ]}
+                          searchable
+                          pagination={false}
+                          globalActions={
+                            <>
+                              <Button variant="ghost" size="sm" icon={<Filter20Regular />}>Filter</Button>
+                              <Button variant="primary" size="sm" icon={<Add20Regular />}>Add</Button>
+                            </>
+                          }
                         />
-                      </Text>
-                    </VStack>
-                  )}
-                  {componentId === 'texttruncate' && (
-                    <VStack gap="lg">
-                      <TextTruncate
-                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                        maxLines={2}
-                      />
-                      <TextTruncate
-                        text="This is a long description that will be cut off after a certain number of characters to keep the UI clean and compact."
-                        maxLength={80}
-                        expandLabel="Show more"
-                        collapseLabel="Show less"
-                      />
-                    </VStack>
-                  )}
-                  {componentId === 'copytext' && (
-                    <VStack gap="lg">
-                      <CopyText text="npm install wss3-forge">
-                        <code style={{
-                          padding: '0.5rem 1rem',
-                          backgroundColor: 'var(--bg-tertiary)',
-                          borderRadius: 'var(--radius-sm)',
-                          cursor: 'pointer'
-                        }}>
-                          npm install wss3-forge
-                        </code>
-                      </CopyText>
-                      <CopyText text="USR-12345-ABCDE" successMessage="ID copied!">
-                        <Text color="muted" style={{ cursor: 'pointer' }}>
-                          ID: USR-12345-ABCDE (click to copy)
-                        </Text>
-                      </CopyText>
-                    </VStack>
-                  )}
-                  {componentId === 'affix' && (
-                    <Card style={{ padding: '1.5rem' }}>
-                      <Text size="sm" color="muted">
-                        Affix, StickyHeader and StickySidebar components allow you to pin content on scroll.
-                        They are used in this documentation for the sidebar and header.
-                      </Text>
-                    </Card>
-                  )}
-                  {componentId === 'codeblock' && (
-                    <VStack gap="md">
-                      <CodeBlock
-                        code={`const greeting = "Hello World"
+                      )}
+                      {componentId === 'avatar' && (
+                        <VStack gap="lg">
+                          <HStack gap="md" style={{ alignItems: 'center' }}>
+                            <Avatar name="John Doe" size="xs" />
+                            <Avatar name="Jane Smith" size="sm" />
+                            <Avatar name="Bob Wilson" size="md" />
+                            <Avatar name="Alice Brown" size="lg" />
+                          </HStack>
+                          <HStack gap="md">
+                            <Avatar name="Online" status="online" />
+                            <Avatar name="Away" status="away" />
+                            <Avatar name="Busy" status="busy" />
+                          </HStack>
+                          <AvatarStack users={[{ name: 'Alice' }, { name: 'Bob' }, { name: 'Charlie' }, { name: 'Diana' }]} max={3} />
+                        </VStack>
+                      )}
+                      {componentId === 'timeline' && (
+                        <Timeline
+                          items={[
+                            { id: '1', title: 'Order placed', status: 'completed', date: 'Jan 15' },
+                            { id: '2', title: 'Processing', status: 'completed', date: 'Jan 16' },
+                            { id: '3', title: 'Shipped', status: 'current', date: 'Jan 17' },
+                            { id: '4', title: 'Delivered', status: 'upcoming', date: 'Jan 18' }
+                          ]}
+                        />
+                      )}
+                      {componentId === 'accordion' && (
+                        <Accordion>
+                          <AccordionItem id="1" title="What is Forge?">
+                            <Text color="secondary">Forge is a modern React component library.</Text>
+                          </AccordionItem>
+                          <AccordionItem id="2" title="How to install?">
+                            <Text color="secondary">Copy the .forge folder to your project.</Text>
+                          </AccordionItem>
+                          <AccordionItem id="3" title="Is it free?">
+                            <Text color="secondary">Yes, completely free to use.</Text>
+                          </AccordionItem>
+                        </Accordion>
+                      )}
+                      {componentId === 'treeview' && (
+                        <TreeView
+                          data={[
+                            {
+                              id: 'src',
+                              label: 'src',
+                              icon: <Folder20Regular />,
+                              children: [
+                                {
+                                  id: 'components', label: 'components', icon: <Folder20Regular />, children: [
+                                    { id: 'Button.tsx', label: 'Button.tsx', icon: <DocumentText20Filled /> },
+                                    { id: 'Card.tsx', label: 'Card.tsx', icon: <DocumentText20Filled /> }
+                                  ]
+                                },
+                                { id: 'index.tsx', label: 'index.tsx', icon: <DocumentText20Filled /> }
+                              ]
+                            }
+                          ]}
+                          defaultExpanded={['src', 'components']}
+                        />
+                      )}
+                      {componentId === 'calendar' && (
+                        <MiniCalendar selectedDate={new Date()} onDateSelect={() => { }} />
+                      )}
+                      {componentId === 'descriptions' && (
+                        <Descriptions
+                          items={[
+                            { label: 'Name', value: 'John Doe' },
+                            { label: 'Email', value: 'john@example.com' },
+                            { label: 'Role', value: 'Administrator' },
+                            { label: 'Status', value: <Badge variant="success">Active</Badge> }
+                          ]}
+                          columns={2}
+                        />
+                      )}
+                      {componentId === 'toast' && (
+                        <ToastPreview />
+                      )}
+                      {componentId === 'spinner' && (
+                        <HStack gap="xl" style={{ alignItems: 'center' }}>
+                          <Spinner size="xs" />
+                          <Spinner size="sm" />
+                          <Spinner size="md" />
+                          <Spinner size="lg" />
+                          <Spinner size="md" label="Loading..." />
+                        </HStack>
+                      )}
+                      {componentId === 'skeleton' && (
+                        <VStack gap="lg">
+                          <HStack gap="md" style={{ alignItems: 'center' }}>
+                            <Skeleton variant="circular" width={48} height={48} />
+                            <VStack gap="sm" style={{ flex: 1 }}>
+                              <Skeleton width="60%" height={16} />
+                              <Skeleton width="40%" height={12} />
+                            </VStack>
+                          </HStack>
+                          <SkeletonText lines={3} />
+                        </VStack>
+                      )}
+                      {componentId === 'banner' && (
+                        <VStack gap="md">
+                          <Banner variant="info" title="Information">
+                            This is an informational message for your users.
+                          </Banner>
+                          <Banner variant="success" title="Success">
+                            Your operation completed successfully.
+                          </Banner>
+                          <Banner variant="warning" title="Warning" dismissible>
+                            Please review your settings before continuing.
+                          </Banner>
+                        </VStack>
+                      )}
+                      {componentId === 'notification' && (
+                        <NotificationPreview />
+                      )}
+                      {componentId === 'splashscreen' && (
+                        <SplashScreenPreview />
+                      )}
+                      {componentId === 'barchart' && (
+                        <BarChart
+                          data={[
+                            { label: 'Jan', value: 65 },
+                            { label: 'Feb', value: 85 },
+                            { label: 'Mar', value: 120 },
+                            { label: 'Apr', value: 90 },
+                            { label: 'May', value: 150 }
+                          ]}
+                          height={180}
+                        />
+                      )}
+                      {componentId === 'linechart' && (
+                        <LineChart
+                          data={[30, 45, 35, 60, 50, 75, 65]}
+                          labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+                          height={160}
+                        />
+                      )}
+                      {componentId === 'donutchart' && (
+                        <DonutChart
+                          data={[
+                            { label: 'Direct', value: 45, color: '#A35BFF' },
+                            { label: 'Organic', value: 30, color: '#10b981' },
+                            { label: 'Referral', value: 15, color: '#3b82f6' },
+                            { label: 'Social', value: 10, color: '#f59e0b' }
+                          ]}
+                          size={160}
+                        />
+                      )}
+                      {componentId === 'progressring' && (
+                        <HStack gap="xl" style={{ alignItems: 'center' }}>
+                          <ProgressRing value={25} size={80} color="#ef4444" label="Storage" />
+                          <ProgressRing value={60} size={90} color="#f59e0b" label="Memory" />
+                          <ProgressRing value={85} size={100} color="#10b981" label="CPU" />
+                        </HStack>
+                      )}
+                      {componentId === 'imagegallery' && (
+                        <ImageGallery
+                          images={[
+                            { src: 'https://picsum.photos/seed/1/800/600', title: 'Mountain View' },
+                            { src: 'https://picsum.photos/seed/2/800/600', title: 'Ocean Sunset' },
+                            { src: 'https://picsum.photos/seed/3/800/600', title: 'Forest Path' },
+                            { src: 'https://picsum.photos/seed/4/800/600', title: 'City Lights' },
+                            { src: 'https://picsum.photos/seed/5/800/600', title: 'Desert Dunes' },
+                            { src: 'https://picsum.photos/seed/6/800/600', title: 'Lake Reflection' }
+                          ]}
+                          columns={3}
+                          aspectRatio="4/3"
+                        />
+                      )}
+                      {componentId === 'carousel' && (
+                        <ImageCarousel
+                          images={[
+                            { src: 'https://picsum.photos/seed/c1/800/400', caption: 'Beautiful landscape' },
+                            { src: 'https://picsum.photos/seed/c2/800/400', caption: 'City skyline' },
+                            { src: 'https://picsum.photos/seed/c3/800/400', caption: 'Nature photography' }
+                          ]}
+                          autoPlay
+                          interval={5000}
+                        />
+                      )}
+                      {componentId === 'videoplayer' && (
+                        <VideoPlayer
+                          src="https://www.w3schools.com/html/mov_bbb.mp4"
+                          poster="https://picsum.photos/seed/video/640/360"
+                        />
+                      )}
+                      {componentId === 'audioplayer' && (
+                        <VStack gap="md">
+                          <AudioPlayer
+                            src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                            title="SoundHelix Song 1"
+                            artist="T. Schürger"
+                            cover="https://picsum.photos/seed/audio/200/200"
+                          />
+                          <MiniAudioPlayer
+                            src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+                            title="SoundHelix Song 2"
+                          />
+                        </VStack>
+                      )}
+                      {componentId === 'divider' && (
+                        <VStack gap="lg">
+                          <VStack gap="md">
+                            <Text>Content above</Text>
+                            <Divider />
+                            <Text>Content below</Text>
+                          </VStack>
+                          <Divider label="Or continue with" />
+                          <HStack gap={16} style={{ height: 40, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text>Item 1</Text>
+                            <VerticalDivider />
+                            <Text>Item 2</Text>
+                            <VerticalDivider />
+                            <Text>Item 3</Text>
+                          </HStack>
+                          <SectionDivider label="Features" icon={<Star20Regular />} />
+                        </VStack>
+                      )}
+                      {componentId === 'scrollindicator' && (
+                        <Card style={{ padding: '1.5rem' }}>
+                          <Text size="sm" color="muted">
+                            Le ScrollIndicator est une barre fixe en haut ou en bas de la page qui indique la progression du scroll.
+                            Scrollez cette page pour voir l'effet (si activé globalement).
+                          </Text>
+                        </Card>
+                      )}
+                      {componentId === 'watermark' && (
+                        <Watermark text="CONFIDENTIAL" opacity={0.1}>
+                          <Card style={{ padding: '2rem', minHeight: 200 }}>
+                            <Heading size="sm">Secret Document</Heading>
+                            <Text style={{ marginTop: 8 }}>This content is protected with a watermark overlay.</Text>
+                          </Card>
+                        </Watermark>
+                      )}
+                      {componentId === 'highlight' && (
+                        <VStack gap="md">
+                          <Text>
+                            <Highlight
+                              text="The quick brown fox jumps over the lazy dog"
+                              query="fox"
+                            />
+                          </Text>
+                          <Text>
+                            <Highlight
+                              text="React is a JavaScript library. React makes UI development easy."
+                              query="React"
+                            />
+                          </Text>
+                          <Text>
+                            <Highlight
+                              text="Important: This action cannot be undone"
+                              query="cannot be undone"
+                              highlightBg="rgba(239, 68, 68, 0.3)"
+                              highlightColor="var(--error)"
+                            />
+                          </Text>
+                        </VStack>
+                      )}
+                      {componentId === 'texttruncate' && (
+                        <VStack gap="lg">
+                          <TextTruncate
+                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                            maxLines={2}
+                          />
+                          <TextTruncate
+                            text="This is a long description that will be cut off after a certain number of characters to keep the UI clean and compact."
+                            maxLength={80}
+                            expandLabel="Show more"
+                            collapseLabel="Show less"
+                          />
+                        </VStack>
+                      )}
+                      {componentId === 'copytext' && (
+                        <VStack gap="lg">
+                          <CopyText text="npm install wss3-forge">
+                            <code style={{
+                              padding: '0.5rem 1rem',
+                              backgroundColor: 'var(--bg-tertiary)',
+                              borderRadius: 'var(--radius-sm)',
+                              cursor: 'pointer'
+                            }}>
+                              npm install wss3-forge
+                            </code>
+                          </CopyText>
+                          <CopyText text="USR-12345-ABCDE" successMessage="ID copied!">
+                            <Text color="muted" style={{ cursor: 'pointer' }}>
+                              ID: USR-12345-ABCDE (click to copy)
+                            </Text>
+                          </CopyText>
+                        </VStack>
+                      )}
+                      {componentId === 'affix' && (
+                        <Card style={{ padding: '1.5rem' }}>
+                          <Text size="sm" color="muted">
+                            Affix, StickyHeader and StickySidebar components allow you to pin content on scroll.
+                            They are used in this documentation for the sidebar and header.
+                          </Text>
+                        </Card>
+                      )}
+                      {componentId === 'codeblock' && (
+                        <VStack gap="md">
+                          <CodeBlock
+                            code={`const greeting = "Hello World"
 console.log(greeting)`}
-                        language="typescript"
-                      />
-                      <CodeBlock
-                        code={`function MyComponent() {
+                            language="typescript"
+                          />
+                          <CodeBlock
+                            code={`function MyComponent() {
   const [count, setCount] = useState(0)
   return <button onClick={() => setCount(c => c + 1)}>Count: {count}</button>
 }`}
-                        language="tsx"
-                        showLineNumbers
-                        title="MyComponent.tsx"
-                      />
+                            language="tsx"
+                            showLineNumbers
+                            title="MyComponent.tsx"
+                          />
+                        </VStack>
+                      )}
+                      {componentId === 'copybutton' && (
+                        <VStack gap="lg">
+                          <HStack gap="md" style={{ alignItems: 'center' }}>
+                            <CopyButton text="Text to copy" variant="icon" />
+                            <CopyButton text="Copy me" variant="button" label="Copy Code" />
+                            <CopyButton text="Minimal" variant="minimal" />
+                          </HStack>
+                          <CopyField
+                            value="https://example.com/invite/abc123"
+                            label="Invite Link"
+                          />
+                        </VStack>
+                      )}
+                      {componentId === 'heading' && (
+                        <VStack gap="md" style={{ alignItems: 'flex-start' }}>
+                          <Heading level={1}>H1 Page Title</Heading>
+                          <Heading level={2}>H2 Section Title</Heading>
+                          <Heading level={3}>H3 Subsection</Heading>
+                          <Divider />
+                          <Text size="lg">Large text</Text>
+                          <Text size="md">Medium text (default)</Text>
+                          <Text size="sm">Small text</Text>
+                          <Text color="muted">Muted color</Text>
+                        </VStack>
+                      )}
+                      {componentId === 'animate' && (
+                        <HStack gap="md">
+                          <Animate type="fadeIn"><Card padding="md">Fade In</Card></Animate>
+                          <Animate type="slideInUp"><Card padding="md">Slide Up</Card></Animate>
+                          <Animate type="scaleIn"><Card padding="md">Scale In</Card></Animate>
+                        </HStack>
+                      )}
+                      {componentId === 'countdown' && (
+                        <VStack gap="lg">
+                          <Countdown targetDate={new Date('2025-12-31T00:00:00')} />
+                          <Timer initialSeconds={120} countDown autoStart />
+                        </VStack>
+                      )}
+                      {componentId === 'rating' && (
+                        <VStack gap="md" style={{ alignItems: 'flex-start' }}>
+                          <Rating value={3} onChange={() => { }} max={5} />
+                          <RatingDisplay value={4.5} />
+                          <RatingDisplay value={3} size="sm" />
+                        </VStack>
+                      )}
+                      {componentId === 'tour' && (
+                        <VStack gap="lg" style={{ alignItems: 'center' }}>
+                          <Button variant="primary" onClick={docsTour.start}>
+                            Start Forge Docs Tour
+                          </Button>
+                          <Text size="sm" color="muted" style={{ textAlign: 'center' }}>
+                            Click the button above to start an interactive tour of the Forge documentation.
+                          </Text>
+                        </VStack>
+                      )}
+                      {componentId && !['button', 'iconbutton', 'gradientbutton', 'floatbutton', 'card', 'statcard', 'imagecard', 'vstack', 'grid', 'input', 'textarea', 'select', 'checkbox', 'radio', 'switch', 'slider', 'searchinput', 'datepicker', 'colorpicker', 'taginput', 'numberinput', 'otpinput', 'phoneinput', 'fileupload', 'tabs', 'pills', 'pagination', 'breadcrumbs', 'stepper', 'navbar', 'appsidebar', 'footer', 'modal', 'confirmdialog', 'sheet', 'dropdown', 'tooltip', 'popover', 'commandbar', 'badge', 'table', 'avatar', 'timeline', 'accordion', 'treeview', 'calendar', 'descriptions', 'toast', 'spinner', 'skeleton', 'banner', 'notification', 'splashscreen', 'barchart', 'linechart', 'donutchart', 'progressring', 'imagegallery', 'carousel', 'videoplayer', 'audioplayer', 'divider', 'scrollindicator', 'affix', 'watermark', 'highlight', 'texttruncate', 'copytext', 'codeblock', 'copybutton', 'heading', 'animate', 'countdown', 'rating', 'tour'].includes(componentId) && (
+                        <></>
+                      )}
                     </VStack>
-                  )}
-                  {componentId === 'copybutton' && (
-                    <VStack gap="lg">
-                      <HStack gap="md" style={{ alignItems: 'center' }}>
-                        <CopyButton text="Text to copy" variant="icon" />
-                        <CopyButton text="Copy me" variant="button" label="Copy Code" />
-                        <CopyButton text="Minimal" variant="minimal" />
-                      </HStack>
-                      <CopyField
-                        value="https://example.com/invite/abc123"
-                        label="Invite Link"
-                      />
-                    </VStack>
-                  )}
-                  {componentId === 'heading' && (
-                    <VStack gap="md" style={{ alignItems: 'flex-start' }}>
-                      <Heading level={1}>H1 Page Title</Heading>
-                      <Heading level={2}>H2 Section Title</Heading>
-                      <Heading level={3}>H3 Subsection</Heading>
-                      <Divider />
-                      <Text size="lg">Large text</Text>
-                      <Text size="md">Medium text (default)</Text>
-                      <Text size="sm">Small text</Text>
-                      <Text color="muted">Muted color</Text>
-                    </VStack>
-                  )}
-                  {componentId === 'animate' && (
-                    <HStack gap="md">
-                      <Animate type="fadeIn"><Card padding="md">Fade In</Card></Animate>
-                      <Animate type="slideInUp"><Card padding="md">Slide Up</Card></Animate>
-                      <Animate type="scaleIn"><Card padding="md">Scale In</Card></Animate>
-                    </HStack>
-                  )}
-                  {componentId === 'countdown' && (
-                    <VStack gap="lg">
-                      <Countdown targetDate={new Date('2025-12-31T00:00:00')} />
-                      <Timer initialSeconds={120} countDown autoStart />
-                    </VStack>
-                  )}
-                  {componentId === 'rating' && (
-                    <VStack gap="md" style={{ alignItems: 'flex-start' }}>
-                      <Rating value={3} onChange={() => {}} max={5} />
-                      <RatingDisplay value={4.5} />
-                      <RatingDisplay value={3} size="sm" />
-                    </VStack>
-                  )}
-                  {componentId === 'tour' && (
-                    <VStack gap="lg" style={{ alignItems: 'center' }}>
-                      <Button variant="primary" onClick={docsTour.start}>
-                        Start Forge Docs Tour
-                      </Button>
-                      <Text size="sm" color="muted" style={{ textAlign: 'center' }}>
-                        Click the button above to start an interactive tour of the Forge documentation.
-                      </Text>
-                    </VStack>
-                  )}
-                  {componentId && !['button', 'iconbutton', 'gradientbutton', 'floatbutton', 'card', 'statcard', 'imagecard', 'vstack', 'grid', 'input', 'textarea', 'select', 'checkbox', 'radio', 'switch', 'slider', 'searchinput', 'datepicker', 'colorpicker', 'taginput', 'numberinput', 'otpinput', 'phoneinput', 'fileupload', 'tabs', 'pills', 'pagination', 'breadcrumbs', 'stepper', 'navbar', 'footer', 'modal', 'confirmdialog', 'sheet', 'dropdown', 'tooltip', 'popover', 'commandbar', 'badge', 'table', 'avatar', 'timeline', 'accordion', 'treeview', 'calendar', 'descriptions', 'toast', 'spinner', 'skeleton', 'banner', 'notification', 'splashscreen', 'barchart', 'linechart', 'donutchart', 'progressring', 'imagegallery', 'carousel', 'videoplayer', 'audioplayer', 'divider', 'scrollindicator', 'affix', 'watermark', 'highlight', 'texttruncate', 'copytext', 'codeblock', 'copybutton', 'heading', 'animate', 'countdown', 'rating', 'tour'].includes(componentId) && (
-                    <></>
-                  )}
-                </VStack>
-              </div>
-            </Card>
-          </TabPanel>
+                  </div>
+                </Card>
+              </TabPanel>
 
-          <TabPanel id="code" active={activeTab}>
-            <div style={{ marginTop: '1rem' }}>
-              <CodeBlock
-                code={docs.basicUsage}
-                language="tsx"
-                showLineNumbers
-                showCopyButton
-              />
-            </div>
-          </TabPanel>
-
-          <TabPanel id="props" active={activeTab}>
-            <Card padding="none" style={{ marginTop: '1rem', overflow: 'hidden' }}>
-              {docs.props.length > 0 ? (
-                <Table
-                  columns={[
-                    { key: 'name', header: 'Prop', width: '20%' },
-                    { key: 'type', header: 'Type', width: '30%' },
-                    { key: 'default', header: 'Default', width: '15%' },
-                    { key: 'description', header: 'Description', width: '35%' }
-                  ]}
-                  data={docs.props}
-                  pagination={false}
-                  searchable={false}
-                  noPadding
-                />
-              ) : (
-                <div style={{ padding: '2rem', textAlign: 'center' }}>
-                  <Text color="muted">Props documentation coming soon.</Text>
+              <TabPanel id="code" active={activeTab}>
+                <div style={{ marginTop: '1rem' }}>
+                  <CodeBlock
+                    code={docs.basicUsage}
+                    language="tsx"
+                    showLineNumbers
+                    showCopyButton
+                  />
                 </div>
-              )}
-            </Card>
-          </TabPanel>
-        </TabPanels>
-        </div>
-      </Animate>
+              </TabPanel>
 
-      {docs.examples.length > 0 && (
-        <Animate type="slideInUp" delay={300}>
-          <div id="examples" style={{ position: 'relative', zIndex: 10 }}>
-            <VStack gap="xl">
-              <SectionHeading id="examples" level={2}>Examples</SectionHeading>
-              {docs.examples.map((example, index) => (
-                <VStack key={index} gap="md" style={{ marginBottom: '1rem', position: 'relative', zIndex: docs.examples.length - index }}>
-                  <Heading level={4}>{example.title}</Heading>
-                  <Card padding="lg" style={{ paddingTop: '3rem', paddingBottom: '3rem', overflow: 'visible', backgroundColor: componentId && ['pills', 'footer', 'skeleton', 'copytext', 'copybutton', 'fileupload', 'stepper', 'slider'].includes(componentId) ? 'var(--bg-secondary)' : 'var(--bg-tertiary)' }}>
-                    <div style={{ width: '100%', maxWidth: componentId && ['navbar', 'table', 'calendar', 'footer'].includes(componentId) ? '100%' : componentId && ['card', 'statcard', 'imagecard', 'horizontalcard', 'actioncard'].includes(componentId) ? '500px' : '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: componentId && ['input', 'textarea', 'select', 'slider', 'searchinput', 'datepicker', 'taginput', 'numberinput', 'phoneinput', 'fileupload', 'tabs', 'stepper', 'navbar', 'card', 'statcard', 'imagecard', 'horizontalcard', 'actioncard', 'grid', 'table', 'timeline', 'accordion', 'treeview', 'descriptions', 'calendar', 'toast', 'skeleton', 'banner', 'notification', 'barchart', 'linechart', 'imagegallery', 'carousel', 'videoplayer', 'audioplayer', 'divider', 'footer'].includes(componentId) ? 'stretch' : 'center' }}>
-                      {example.render}
+              <TabPanel id="props" active={activeTab}>
+                <Card padding="none" style={{ marginTop: '1rem', overflow: 'hidden' }}>
+                  {docs.props.length > 0 ? (
+                    <Table
+                      columns={[
+                        { key: 'name', header: 'Prop', width: '20%' },
+                        { key: 'type', header: 'Type', width: '30%' },
+                        { key: 'default', header: 'Default', width: '15%' },
+                        { key: 'description', header: 'Description', width: '35%' }
+                      ]}
+                      data={docs.props}
+                      pagination={false}
+                      searchable={false}
+                      noPadding
+                    />
+                  ) : (
+                    <div style={{ padding: '2rem', textAlign: 'center' }}>
+                      <Text color="muted">Props documentation coming soon.</Text>
                     </div>
-                  </Card>
-                  <CodeBlock code={example.code} language="tsx" showCopyButton />
-                </VStack>
-              ))}
-            </VStack>
+                  )}
+                </Card>
+              </TabPanel>
+            </TabPanels>
           </div>
         </Animate>
-      )}
+
+        {docs.examples.length > 0 && (
+          <Animate type="slideInUp" delay={300}>
+            <div id="examples" style={{ position: 'relative', zIndex: 10 }}>
+              <VStack gap="xl">
+                <SectionHeading id="examples" level={2}>Examples</SectionHeading>
+                {docs.examples.map((example, index) => (
+                  <VStack key={index} gap="md" style={{ marginBottom: '1rem', position: 'relative', zIndex: docs.examples.length - index }}>
+                    <Heading level={4}>{example.title}</Heading>
+                    <Card padding="lg" style={{ paddingTop: '3rem', paddingBottom: '3rem', overflow: 'visible', backgroundColor: componentId && ['pills', 'footer', 'skeleton', 'copytext', 'copybutton', 'fileupload', 'stepper', 'slider', 'tabs'].includes(componentId) ? 'var(--bg-secondary)' : 'var(--bg-tertiary)' }}>
+                      <div style={{ width: '100%', maxWidth: componentId && ['navbar', 'appsidebar', 'table', 'calendar', 'footer'].includes(componentId) ? '100%' : componentId && ['card', 'statcard', 'imagecard', 'horizontalcard', 'actioncard'].includes(componentId) ? '500px' : '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: componentId && ['input', 'textarea', 'select', 'slider', 'searchinput', 'datepicker', 'taginput', 'numberinput', 'phoneinput', 'fileupload', 'tabs', 'stepper', 'navbar', 'card', 'statcard', 'imagecard', 'horizontalcard', 'actioncard', 'grid', 'table', 'timeline', 'accordion', 'treeview', 'descriptions', 'calendar', 'toast', 'skeleton', 'banner', 'notification', 'barchart', 'linechart', 'imagegallery', 'carousel', 'videoplayer', 'audioplayer', 'divider', 'footer'].includes(componentId) ? 'stretch' : 'center' }}>
+                        {example.render}
+                      </div>
+                    </Card>
+                    <CodeBlock code={example.code} language="tsx" showCopyButton />
+                  </VStack>
+                ))}
+              </VStack>
+            </div>
+          </Animate>
+        )}
       </VStack>
 
       {/* Tour for demo */}

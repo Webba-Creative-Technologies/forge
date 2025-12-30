@@ -2,6 +2,8 @@ import { ReactNode, useState, useRef, useEffect } from 'react'
 import { Navigation20Regular, Dismiss20Regular, Search20Regular, ChevronDown16Regular, ChevronDown20Regular, Home20Regular, Person20Regular, Settings20Regular, Heart20Regular } from '@fluentui/react-icons'
 import { Button } from './Button'
 import { useNavigation } from '../hooks/useNavigation'
+import { Z_INDEX, SHADOWS } from '../constants'
+import { useForge } from './ForgeProvider'
 
 // ============================================
 // TYPES
@@ -268,9 +270,9 @@ function NavItem({ item, isActive, onClick, buttonRef }: NavItemProps) {
             minWidth: 200,
             backgroundColor: 'var(--bg-dropdown)',
             borderRadius: 'var(--radius-md)',
-            boxShadow: '0 0 5px rgba(0, 0, 0, 0.08)',
+            boxShadow: SHADOWS.elevation.dropdown,
             padding: 6,
-            zIndex: 2000,
+            zIndex: Z_INDEX.dropdown,
             animation: 'scaleIn 0.15s ease-out'
           }}>
             {item.dropdownItems!.map(dropItem => (
@@ -306,6 +308,8 @@ interface NavbarProps {
   variant?: 'default' | 'centered' | 'minimal'
   /** Force mobile mode regardless of screen size (useful for previews) */
   forceMobile?: boolean
+  /** Force desktop mode regardless of container size (useful for previews) */
+  forceDesktop?: boolean
 }
 
 const defaultLogo = (
@@ -349,8 +353,10 @@ export function Navbar({
   sticky = true,
   transparent = false,
   variant = 'default',
-  forceMobile = false
+  forceMobile = false,
+  forceDesktop = false
 }: NavbarProps) {
+  const { shadows } = useForge()
   const navItems = items ?? defaultNavItems
   const [localMobileMenuOpen, setLocalMobileMenuOpen] = useState(false)
   const navRef = useRef<HTMLElement>(null)
@@ -361,6 +367,12 @@ export function Navbar({
 
   // Detect container width with ResizeObserver
   useEffect(() => {
+    // Skip detection if forceDesktop is enabled
+    if (forceDesktop) {
+      setIsContainerMobile(false)
+      return
+    }
+
     if (!navRef.current) return
 
     const observer = new ResizeObserver((entries) => {
@@ -372,10 +384,10 @@ export function Navbar({
 
     observer.observe(navRef.current)
     return () => observer.disconnect()
-  }, [])
+  }, [forceDesktop])
 
-  // Combined mobile state: forceMobile prop OR container width
-  const isMobile = forceMobile || isContainerMobile
+  // Combined mobile state: forceMobile prop OR container width (forceDesktop overrides)
+  const isMobile = forceDesktop ? false : (forceMobile || isContainerMobile)
 
   // Navigation context for sidebar integration
   const navigation = useNavigation()
@@ -430,7 +442,8 @@ export function Navbar({
           minHeight: 64,
           backgroundColor: transparent ? 'transparent' : 'var(--bg-secondary)',
           backdropFilter: transparent ? 'blur(12px)' : undefined,
-          zIndex: 1000,
+          boxShadow: shadows && !transparent ? SHADOWS.soft.sm : undefined,
+          zIndex: Z_INDEX.sticky,
           display: 'flex',
           alignItems: 'center',
           justifyContent: isMobile ? 'space-between' : undefined,
@@ -705,7 +718,7 @@ function MobileMenu({
           position: 'fixed',
           inset: 0,
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 3000,
+          zIndex: Z_INDEX.modalBackdrop,
           animation: 'fadeIn 0.2s ease'
         }}
       />
@@ -719,7 +732,7 @@ function MobileMenu({
         width: 300,
         maxWidth: '85vw',
         backgroundColor: 'var(--bg-secondary)',
-        zIndex: 3001,
+        zIndex: Z_INDEX.drawer,
         display: 'flex',
         flexDirection: 'column',
         animation: 'slideInRight 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -1076,7 +1089,7 @@ export function BottomNav({ items, activeId = 'home', onNavigate, variant = 'flo
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        zIndex: 100,
+        zIndex: Z_INDEX.sticky,
         paddingBottom: 'env(safe-area-inset-bottom)'
       }}>
         {displayItems.map(item => (
