@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-3.0.1-A35BFF?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/version-3.0.2-A35BFF?style=flat-square" alt="Version">
   <img src="https://img.shields.io/badge/react-18.x-61DAFB?style=flat-square&logo=react" alt="React">
   <img src="https://img.shields.io/badge/typescript-5.x-3178C6?style=flat-square&logo=typescript" alt="TypeScript">
   <img src="https://img.shields.io/badge/vite-6.x-646CFF?style=flat-square&logo=vite" alt="Vite">
@@ -28,10 +28,11 @@
 
 - **100+ Components** - Buttons, Cards, Forms, Tables, Charts, Navigation, and more
 - **Dark & Light Themes** - Built-in theme support with CSS variables
+- **Global Shadows** - Consistent elevation system with toggle support
 - **TypeScript** - Full TypeScript support with strict types
 - **AI-Ready** - Designed for AI-assisted development with clear component APIs
 - **Zero Dependencies** - Pure React components, no external UI libraries required
-- **Accessible** - WCAG compliant with keyboard navigation support
+- **Accessible** - WCAG compliant with ARIA attributes and keyboard navigation
 
 ## Quick Start
 
@@ -104,6 +105,12 @@ Modal, Dropdown, Popover, Tooltip, Sheet, BottomSheet.
 ### Layout
 Container, Stack, Grid, Flex, Divider.
 
+### Hooks
+`useToast`, `useNotification`, `useForge`, `useDraggableScroll`, `useStepper`, `useResponsive`
+
+### Constants
+`SHADOWS`, `Z_INDEX`, `COLORS`, `AVATAR_COLORS`, `STATUS_COLORS`, `CHART_COLORS`
+
 ## Usage Example
 
 ```tsx
@@ -140,6 +147,18 @@ Forge uses CSS variables for theming. Override them in your CSS:
 ```
 
 Use the [Theme Creator](https://forge.webba-creative.com/create) to generate custom themes.
+
+### Shadows
+
+Control shadows globally via ForgeProvider:
+
+```tsx
+// Enable shadows (default)
+<ForgeProvider shadows={true}>
+
+// Disable shadows for flat design
+<ForgeProvider shadows={false}>
+```
 
 ## Contributing
 
