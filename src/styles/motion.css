@@ -1,0 +1,222 @@
+/* ============================================ */
+/* FORGE MOTION — EXPRESSIVE KEYFRAMES             */
+/* ============================================ */
+/* Shipped alongside animations.css but focused on the v3.1.0 "Expressive" */
+/* primitives. Every class prefix is `forge-motion-` to avoid conflicts.   */
+
+/* -------------------------------------------- */
+/* GRADIENT TEXT                                */
+/* -------------------------------------------- */
+@keyframes forge-gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.forge-motion-gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+}
+
+.forge-motion-gradient-text--animated {
+  animation: forge-gradient-shift 6s ease-in-out infinite;
+}
+
+/* -------------------------------------------- */
+/* TEXT SHIMMER                                 */
+/* -------------------------------------------- */
+@keyframes forge-text-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.forge-motion-text-shimmer {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: forge-text-shimmer 3s linear infinite;
+}
+
+/* -------------------------------------------- */
+/* KINETIC TEXT                                 */
+/* -------------------------------------------- */
+@keyframes forge-kinetic-wave {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes forge-kinetic-rubber {
+  0%, 100% { transform: scaleX(1) scaleY(1); }
+  50%      { transform: scaleX(1.15) scaleY(0.85); }
+}
+@keyframes forge-kinetic-float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25%      { transform: translateY(-3px) rotate(-2deg); }
+  75%      { transform: translateY(3px) rotate(2deg); }
+}
+
+.forge-motion-kinetic-char {
+  display: inline-block;
+  animation-duration: 1.6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.forge-motion-kinetic-char--wave   { animation-name: forge-kinetic-wave; }
+.forge-motion-kinetic-char--rubber { animation-name: forge-kinetic-rubber; }
+.forge-motion-kinetic-char--float  { animation-name: forge-kinetic-float; }
+
+/* -------------------------------------------- */
+/* MARQUEE                                      */
+/* -------------------------------------------- */
+@keyframes forge-marquee-ltr {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes forge-marquee-rtl {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.forge-motion-marquee {
+  display: flex;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 48px,
+    black calc(100% - 48px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 48px,
+    black calc(100% - 48px),
+    transparent 100%
+  );
+}
+.forge-motion-marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+.forge-motion-marquee-track--ltr { animation-name: forge-marquee-ltr; }
+.forge-motion-marquee-track--rtl { animation-name: forge-marquee-rtl; }
+.forge-motion-marquee:hover .forge-motion-marquee-track--pause {
+  animation-play-state: paused;
+}
+
+/* -------------------------------------------- */
+/* BREATHE                                      */
+/* -------------------------------------------- */
+@keyframes forge-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50%      { transform: scale(1.12); opacity: 1; }
+}
+.forge-motion-breathe {
+  animation: forge-breathe 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* -------------------------------------------- */
+/* AURA (hover/focus halo)                      */
+/* -------------------------------------------- */
+@keyframes forge-aura-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--forge-aura-color, rgba(163, 91, 255, 0.5)); }
+  50%      { box-shadow: 0 0 0 16px transparent; }
+}
+.forge-motion-aura {
+  animation: forge-aura-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  border-radius: inherit;
+}
+
+/* -------------------------------------------- */
+/* RIPPLE WAVE                                  */
+/* -------------------------------------------- */
+@keyframes forge-ripple-wave {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.55; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+.forge-motion-ripple-wave {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: forge-ripple-wave 800ms cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* -------------------------------------------- */
+/* ORBITAL                                      */
+/* -------------------------------------------- */
+@keyframes forge-orbital-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.forge-motion-orbital {
+  position: relative;
+  display: inline-block;
+}
+.forge-motion-orbital-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  animation: forge-orbital-spin linear infinite;
+  will-change: transform;
+}
+
+/* -------------------------------------------- */
+/* HOLOGRAPHIC STICKER                          */
+/* -------------------------------------------- */
+@keyframes forge-holo-shift {
+  0%   { background-position: 0% 0%, 0 0; }
+  50%  { background-position: 100% 100%, 0 0; }
+  100% { background-position: 0% 0%, 0 0; }
+}
+
+/* -------------------------------------------- */
+/* CIPHER (matrix reveal cursor glyph)          */
+/* -------------------------------------------- */
+.forge-motion-cipher {
+  font-variant-numeric: tabular-nums;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', monospace;
+}
+
+/* -------------------------------------------- */
+/* SHIMMER (generic)                            */
+/* -------------------------------------------- */
+@keyframes forge-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.forge-motion-shimmer {
+  background-size: 200% 100%;
+  animation: forge-shimmer 2s linear infinite;
+}
+
+/* -------------------------------------------- */
+/* REDUCED MOTION                               */
+/* -------------------------------------------- */
+/* Driven by the data attribute that ForgeProvider sets on <html> based on
+   its `reducedMotion` prop + the system matchMedia preference. This is
+   intentionally NOT a `@media (prefers-reduced-motion: reduce)` rule: that
+   media query is always evaluated by the browser and would override the
+   ForgeProvider's `reducedMotion="never"` escape hatch (used on the docs
+   site so the motion showcase still works even on machines where the OS
+   has reduced motion on).                                                 */
+[data-forge-reduce-motion="true"] .forge-motion-gradient-text--animated,
+[data-forge-reduce-motion="true"] .forge-motion-text-shimmer,
+[data-forge-reduce-motion="true"] .forge-motion-kinetic-char,
+[data-forge-reduce-motion="true"] .forge-motion-marquee-track,
+[data-forge-reduce-motion="true"] .forge-motion-breathe,
+[data-forge-reduce-motion="true"] .forge-motion-aura,
+[data-forge-reduce-motion="true"] .forge-motion-ripple-wave,
+[data-forge-reduce-motion="true"] .forge-motion-orbital-ring,
+[data-forge-reduce-motion="true"] .forge-motion-shimmer {
+  animation: none !important;
+}

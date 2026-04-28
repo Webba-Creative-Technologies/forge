@@ -1,188 +1,201 @@
-# Forge - AI-Ready React Component Library
+<div align="center">
 
-<p align="center">
-  <img src="public/favicon.png" alt="Forge Logo" width="80" height="80">
-</p>
+<img src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/banner.png" alt="Webba Forge: React component library with built-in motion and AI skills" width="100%" />
 
-<p align="center">
-  <strong>100+ production-ready React components with dark/light themes, TypeScript support, and AI integration.</strong>
-</p>
+# Forge
 
-<p align="center">
-  <img src="https://img.shields.io/badge/version-3.0.2-A35BFF?style=flat-square" alt="Version">
-  <img src="https://img.shields.io/badge/react-18.x-61DAFB?style=flat-square&logo=react" alt="React">
-  <img src="https://img.shields.io/badge/typescript-5.x-3178C6?style=flat-square&logo=typescript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/vite-6.x-646CFF?style=flat-square&logo=vite" alt="Vite">
-  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License">
-</p>
+A React component library with built-in motion, themeable tokens, and AI skill packs for Claude Code and Cursor.
 
-<p align="center">
-  <a href="https://forge.webba-creative.com">Documentation</a> •
-  <a href="https://forge.webba-creative.com/blocks">Blocks</a> •
-  <a href="https://forge.webba-creative.com/playground">Playground</a>
-</p>
+[![npm version](https://img.shields.io/npm/v/wss3-forge.svg?style=flat&color=A35BFF)](https://www.npmjs.com/package/wss3-forge)
+[![license](https://img.shields.io/npm/l/wss3-forge.svg?style=flat&color=A35BFF)](./LICENSE)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/wss3-forge?style=flat&color=A35BFF)](https://bundlephobia.com/package/wss3-forge)
+[![types](https://img.shields.io/npm/types/wss3-forge.svg?style=flat&color=A35BFF)](./dist/index.d.ts)
+
+[Documentation](https://forge.webba-creative.com) · [Components](https://forge.webba-creative.com/docs/components) · [Templates](https://forge.webba-creative.com/templates) · [Motion](https://forge.webba-creative.com/motion) · [Discord](https://discord.gg/DwzReVGzdp)
+
+</div>
 
 ---
 
-## Features
-
-- **100+ Components** - Buttons, Cards, Forms, Tables, Charts, Navigation, and more
-- **Dark & Light Themes** - Built-in theme support with CSS variables
-- **Global Shadows** - Consistent elevation system with toggle support
-- **TypeScript** - Full TypeScript support with strict types
-- **AI-Ready** - Designed for AI-assisted development with clear component APIs
-- **Zero Dependencies** - Pure React components, no external UI libraries required
-- **Accessible** - WCAG compliant with ARIA attributes and keyboard navigation
-
-## Quick Start
-
-### Installation
+## Install
 
 ```bash
-# Clone the repository
-git clone https://github.com/Webba-Creative-Technologies/forge.git
-cd forge
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+npm install wss3-forge
+npx wss3-forge init
 ```
 
-### Environment Setup
+`@fluentui/react-icons` is a runtime dependency and installs automatically. The `init` command copies the Forge skill into `.claude/skills/forge/` so Claude Code can invoke it via `/forge`. Safe on existing projects, it asks before overwriting.
 
-```bash
-# Copy the example environment file
-cp .env.example .env
-
-# Edit .env with your values (optional)
-```
-
-### Build
-
-```bash
-# Development build
-npm run build
-
-# Production build with SEO pre-rendering
-npm run build:seo
-```
-
-## Project Structure
-
-```
-forge/
-├── .forge/              # Component library source
-│   ├── components/      # All UI components
-│   ├── hooks/           # React hooks
-│   └── styles/          # CSS and animations
-├── src/                 # Documentation site
-│   ├── components/      # Site-specific components
-│   └── pages/           # Documentation pages
-├── public/              # Static assets
-├── scripts/             # Build scripts
-└── legacy/              # WSS1 legacy documentation
-```
-
-## Components Overview
-
-### Inputs
-Button, Input, Textarea, Select, Checkbox, Switch, Radio, Slider, DatePicker, ColorPicker, FileUpload, and more.
-
-### Data Display
-Card, Table, Badge, Avatar, Timeline, Accordion, TreeView, Calendar, Charts (Bar, Line, Donut).
-
-### Feedback
-Toast, Notification, Banner, Alert, Spinner, Skeleton, ProgressBar.
-
-### Navigation
-Navbar, Tabs, Breadcrumbs, Pagination, Stepper, Footer.
-
-### Overlays
-Modal, Dropdown, Popover, Tooltip, Sheet, BottomSheet.
-
-### Layout
-Container, Stack, Grid, Flex, Divider.
-
-### Hooks
-`useToast`, `useNotification`, `useForge`, `useDraggableScroll`, `useStepper`, `useResponsive`
-
-### Constants
-`SHADOWS`, `Z_INDEX`, `COLORS`, `AVATAR_COLORS`, `STATUS_COLORS`, `CHART_COLORS`
-
-## Usage Example
+## Quick start
 
 ```tsx
-import { Button, Card, Input, VStack } from './.forge'
+import { ForgeProvider, Card, Heading, Text, Button, VStack } from 'wss3-forge'
+import 'wss3-forge/styles/animations.css'
+import 'wss3-forge/styles/motion.css'
 
-function LoginForm() {
+export default function App() {
   return (
-    <Card padding="lg">
-      <VStack gap="md">
-        <Input label="Email" type="email" placeholder="Enter your email" />
-        <Input label="Password" type="password" placeholder="Enter your password" />
-        <Button variant="primary" fullWidth>
-          Sign In
-        </Button>
-      </VStack>
-    </Card>
+    <ForgeProvider mode="dark">
+      <Card padding="lg">
+        <VStack gap="md">
+          <Heading level={2}>Welcome</Heading>
+          <Text color="secondary">
+            Forge ships components, motion, and a token system out of the box.
+          </Text>
+          <Button variant="primary">Get started</Button>
+        </VStack>
+      </Card>
+    </ForgeProvider>
   )
 }
 ```
 
+`ForgeProvider` is required. Without it, CSS variables are missing and components render unstyled.
+
+Works with Vite, Next.js (app or pages router), Remix, and any React 18+ setup.
+
+## Features
+
+- **100+ components** across layout, forms, navigation, data display, feedback, overlays, charts, media, and utilities. One import path: `'wss3-forge'`.
+- **First-class motion**. `Motion`, `AnimatePresence`, `Stagger`, `Marquee`, `RevealOnScroll`, `Parallax`, `Magnetic`, `Tilt`, `Starfield`, plus 17 hooks (`useMotionValue`, `useScrollMotion`, `useReducedMotion`, and more). Respects `prefers-reduced-motion` everywhere.
+- **Token-based theming**. Every color, radius, spacing, shadow, duration, and easing is a CSS variable. Override the whole theme by passing flat tokens to `ForgeProvider`. Built-in dark and light modes.
+- **TypeScript-first**. 134 exports with full type definitions. Generic props, narrow unions, no `any`.
+- **Accessibility**. ARIA roles, keyboard handlers, focus traps, and `aria-*` plumbing on Modal, Tabs, Tooltip, Popover, Combobox, Slider, NumberInput, Sheet, Avatar, ProgressBar.
+- **Forge-only icons**. Fluent UI 2 (`{Name}{Size}{Style}`). One icon library, one stroke weight, one convention.
+- **AI skill packs**. The `/forge` skill teaches Claude Code and Cursor the full component API, design rules, and layout patterns. See [skills/forge](./skills/forge).
+- **Built for production**. Zero runtime dependencies beyond peer (`react`, `react-dom`) and `@fluentui/react-icons`. ESM and CJS bundles.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/components-showcase.png" alt="A selection of Forge components: search, pricing card, payment notification, stat tile, badges, storage bars" width="100%" />
+</p>
+
+## What is inside
+
+| Category | Highlights |
+|---|---|
+| **Layout** | Container, Grid, VStack, HStack, Box, Flex, Page, PageSection, AspectRatio, Show, Hide |
+| **Buttons** | Button, IconButton, FloatButton, ButtonGroup, CopyButton, BackToTop |
+| **Typography** | Heading, Text, Label, Link, Kbd, InlineCode, CodeBlock, Highlight, TextTruncate |
+| **Forms** | Input, Textarea, Select, SearchInput, Checkbox, Switch, Radio, Slider, DatePicker, DateRangePicker, TimePicker, ColorPicker, Combobox, Cascader, MentionInput, NumberInput, OTPInput, PhoneInput, PasswordInput, TagInput, FileUpload, Rating, Form, FormGroup |
+| **Cards** | Card, ImageCard, HorizontalCard, ActionCard, StatCard, KpiCard, ProgressCard, InfoCard, EmptyState, PageHeader, PricingCard |
+| **Navigation** | Navbar, AppSidebar, BottomNav, Breadcrumbs, Pagination, Stepper, Toolbar, Tabs, Pills, SegmentedControl, NavigationProvider |
+| **Overlays** | Modal, ConfirmDialog, AlertDialog, Sheet, BottomSheet, SidePanel, Drawer, Popover, HoverCard, Tooltip, InfoTooltip, Dropdown, ContextMenu, CommandBar, Tour |
+| **Feedback** | Banner, Alert, Notification, Toast (`useToast`), ProgressBar, ProgressRing, Spinner, Skeleton, SplashScreen |
+| **Data** | Table, SimpleTable, VirtualList, Accordion, Calendar, Countdown, Descriptions, SimpleTable, TimeAgo, Timeline, TreeView |
+| **Charts** | LineChart, MultiLineChart, BarChart, StackedBar, DonutChart, AreaChart, StackedAreaChart, Sparkline, ChartLegend |
+| **Media** | ImageGallery, Carousel, VideoPlayer, AudioPlayer |
+| **Badges & Avatars** | Badge, StatusBadge, PriorityBadge, CountBadge, Avatar, AvatarStack, AvatarGroup, AvatarCard, AvatarList |
+| **Motion (50+ primitives)** | Motion, AnimatePresence, MotionConfig, Stagger, RevealOnScroll, Parallax, Magnetic, Tilt, Spotlight, GradientText, Typewriter, Marquee, Starfield, ConstellationGrid, ParticleField, MeshGradient, NetworkGraph, Confetti, FlipCard, ScratchCard, HoloEffect |
+| **Hooks** | useTheme, useToast, useNotification, useIsMobile, useBreakpoint, useDraggableScroll, useClickOutside, useDebounce, useThrottle, useLocalStorage, useKeyboardShortcut, useMotionValue, useScrollMotion, useReducedMotion, useMagneticAttraction, useTilt, useInView, useScrollReveal |
+
+The full reference lives in [skills/forge/components.md](./skills/forge/components.md).
+
 ## Theming
 
-Forge uses CSS variables for theming. Override them in your CSS:
-
-```css
-:root {
-  --brand-primary: #A35BFF;
-  --brand-secondary: #7B3FE4;
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #141414;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-}
-```
-
-Use the [Theme Creator](https://forge.webba-creative.com/create) to generate custom themes.
-
-### Shadows
-
-Control shadows globally via ForgeProvider:
+Forge exposes its design as CSS variables, all overridable through `ForgeProvider`.
 
 ```tsx
-// Enable shadows (default)
-<ForgeProvider shadows={true}>
-
-// Disable shadows for flat design
-<ForgeProvider shadows={false}>
+<ForgeProvider
+  mode="light"
+  theme={{
+    brandPrimary: '#0066FF',
+    radiusMd: 12,
+    fontFamily: 'Inter, system-ui, sans-serif'
+  }}
+>
+  <App />
+</ForgeProvider>
 ```
 
-## Contributing
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/theming-comparison.png" alt="The same Forge UI rendered in dark and light themes side by side" width="100%" />
+</p>
 
-Contributions are welcome! Please read our contributing guidelines before submitting a PR.
+Tokens you can override:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+- **Colors** brandPrimary, brandSecondary, bgPrimary, bgSecondary, bgTertiary, bgElevated, bgHover, bgActive, textPrimary, textSecondary, textMuted, borderColor, borderSubtle, success, warning, error, info
+- **Radius** radiusXs, radiusSm, radiusMd, radiusLg, radiusXl, radius2xl, radiusFull
+- **Spacing** spacingNone, spacingXs, spacingSm, spacingMd, spacingLg, spacingXl, spacing2xl, spacing3xl, spacing4xl
+- **Shadows** shadowSm, shadowMd, shadowLg, shadowXl
+- **Motion** durationFast, durationBase, durationSlow, easingGentle, easingDecelerate, easingAccelerate
+
+Full token list: [skills/forge/tokens.md](./skills/forge/tokens.md).
+
+## Motion
+
+Forge ships a complete motion system as primitives, hooks, and tokens. Every motion component reads `prefers-reduced-motion` and collapses to instant transitions when the user requests it.
+
+```tsx
+import { Motion, RevealOnScroll, Stagger } from 'wss3-forge'
+
+<RevealOnScroll>
+  <Motion
+    initial={{ opacity: 0, y: 24 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 'slow', easing: 'gentle' }}
+  >
+    <Heading>Hello</Heading>
+  </Motion>
+</RevealOnScroll>
+
+<Stagger delay={80}>
+  {items.map(item => <Card key={item.id}>{item.title}</Card>)}
+</Stagger>
+```
+
+<p align="center">
+  <video src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/motion-demo.mp4" poster="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/motion-demo-poster.jpg" autoplay muted loop playsinline width="100%">
+    <img src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/motion-demo-poster.jpg" alt="Forge motion demo: scroll reveal, marquee, magnetic hover" />
+  </video>
+</p>
+
+Motion guides and live demos: [forge.webba-creative.com/motion](https://forge.webba-creative.com/motion).
+
+## AI skills
+
+Forge ships skill packs that teach Claude Code and Cursor how to use the library correctly. After running `npx wss3-forge init`, the `/forge` skill loads automatically when AI edits a `.tsx` file.
+
+The skill includes:
+
+- **SKILL.md** rules, anti-patterns, mobile gotchas, component quick reference
+- **components.md** every component, every prop, every default
+- **tokens.md** the full token list with values
+- **theming.md** ForgeProvider, dark and light modes, custom themes
+- **motion.md** primitives, hooks, tokens, common compositions
+- **patterns.md** ready-to-use layouts (dashboard, form, auth, modal, settings)
+- **a11y.md** accessibility checklist per component
+- **anti-patterns.md** what not to do, with the correct alternative
+
+For project-level rules, the package also ships [AGENTS.md](./AGENTS.md) (18 rules) and [DESIGN.md](./DESIGN.md) (the reasoning behind the rules).
+
+## CLI
+
+```bash
+npx wss3-forge init       # install the /forge skill into .claude/skills/forge/
+npx wss3-forge upgrade    # re-sync the skill after upgrading wss3-forge
+npx wss3-forge doctor     # validate Forge setup in the current project
+```
+
+## Browser support
+
+Last two versions of Chrome, Firefox, Safari, and Edge. Forge uses `color-mix`, CSS variables, `aspect-ratio`, `@container`, and `backdrop-filter`. No IE11.
+
+## Documentation
+
+- Live site: [forge.webba-creative.com](https://forge.webba-creative.com)
+- Component reference: [forge.webba-creative.com/docs/components](https://forge.webba-creative.com/docs/components)
+- Templates: [forge.webba-creative.com/templates](https://forge.webba-creative.com/templates)
+- Motion: [forge.webba-creative.com/motion](https://forge.webba-creative.com/motion)
+- Theming: [forge.webba-creative.com/docs/theming](https://forge.webba-creative.com/docs/theming)
+- AI Integration: [forge.webba-creative.com/docs/ai-integration](https://forge.webba-creative.com/docs/ai-integration)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
+
+## Community
+
+- Discord: [discord.gg/DwzReVGzdp](https://discord.gg/DwzReVGzdp)
+- Reddit: [r/webbaforge](https://www.reddit.com/r/webbaforge/)
+- GitHub: [github.com/Webba-Creative-Technologies/forge](https://github.com/Webba-Creative-Technologies/forge)
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
-
-## Support
-
-- [GitHub Issues](https://github.com/Webba-Creative-Technologies/forge/issues)
-- [Discord Community](https://discord.gg/DwzReVGzdp)
-- [Reddit Community](https://www.reddit.com/r/webbaforge/)
-- [GitHub Sponsors](https://github.com/sponsors/Webba-Creative-Technologies)
-
----
-
-<p align="center">
-  Webba Creative Technologies - 2025
-</p>
+MIT (c) Webba Creative

@@ -1,33 +1,80 @@
 {
-  "name": "forge-docs",
-  "private": true,
-  "version": "1.0.0",
+  "name": "wss3-forge",
+  "version": "3.1.0",
+  "readme": "README.md",
+  "description": "React component library with first-class motion, themeable tokens, and AI skill packs for Claude Code and Cursor.",
+  "author": "Webba",
+  "license": "MIT",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": "./dist/styles/index.css",
+    "./styles/animations.css": "./dist/styles/animations.css",
+    "./styles/motion.css": "./dist/styles/motion.css"
+  },
+  "bin": {
+    "wss3-forge": "./bin/cli.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "skills",
+    "README.md",
+    "AGENTS.md",
+    "DESIGN.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "build:seo": "tsc && vite build && node scripts/prerender.cjs",
-    "prerender": "node scripts/prerender.cjs",
-    "preview": "vite preview",
-    "test": "playwright test",
-    "test:ui": "playwright test --ui",
-    "test:headed": "playwright test --headed"
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "dev": "vite build --watch"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.263",
-    "@microsoft/clarity": "^1.0.2",
-    "@supabase/supabase-js": "^2.47.10",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^7.0.2"
+    "@fluentui/react-icons": "^2.0.270"
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "puppeteer": "^24.34.0",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.1"
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.5.1",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "design-system",
+    "webba",
+    "forge",
+    "typescript",
+    "motion",
+    "animation",
+    "dark-mode",
+    "themeable",
+    "accessibility",
+    "ai",
+    "claude-code",
+    "cursor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Webba-Creative-Technologies/forge.git"
+  },
+  "homepage": "https://forge.webba-creative.com",
+  "bugs": {
+    "url": "https://github.com/Webba-Creative-Technologies/forge/issues"
   }
 }
