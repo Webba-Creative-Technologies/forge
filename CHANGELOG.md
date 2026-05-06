@@ -2,6 +2,19 @@
 
 All notable changes to `wss3-forge` will be documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.1] | 2026-05-07
+
+### Added
+- **`AppSidebar.compactLogo`** new prop. Renders in place of `logo` when the sidebar is collapsed (icon rail). Typically a square mark sized 32 to 40, designed to fit the 60px collapsed width. The collapse-toggle button stacks vertically below it. Without `compactLogo` the previous behaviour (toggle alone, centred) is preserved.
+
+### Fixed
+- **`Table` and `SimpleTable`** were drawing the per-cell `border-bottom` on every row including the last one. Combined with the pagination footer's `border-top`, this read as a double divider on the last row. The bottom border is now skipped on the last row so the pagination footer's `border-top` (or the table's natural bottom edge) becomes the single visible divider.
+- **`Switch`** had no bounding-box height of its own (only the track height: 22px on `md`), so it could not be aligned vertically with `Input` (40px) or `Button` (40px) on the same row even with `align-items: center`. The component now reserves a `min-height` matching the Forge form-field scale (xs=24, sm=32, md=40, lg=48, xl=56). The track stays compact and is centred inside the new bounding box.
+
+### Documentation
+- `skills/forge/anti-patterns.md` gains entries for the two recurring regressions above (stacked-divider pattern, form-controls without a bounding-box).
+- `skills/forge/components.md` documents `compactLogo` and the Switch sizing rule.
+
 ## [3.1.0] | 2026-04-28
 
 ### Added
