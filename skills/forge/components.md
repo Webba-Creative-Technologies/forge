@@ -421,6 +421,8 @@ Toggle.
 
 Props: `checked`, `onChange: (checked: boolean) => void`, `disabled`, `label`, `hint`, `error`, `size` (`'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`).
 
+Sizing: the Switch reserves a `min-height` matching the Forge form-field scale (xs=24, sm=32, md=40, lg=48, xl=56) so its bounding box aligns pixel-perfect with `Input`, `Button`, `Select`, `NumberInput`, etc. of the same `size` when used in an `HStack` or form row. The track stays the same compact dimensions and is centred vertically inside that box.
+
 ### `SwitchGroup`
 List of switches.
 
@@ -649,6 +651,7 @@ Main nav sidebar.
 | `onClose` | `() => void` | (drawer) |
 | `position` | `'left' \| 'right'` | `'left'` (drawer) |
 | `logo` | `ReactNode` | |
+| `compactLogo` | `ReactNode` | (used when `collapsed` is `true`) |
 | `sections` | `NavSection[]` | required |
 | `value` | `string` | |
 | `onNavigate` | `(id: string) => void` | |
@@ -672,7 +675,7 @@ Main nav sidebar.
 | `minWidth`, `maxWidth` | `number` | `60`, `480` |
 | `onWidthChange` | `(width) => void` | |
 
-### `Sheet`, `BottomSheet`, `SidePanel`
+When `collapsible` is enabled, the sidebar shrinks to a 60px icon rail. The full `logo` is hidden in that mode because most wordmarks do not fit in 60px. Pass a `compactLogo` (a square mark, ideally 32x32 to 40x40) to keep brand presence visible in the rail. The collapse-toggle button stacks vertically below the compact logo. Without `compactLogo`, only the toggle is shown when collapsed (current behaviour preserved).
 Sliding panels.
 
 `Sheet`: `open` (required), `onClose` (required), `position?: 'left' \| 'right'`, `size?: SheetSize`, `width?: number \| string` (overrides `size`), `title?`, `subtitle?`, `icon?: ReactNode`, `headerAction?: ReactNode`, `children?`, `footer?: ReactNode`.

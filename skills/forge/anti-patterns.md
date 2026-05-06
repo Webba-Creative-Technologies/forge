@@ -168,6 +168,12 @@ Forge is a filled-first system. Cards lean on a surface ladder of grey shades, n
 - WRONG passing a partial surface ramp to `ForgeProvider`: only setting `bgPrimary`, `bgSecondary`, `bgElevated`, leaving `bgDropdown` to fall back to the default light-theme white.
 - RIGHT set the full ladder together (`bgPrimary` → `bgSecondary` → `bgTertiary` → `bgDropdown` → `bgElevated`). Reason: `Select`/`Combobox` popups read `--bg-dropdown`, while `DatePicker`/`TimePicker`/`Modal` read `--bg-elevated`. If only one is themed, popups in the same form render at different colors. When in doubt, set `bgDropdown` and `bgElevated` to the same value.
 
+- WRONG stacking two adjacent borders on sibling elements: `<table>` rows with `border-bottom` and the pagination footer with `border-top` right beneath. The two lines render pixel-adjacent and read as a double divider on the last row, not as one strong separator. Recurring regression pattern in Table-like components.
+- RIGHT only one of the two carries the divider. Forge `Table` keeps `border-bottom` per row but conditions it off on the last one: `borderBottom: isLastRow ? 'none' : '1px solid var(--border-subtle)'`. The pagination footer's `border-top` (1px `--border-color`) becomes the single visible line between body and footer. Same rule for any list/footer or section/section pair: pick which side owns the divider, drop the other.
+
+- WRONG shipping a form control whose bounding height is dictated only by its content (a `Switch` whose box is just the 22px track, a `Checkbox` whose box is just the 16px square). It cannot be vertically aligned with `Input` (40px), `Button` (40px), or `Select` (40px) on the same row, even with `alignItems: 'center'`, because the slot heights differ.
+- RIGHT every form control reserves a `min-height` matching the Forge form-field scale per size (xs=24, sm=32, md=40, lg=48, xl=56), regardless of what its visual primitive (track, square, dot) actually is. The visual stays compact and centred inside that box. Forge `Switch` follows this rule: `minHeight: sizeStyles[size].box` on the inner `<label>`, then the track is `align-items: center` inside.
+
 ## Color
 
 - WRONG cyan + magenta + violet trio anywhere (linear-gradient, aurora preset, brand override). It is the most-cliched AI palette of 2024-2026. Buyers recognize it on sight.

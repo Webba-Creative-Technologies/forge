@@ -38,6 +38,10 @@ export interface DrawerBaseProps {
   position?: 'left' | 'right' // Only used in drawer mode
   // Content
   logo?: ReactNode
+  /** Logo rendered in place of `logo` when the sidebar is in collapsed
+   *  (icon-rail) mode. Typically a square mark (32x32 to 40x40) sized to fit
+   *  the 60px collapsed rail. If omitted, no logo is shown when collapsed. */
+  compactLogo?: ReactNode
   sections: NavSection[]
   value?: string
   onNavigate?: (id: string) => void
@@ -99,6 +103,7 @@ export function AppSidebar({
   onClose,
   position = 'left',
   logo,
+  compactLogo,
   sections,
   value,
   onNavigate,
@@ -682,17 +687,19 @@ export function AppSidebar({
       })
     }}>
       {/* Logo + Collapse Toggle */}
-      {showHeader && (logo || collapsible) && (
+      {showHeader && (logo || compactLogo || collapsible) && (
         <div style={{
           display: 'flex',
+          flexDirection: isCollapsed ? 'column' : 'row',
           alignItems: 'center',
           justifyContent: isCollapsed ? 'center' : 'space-between',
+          gap: isCollapsed ? '0.75rem' : 0,
           marginBottom: isCollapsed ? '1rem' : '2rem',
           marginTop: '0.5rem',
           marginLeft: isCollapsed ? 0 : 15,
           color: 'var(--text-primary)'
         }}>
-          {logo && !isCollapsed && logo}
+          {(isCollapsed ? compactLogo : logo) || null}
           {collapsible && (
             <button
               onClick={toggleCollapsed}

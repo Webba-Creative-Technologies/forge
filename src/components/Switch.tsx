@@ -25,11 +25,11 @@ export function Switch({
   const { hovered, pressed: pressing, bind } = useInteractionState({ enabled: !disabled })
 
   const sizeStyles = {
-    xs: { track: { width: 26, height: 14 }, thumb: 10, offset: 2 },
-    sm: { track: { width: 32, height: 18 }, thumb: 14, offset: 2 },
-    md: { track: { width: 40, height: 22 }, thumb: 18, offset: 2 },
-    lg: { track: { width: 48, height: 26 }, thumb: 22, offset: 2 },
-    xl: { track: { width: 56, height: 30 }, thumb: 26, offset: 2 }
+    xs: { track: { width: 26, height: 14 }, thumb: 10, offset: 2, box: 24 },
+    sm: { track: { width: 32, height: 18 }, thumb: 14, offset: 2, box: 32 },
+    md: { track: { width: 40, height: 22 }, thumb: 18, offset: 2, box: 40 },
+    lg: { track: { width: 48, height: 26 }, thumb: 22, offset: 2, box: 48 },
+    xl: { track: { width: 56, height: 30 }, thumb: 26, offset: 2, box: 56 }
   }
 
   const s = sizeStyles[size]
@@ -44,12 +44,13 @@ export function Switch({
   const thumbLeftAdjust = pressing && !disabled && checked ? thumbLeft - 4 : thumbLeft
 
   return (
-    <div>
+    <div style={{ display: 'inline-block' }}>
     <label
       style={{
         display: 'inline-flex',
-        alignItems: hint ? 'flex-start' : 'center',
+        alignItems: 'center',
         gap: '0.625rem',
+        minHeight: s.box,
         cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.5 : 1,
         userSelect: 'none',

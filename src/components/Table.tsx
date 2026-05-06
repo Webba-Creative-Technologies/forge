@@ -615,6 +615,7 @@ export function Table<T extends Record<string, any>>({
               </tr>
             ) : (
               paginatedData.map((row, idx) => {
+                const isLastRow = idx === paginatedData.length - 1
                 const key = String(row[keyField])
                 const isSelected = selectedKeys.includes(key)
                 const isHovered = hoveredRow === key
@@ -642,7 +643,7 @@ export function Table<T extends Record<string, any>>({
                         style={{
                           padding: cellPadding,
                           textAlign: 'center',
-                          borderBottom: '1px solid var(--border-subtle)'
+                          borderBottom: isLastRow ? 'none' : '1px solid var(--border-subtle)'
                         }}
                         onClick={e => e.stopPropagation()}
                       >
@@ -662,7 +663,7 @@ export function Table<T extends Record<string, any>>({
                             padding: cellPadding,
                             textAlign: col.align || 'left',
                             color: 'var(--text-primary)',
-                            borderBottom: '1px solid var(--border-subtle)'
+                            borderBottom: isLastRow ? 'none' : '1px solid var(--border-subtle)'
                           }}
                         >
                           {col.render ? col.render(value, row, idx) : String(value ?? '')}
@@ -674,7 +675,7 @@ export function Table<T extends Record<string, any>>({
                         style={{
                           padding: cellPadding,
                           textAlign: 'center',
-                          borderBottom: '1px solid var(--border-subtle)'
+                          borderBottom: isLastRow ? 'none' : '1px solid var(--border-subtle)'
                         }}
                         onClick={e => e.stopPropagation()}
                       >
@@ -816,7 +817,7 @@ interface SimpleTableProps {
   style?: React.CSSProperties
 }
 
-function SimpleTableRow({ row, cellPadding }: { row: ReactNode[], cellPadding: string }) {
+function SimpleTableRow({ row, cellPadding, isLast }: { row: ReactNode[], cellPadding: string, isLast: boolean }) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -834,7 +835,7 @@ function SimpleTableRow({ row, cellPadding }: { row: ReactNode[], cellPadding: s
           style={{
             padding: cellPadding,
             color: 'var(--text-primary)',
-            borderBottom: '1px solid var(--border-subtle)'
+            borderBottom: isLast ? 'none' : '1px solid var(--border-subtle)'
           }}
         >
           {cell}
@@ -885,7 +886,7 @@ export function SimpleTable({ headers, rows, compact = false, className, style }
         </thead>
         <tbody>
           {rows.map((row, rowIdx) => (
-            <SimpleTableRow key={rowIdx} row={row} cellPadding={cellPadding} />
+            <SimpleTableRow key={rowIdx} row={row} cellPadding={cellPadding} isLast={rowIdx === rows.length - 1} />
           ))}
         </tbody>
       </table>
