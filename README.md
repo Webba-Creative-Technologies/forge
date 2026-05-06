@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/banner.png" alt="Webba Forge: React component library with built-in motion and AI skills" width="100%" />
+
 # Forge
 
 A React component library with built-in motion, themeable tokens, and AI skill packs for Claude Code and Cursor.
@@ -63,6 +65,10 @@ Works with Vite, Next.js (app or pages router), Remix, and any React 18+ setup.
 - **AI skill packs**. The `/forge` skill teaches Claude Code and Cursor the full component API, design rules, and layout patterns. See [skills/forge](./skills/forge).
 - **Built for production**. Zero runtime dependencies beyond peer (`react`, `react-dom`) and `@fluentui/react-icons`. ESM and CJS bundles.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/components-showcase.png" alt="A selection of Forge components: search, pricing card, payment notification, stat tile, badges, storage bars" width="100%" />
+</p>
+
 ## What is inside
 
 | Category | Highlights |
@@ -101,6 +107,10 @@ Forge exposes its design as CSS variables, all overridable through `ForgeProvide
 </ForgeProvider>
 ```
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/theming-comparison.png" alt="The same Forge UI rendered in dark and light themes side by side" width="100%" />
+</p>
+
 Tokens you can override:
 
 - **Colors** brandPrimary, brandSecondary, bgPrimary, bgSecondary, bgTertiary, bgElevated, bgHover, bgActive, textPrimary, textSecondary, textMuted, borderColor, borderSubtle, success, warning, error, info
@@ -132,6 +142,12 @@ import { Motion, RevealOnScroll, Stagger } from 'wss3-forge'
   {items.map(item => <Card key={item.id}>{item.title}</Card>)}
 </Stagger>
 ```
+
+<p align="center">
+  <video src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/motion-demo.mp4" poster="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/motion-demo-poster.jpg" autoplay muted loop playsinline width="100%">
+    <img src="https://raw.githubusercontent.com/Webba-Creative-Technologies/forge/main/.github/assets/motion-demo-poster.jpg" alt="Forge motion demo: scroll reveal, marquee, magnetic hover" />
+  </video>
+</p>
 
 Motion guides and live demos: [forge.webba-creative.com/motion](https://forge.webba-creative.com/motion).
 
