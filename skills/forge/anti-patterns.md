@@ -33,6 +33,9 @@ Format: `WRONG ...` on one line, `RIGHT ...` on the next.
 - WRONG `<div style={{ display: 'flex', flex: 1 }}><div /><div /></div>` for "push to edges"
 - RIGHT `<HStack justify="between">` or `<HStack><Box /><Spacer /><Box /></HStack>`
 
+- WRONG `[A][spacer flex:1][B][spacer flex:1][C]` to center B between A and C (only centers B between A's right edge and C's left edge, drifts as soon as A and C have different widths)
+- RIGHT `display: grid; gridTemplateColumns: 'minmax(0,1fr) auto minmax(0,1fr)'` with A in column 1 (`justifySelf: start`), B in column 2, C in column 3 (`justifySelf: end`). The two `1fr` tracks are equal by definition, so B is truly viewport-centered regardless of A and C content widths. This is the Linear/Vercel nav pattern, and it's what `Navbar` uses internally when `itemsAlignment="center"`.
+
 ## Spacing
 
 - WRONG `style={{ padding: '16px 24px' }}`

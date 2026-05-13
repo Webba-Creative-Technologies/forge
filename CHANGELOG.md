@@ -2,6 +2,14 @@
 
 All notable changes to `wss3-forge` will be documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.2] | 2026-05-13
+
+### Fixed
+- **`Navbar`** with `itemsAlignment="center"` was not truly viewport-centered. The previous layout used a flex row with two `flex: 1` spacers around the items block (`[logo][spacer][items][spacer][actions]`), which only centered the items between the logo's right edge and the actions' left edge. As soon as `logo.width !== actions.width` the items drifted off-center by `(actions.width - logo.width) / 2`. The centered layout now uses a 3-column CSS grid (`minmax(0, 1fr) auto minmax(0, 1fr)`) with the logo in column 1, items in the auto-sized middle column, and actions in column 3. The two `1fr` tracks are equal by definition, so the items block is anchored to the true viewport center regardless of logo or actions content widths. Mobile layout and the `leftContent` / `centerContent` / `rightContent` slot mode are unchanged.
+
+### Documentation
+- `skills/forge/anti-patterns.md` gains an entry for the false-centered flex pattern (`[A][spacer flex:1][B][spacer flex:1][C]`) and the correct grid 1fr/auto/1fr replacement.
+
 ## [3.1.1] | 2026-05-07
 
 ### Added

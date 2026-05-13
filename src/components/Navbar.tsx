@@ -974,7 +974,12 @@ export function Navbar({
           boxShadow: shadows && effectiveBackground === 'solid' ? SHADOWS.soft.sm : 'none',
           borderBottom: borderBottom ? '1px solid var(--border-subtle)' : undefined,
           zIndex: Z_INDEX.sticky,
-          display: 'flex',
+          // Centered alignment uses a 3-column grid (1fr auto 1fr) so the items
+          // block is anchored to the viewport center regardless of the logo or
+          // actions widths. Flex with two flex:1 spacers only centers between
+          // the logo's right edge and the actions' left edge.
+          display: !isMobile && resolvedAlignment === 'center' && !(leftContent || centerContent || rightContent) ? 'grid' : 'flex',
+          gridTemplateColumns: !isMobile && resolvedAlignment === 'center' && !(leftContent || centerContent || rightContent) ? 'minmax(0, 1fr) auto minmax(0, 1fr)' : undefined,
           alignItems: 'center',
           justifyContent: isMobile ? 'space-between' : undefined,
           // Vertical padding is driven by minHeight — keep horizontal only so the size preset
@@ -1004,6 +1009,8 @@ export function Navbar({
             {/* Logo */}
             {logo && (
               <div style={{
+                gridColumn: !isMobile && resolvedAlignment === 'center' ? 1 : undefined,
+                justifySelf: !isMobile && resolvedAlignment === 'center' ? 'start' : undefined,
                 marginRight: isMobile ? 0 : '1rem',
                 display: 'flex',
                 alignItems: 'center',
@@ -1015,19 +1022,17 @@ export function Navbar({
               </div>
             )}
 
-            {/* Left spacer — pushes the items container toward the middle when centered */}
-            {!isMobile && resolvedAlignment === 'center' && <div style={{ flex: 1 }} />}
-
             {/* Desktop Navigation with sliding indicator */}
             <div
               ref={containerRef}
               style={{
+                gridColumn: !isMobile && resolvedAlignment === 'center' ? 2 : undefined,
                 position: 'relative',
                 display: isMobile ? 'none' : 'flex',
                 alignItems: 'center',
                 gap: '0.25rem',
-                // Only grow the items container when it owns the remaining space.
-                // For centered layout, left/right spacers handle positioning instead.
+                // Items only grow when they own the remaining space (left/right alignment).
+                // For centered layout, the parent grid's auto column sizes us to content.
                 flex: resolvedAlignment === 'center' ? undefined : 1,
                 justifyContent:
                   resolvedAlignment === 'right' ? 'flex-end' :
@@ -1067,11 +1072,10 @@ export function Navbar({
               ))}
             </div>
 
-            {/* Right spacer — symmetric counterpart to the left spacer above */}
-            {!isMobile && resolvedAlignment === 'center' && <div style={{ flex: 1 }} />}
-
             {/* Actions */}
             <div style={{
+              gridColumn: !isMobile && resolvedAlignment === 'center' ? 3 : undefined,
+              justifySelf: !isMobile && resolvedAlignment === 'center' ? 'end' : undefined,
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem',

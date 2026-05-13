@@ -16,6 +16,9 @@ yarn-error.log*
 .idea/
 *.swp
 
+# Local skill install from `npx wss3-forge init` (the source of truth is skills/)
+.claude/
+
 # OS
 .DS_Store
 Thumbs.db
