@@ -626,6 +626,10 @@ Top bar with logo, items, actions.
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` (heights 56 / 64 / 80) |
 | `background` | `'solid' \| 'transparent' \| 'glass' \| 'none'` | `'solid'` |
 | `itemsAlignment` | `'left' \| 'center' \| 'right'` | `'left'` |
+| `density` | `'comfortable' \| 'compact'` | `'comfortable'` |
+| `hoverEffect` | `'pill' \| 'underline' \| 'highlight' \| 'none'` | `'pill'` |
+| `layout` | `'nav' \| 'search'` | `'nav'` |
+| `searchInline` | `{ value, onChange, placeholder?, onSubmit?, width? }` | (required when `layout="search"`) |
 | `scrollFade` | `boolean` | `false` |
 | `scrollFadeThreshold` | `number` | `0` |
 | `borderBottom` | `boolean` | `false` |
@@ -634,6 +638,12 @@ Top bar with logo, items, actions.
 | `height` | `number` (raw px override) | |
 
 `NavbarItem` supports `dropdownItems` (simple dropdown) or `mega` (multi-column panel).
+
+`density="compact"` shrinks the whole bar: shorter height, smaller logo, tighter item padding, smaller fontSize and gap. A denser version of the same `size` preset (use it on app top-bars where space is tight).
+
+`hoverEffect` controls how hover and active states are rendered on each nav item. The active item uses the same family (a pill stays pill, an underline stays underline). Pick `pill` for app-like nav with a sliding rounded background indicator, `underline` for editorial nav with an animated bottom bar, `highlight` for minimal text-only nav where the only feedback is a brand-coloured text shift, `none` to disable hover entirely.
+
+`layout="search"` swaps the items row for a real centered `<input>` (logo / input / actions). Nav `items` are ignored in this mode; provide `searchInline.value` + `searchInline.onChange` to drive the controlled input. `onSubmit` fires on Enter. The input is anchored to the viewport center via the same 3-column grid Forge uses for `itemsAlignment="center"`. On mobile, the inline input is hidden and the existing search icon button is shown as the fallback (so `showSearch={true}` still matters on mobile in this mode).
 
 ### `BottomNav`
 Mobile bottom tab bar. Props: `items?: NavbarItem[]`, `value?: string` (default `'home'`), `onNavigate?: (id) => void`, `variant?: 'fixed' \| 'floating'` (default `'floating'`).
@@ -663,7 +673,7 @@ Main nav sidebar.
 | `onSearchClick` | `() => void` | |
 | `footerContent` | `ReactNode` | |
 | `bottomItems` | `NavItem[]` | |
-| `width` | `number` | `280` |
+| `width` | `number` | `240` |
 | `drawerWidth` | `number \| string` | `'calc(100vw - 48px)'` (mobile drawer only) |
 | `height` | `string` | `'100dvh'` |
 | `accentColor` | `string` | `var(--active-color)` |
@@ -674,8 +684,19 @@ Main nav sidebar.
 | `resizable` | `boolean` | `false` |
 | `minWidth`, `maxWidth` | `number` | `60`, `480` |
 | `onWidthChange` | `(width) => void` | |
+| `density` | `'comfortable' \| 'compact'` | `'comfortable'` |
+| `hoverEffect` | `'bg' \| 'border-left' \| 'dot' \| 'highlight' \| 'none'` | `'bg'` |
 
 When `collapsible` is enabled, the sidebar shrinks to a 60px icon rail. The full `logo` is hidden in that mode because most wordmarks do not fit in 60px. Pass a `compactLogo` (a square mark, ideally 32x32 to 40x40) to keep brand presence visible in the rail. The collapse-toggle button stacks vertically below the compact logo. Without `compactLogo`, only the toggle is shown when collapsed (current behaviour preserved).
+
+`density="compact"` tightens item padding (~40%) and the icon/label gap so ~30% more items fit at the same sidebar width. Icon sizes scale down (20→18 top-level, 16→14 nested) so the row keeps its proportions. Use for dense product sidebars where the user needs to see many sections at a glance.
+
+`hoverEffect` controls the indicator drawn on hover and on the active item:
+- `bg` (default): subtle background tint on hover, brand-color text on active.
+- `border-left`: 3px left bar (brand on active, muted on hover).
+- `dot`: small brand-tinted dot left of the icon (filled on active, ghosted on hover). Reserves an extra ~6-8px of left padding to fit the dot.
+- `highlight`: text + icon shift to the brand colour on hover and on active. No bg, no bar. Minimalist editorial look.
+- `none`: no hover or active surface feedback. The active item still gets the brand colour so it stays readable. Use sparingly (accessibility risk).
 Sliding panels.
 
 `Sheet`: `open` (required), `onClose` (required), `position?: 'left' \| 'right'`, `size?: SheetSize`, `width?: number \| string` (overrides `size`), `title?`, `subtitle?`, `icon?: ReactNode`, `headerAction?: ReactNode`, `children?`, `footer?: ReactNode`.

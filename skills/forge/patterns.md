@@ -784,6 +784,55 @@ const items = [
 </Container>
 ```
 
+## Search-led navbar
+
+The `layout="search"` mode swaps the items row for a real centered search input. Useful for docs sites and dashboards where the search field is the primary affordance, not a hidden icon button.
+
+```tsx
+import { useState } from 'react'
+import { Navbar, Button } from 'wss3-forge'
+
+function DocsNav() {
+  const [query, setQuery] = useState('')
+  return (
+    <Navbar
+      logo={<Logo />}
+      layout="search"
+      searchInline={{
+        value: query,
+        onChange: setQuery,
+        placeholder: 'Search the docs...',
+        onSubmit: (q) => runSearch(q)
+      }}
+      actions={<Button>Sign in</Button>}
+    />
+  )
+}
+```
+
+The input is anchored to the viewport center via the same 3-column grid that powers `itemsAlignment="center"`. On mobile, the inline input is hidden and the existing search icon button shows up as a fallback (so keep `showSearch={true}` if you want mobile search).
+
+## Dense product sidebar
+
+Pair `density="compact"` with `hoverEffect="border-left"` (or `"dot"`) for a dense product sidebar where the user needs to see many sections at a glance and the indicator is a sharp visual anchor rather than a soft bg.
+
+```tsx
+import { AppSidebar } from 'wss3-forge'
+
+<AppSidebar
+  density="compact"
+  hoverEffect="border-left"
+  sections={[
+    { title: 'Workspace', items: [...] },
+    { title: 'Personal', items: [...] }
+  ]}
+  value={activeId}
+  onNavigate={setActiveId}
+/>
+```
+
+For a dot-style nav, swap to `hoverEffect="dot"`. For a minimalist editorial look, use `hoverEffect="highlight"` so only the text + icon colour shifts.
+
 ## Empty state
 
 ```tsx

@@ -1,4 +1,5 @@
 import { ReactNode, useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { Navigation20Regular, Dismiss20Regular, Search20Regular, ChevronDown16Regular, ChevronDown20Regular, Home20Regular, Person20Regular, Settings20Regular, Heart20Regular } from '@fluentui/react-icons'
 import { Button, IconButton, type ButtonSize } from './Button'
 import { useNavigation } from '../hooks/useNavigation'
@@ -404,6 +405,7 @@ function NavMegaPanel({ mega, isOpen, onClose, onItemSelect, triggerEl, onPanelM
   }, [isOpen, onClose])
 
   if (!isOpen) return null
+  if (typeof document === 'undefined') return null
 
   const hasFeatured = !!mega.featured
   const columnCount = mega.columns.length
@@ -411,7 +413,7 @@ function NavMegaPanel({ mega, isOpen, onClose, onItemSelect, triggerEl, onPanelM
     ? `repeat(${columnCount}, minmax(0, 1fr)) minmax(0, 1.1fr)`
     : `repeat(${columnCount}, minmax(0, 1fr))`
 
-  return (
+  return createPortal(
     <div
       ref={panelRef}
       data-nav-mega-panel
@@ -485,7 +487,8 @@ function NavMegaPanel({ mega, isOpen, onClose, onItemSelect, triggerEl, onPanelM
           {mega.footer}
         </div>
       )}
-    </div>
+    </div>,
+    document.body
   )
 }
 
@@ -499,9 +502,10 @@ interface NavItemProps {
   buttonRef?: (el: HTMLButtonElement | null) => void
   padding?: string
   fontSize?: string
+  hoverEffect?: NavbarHoverEffect
 }
 
-function NavItem({ item, isActive, onClick, buttonRef, padding, fontSize }: NavItemProps) {
+function NavItem({ item, isActive, onClick, buttonRef, padding, fontSize, hoverEffect = 'pill' }: NavItemProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -591,14 +595,22 @@ function NavItem({ item, isActive, onClick, buttonRef, padding, fontSize }: NavI
           alignItems: 'center',
           gap: '0.5rem',
           padding: padding ?? '0.5rem 0.875rem',
-          backgroundColor: !isActive && (hasExpandable ? dropdownOpen : isHovered) ? 'var(--bg-tertiary)' : 'transparent',
+          backgroundColor: hoverEffect === 'pill' && !isActive && (hasExpandable ? dropdownOpen : isHovered)
+            ? 'var(--bg-tertiary)'
+            : 'transparent',
           border: 'none',
-          borderRadius: 'var(--radius-md)',
-          color: isActive
-            ? ACTIVE_COLOR
-            : (hasExpandable ? dropdownOpen : isHovered)
-              ? 'var(--text-primary)'
-              : 'var(--text-secondary)',
+          borderRadius: hoverEffect === 'underline' ? 0 : 'var(--radius-md)',
+          boxShadow:
+            hoverEffect === 'underline' && (isActive || (hasExpandable ? dropdownOpen : isHovered))
+              ? `inset 0 -2px 0 ${isActive ? 'var(--brand-primary)' : 'var(--text-primary)'}`
+              : 'none',
+          color: hoverEffect === 'none'
+            ? (isActive ? ACTIVE_COLOR : 'var(--text-secondary)')
+            : isActive
+              ? (hoverEffect === 'underline' ? 'var(--brand-primary)' : ACTIVE_COLOR)
+              : (hasExpandable ? dropdownOpen : isHovered)
+                ? 'var(--text-primary)'
+                : 'var(--text-secondary)',
           fontSize: fontSize ?? '0.875rem',
           fontWeight: isActive ? 500 : 400,
           cursor: 'pointer',
@@ -611,7 +623,7 @@ function NavItem({ item, isActive, onClick, buttonRef, padding, fontSize }: NavI
           <span style={{
             display: 'flex',
             transition: 'transform 0.15s ease',
-            transform: isHovered && !isActive ? 'scale(1.1)' : 'scale(1)'
+            transform: hoverEffect === 'pill' && isHovered && !isActive ? 'scale(1.1)' : 'scale(1)'
           }}>
             {item.icon}
           </span>
@@ -697,11 +709,80 @@ function NavItem({ item, isActive, onClick, buttonRef, padding, fontSize }: NavI
 }
 
 // ============================================
+// NAVBAR SEARCH INPUT (used when layout="search")
+// ============================================
+interface NavbarSearchInputProps {
+  value: string
+  onChange: (value: string) => void
+  onSubmit?: (value: string) => void
+  placeholder?: string
+  width?: number | string
+  size: 'sm' | 'md' | 'lg'
+}
+
+function NavbarSearchInput({ value, onChange, onSubmit, placeholder = 'Search...', width, size }: NavbarSearchInputProps) {
+  const [focused, setFocused] = useState(false)
+  const inputHeight = size === 'sm' ? 32 : size === 'lg' ? 44 : 38
+  const resolvedWidth = width ?? 'min(360px, 32vw)'
+  return (
+    <div style={{
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      width: typeof resolvedWidth === 'number' ? `${resolvedWidth}px` : resolvedWidth,
+      height: inputHeight
+    }}>
+      <span style={{
+        position: 'absolute',
+        left: 12,
+        display: 'flex',
+        alignItems: 'center',
+        color: 'var(--text-muted)',
+        pointerEvents: 'none'
+      }}>
+        <Search20Regular />
+      </span>
+      <input
+        type="search"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && onSubmit) onSubmit(value)
+        }}
+        placeholder={placeholder}
+        style={{
+          width: '100%',
+          height: '100%',
+          paddingLeft: 40,
+          paddingRight: 16,
+          background: 'var(--bg-tertiary)',
+          border: `1px solid ${focused ? 'var(--brand-primary)' : 'var(--border-color)'}`,
+          borderRadius: 'var(--radius-md)',
+          color: 'var(--text-primary)',
+          fontSize: '0.875rem',
+          fontFamily: 'inherit',
+          outline: 'none',
+          boxShadow: focused
+            ? '0 0 0 3px color-mix(in srgb, var(--brand-primary) 20%, transparent)'
+            : 'none',
+          transition: 'border-color 0.15s ease, box-shadow 0.15s ease'
+        }}
+      />
+    </div>
+  )
+}
+
+// ============================================
 // NAVBAR
 // ============================================
 type NavbarSize = 'sm' | 'md' | 'lg'
 type NavbarBackground = 'solid' | 'transparent' | 'glass' | 'none'
 type NavbarItemsAlignment = 'left' | 'center' | 'right'
+type NavbarDensity = 'comfortable' | 'compact'
+type NavbarHoverEffect = 'pill' | 'underline' | 'highlight' | 'none'
+type NavbarLayout = 'nav' | 'search'
 
 const NAVBAR_SIZE_TOKENS: Record<NavbarSize, {
   height: number
@@ -714,6 +795,21 @@ const NAVBAR_SIZE_TOKENS: Record<NavbarSize, {
   sm: { height: 56, itemPadding: '0.375rem 0.625rem', fontSize: '0.8125rem', logoScale: 0.85, horizontalPadding: '1.5rem', gap: '0.375rem' },
   md: { height: 64, itemPadding: '0.5rem 0.875rem', fontSize: '0.875rem', logoScale: 1, horizontalPadding: '2rem', gap: '0.5rem' },
   lg: { height: 80, itemPadding: '0.625rem 1.125rem', fontSize: '0.9375rem', logoScale: 1.15, horizontalPadding: '2.5rem', gap: '0.625rem' }
+}
+
+const NAVBAR_COMPACT_OVERRIDES: Record<NavbarSize, {
+  height: number
+  itemPadding: string
+  fontSize: string
+  logoScale: number
+}> = {
+  sm: { height: 40, itemPadding: '0.1875rem 0.375rem', fontSize: '0.75rem',   logoScale: 0.65 },
+  md: { height: 48, itemPadding: '0.25rem 0.5rem',     fontSize: '0.8125rem', logoScale: 0.78 },
+  lg: { height: 56, itemPadding: '0.375rem 0.75rem',   fontSize: '0.875rem',  logoScale: 0.9 }
+}
+const NAVBAR_DENSITY_GAP: Record<NavbarDensity, string> = {
+  comfortable: '0.25rem',
+  compact: '0.125rem'
 }
 
 interface NavbarProps {
@@ -733,6 +829,20 @@ interface NavbarProps {
   background?: NavbarBackground
   /** Alignment of nav items within the navbar — `left` (default), `center`, `right`. */
   itemsAlignment?: NavbarItemsAlignment
+  /** Density preset. `comfortable` (default) keeps item padding and gap as designed. `compact` shrinks the whole bar (height, logo, padding, fontSize). Pairs with any `size`. */
+  density?: NavbarDensity
+  /** Visual style applied on hover and on the active item. `pill` (default) is the sliding rounded background indicator. `underline` is an animated bottom bar. `highlight` shifts only the text colour to the brand colour. `none` disables the hover/active visual entirely. */
+  hoverEffect?: NavbarHoverEffect
+  /** Layout preset. `nav` (default) renders logo + items + actions. `search` renders logo + a centered real `<input>` + actions; nav `items` are ignored in this mode. Use `searchInline` to control the input. */
+  layout?: NavbarLayout
+  /** When `layout="search"`, this controls the inline search input. `placeholder` defaults to "Search…". `onSubmit` fires on Enter with the current value. `width` defaults to `min(560px, 50vw)`. */
+  searchInline?: {
+    value: string
+    onChange: (value: string) => void
+    placeholder?: string
+    onSubmit?: (value: string) => void
+    width?: number | string
+  }
   /** When true, the navbar is fully transparent (no bg / blur / shadow) at scroll position 0 and smoothly fades to its `background` value once the user scrolls past `scrollFadeThreshold`. Useful for hero/landing pages. */
   scrollFade?: boolean
   /** Scroll offset (in px) at which the navbar starts gaining its background. Default: `0`. */
@@ -800,6 +910,10 @@ export function Navbar({
   size = 'md',
   background,
   itemsAlignment,
+  density = 'comfortable',
+  hoverEffect = 'pill',
+  layout = 'nav',
+  searchInline,
   scrollFade = false,
   scrollFadeThreshold = 0,
   transparent,
@@ -827,8 +941,16 @@ export function Navbar({
     (variant === 'centered' ? 'center' : undefined) ??
     'left'
 
-  const sizeTokens = NAVBAR_SIZE_TOKENS[size]
+  const baseTokens = NAVBAR_SIZE_TOKENS[size]
+  const sizeTokens = density === 'compact'
+    ? { ...baseTokens, ...NAVBAR_COMPACT_OVERRIDES[size] }
+    : baseTokens
+  const effectiveItemPadding = sizeTokens.itemPadding
+  const effectiveItemGap = NAVBAR_DENSITY_GAP[density]
   const resolvedHeight = heightProp ?? sizeTokens.height
+
+  const hasSlotContent = !!(leftContent || centerContent || rightContent)
+
 
   // Scroll-fade: track window scroll when enabled
   const [hasScrolledPastThreshold, setHasScrolledPastThreshold] = useState(() => {
@@ -897,6 +1019,8 @@ export function Navbar({
 
   // Combined mobile state: forceMobile prop OR container width (forceDesktop overrides)
   const isMobile = forceDesktop ? false : (forceMobile || isContainerMobile)
+
+  const useGridLayout = !isMobile && (resolvedAlignment === 'center' || layout === 'search') && !hasSlotContent
 
   // Navigation context for sidebar integration
   const navigation = useNavigation()
@@ -974,12 +1098,8 @@ export function Navbar({
           boxShadow: shadows && effectiveBackground === 'solid' ? SHADOWS.soft.sm : 'none',
           borderBottom: borderBottom ? '1px solid var(--border-subtle)' : undefined,
           zIndex: Z_INDEX.sticky,
-          // Centered alignment uses a 3-column grid (1fr auto 1fr) so the items
-          // block is anchored to the viewport center regardless of the logo or
-          // actions widths. Flex with two flex:1 spacers only centers between
-          // the logo's right edge and the actions' left edge.
-          display: !isMobile && resolvedAlignment === 'center' && !(leftContent || centerContent || rightContent) ? 'grid' : 'flex',
-          gridTemplateColumns: !isMobile && resolvedAlignment === 'center' && !(leftContent || centerContent || rightContent) ? 'minmax(0, 1fr) auto minmax(0, 1fr)' : undefined,
+          display: useGridLayout ? 'grid' : 'flex',
+          gridTemplateColumns: useGridLayout ? 'minmax(0, 1fr) auto minmax(0, 1fr)' : undefined,
           alignItems: 'center',
           justifyContent: isMobile ? 'space-between' : undefined,
           // Vertical padding is driven by minHeight — keep horizontal only so the size preset
@@ -1009,8 +1129,8 @@ export function Navbar({
             {/* Logo */}
             {logo && (
               <div style={{
-                gridColumn: !isMobile && resolvedAlignment === 'center' ? 1 : undefined,
-                justifySelf: !isMobile && resolvedAlignment === 'center' ? 'start' : undefined,
+                gridColumn: useGridLayout ? 1 : undefined,
+                justifySelf: useGridLayout ? 'start' : undefined,
                 marginRight: isMobile ? 0 : '1rem',
                 display: 'flex',
                 alignItems: 'center',
@@ -1022,17 +1142,27 @@ export function Navbar({
               </div>
             )}
 
-            {/* Desktop Navigation with sliding indicator */}
+            {layout === 'search' && !isMobile && (
+              <div style={{ gridColumn: 2, display: 'flex', alignItems: 'center' }}>
+                <NavbarSearchInput
+                  value={searchInline?.value ?? ''}
+                  onChange={(v) => searchInline?.onChange(v)}
+                  onSubmit={searchInline?.onSubmit}
+                  placeholder={searchInline?.placeholder}
+                  width={searchInline?.width}
+                  size={size}
+                />
+              </div>
+            )}
+
             <div
               ref={containerRef}
               style={{
-                gridColumn: !isMobile && resolvedAlignment === 'center' ? 2 : undefined,
+                gridColumn: useGridLayout ? 2 : undefined,
                 position: 'relative',
-                display: isMobile ? 'none' : 'flex',
+                display: isMobile || layout === 'search' ? 'none' : 'flex',
                 alignItems: 'center',
-                gap: '0.25rem',
-                // Items only grow when they own the remaining space (left/right alignment).
-                // For centered layout, the parent grid's auto column sizes us to content.
+                gap: effectiveItemGap,
                 flex: resolvedAlignment === 'center' ? undefined : 1,
                 justifyContent:
                   resolvedAlignment === 'right' ? 'flex-end' :
@@ -1040,21 +1170,22 @@ export function Navbar({
                 overflow: 'visible'
               }}
             >
-              {/* Sliding background indicator */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: indicatorStyle.left,
-                  width: indicatorStyle.width,
-                  height: '100%',
-                  backgroundColor: 'var(--bg-active, var(--bg-tertiary))',
-                  borderRadius: 'var(--radius-md)',
-                  transition: 'left 0.25s ease, width 0.25s ease, opacity 0.15s ease',
-                  opacity: indicatorStyle.opacity,
-                  zIndex: 0
-                }}
-              />
+              {hoverEffect === 'pill' && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: indicatorStyle.left,
+                    width: indicatorStyle.width,
+                    height: '100%',
+                    backgroundColor: 'var(--bg-active, var(--bg-tertiary))',
+                    borderRadius: 'var(--radius-md)',
+                    transition: 'left 0.25s ease, width 0.25s ease, opacity 0.15s ease',
+                    opacity: indicatorStyle.opacity,
+                    zIndex: 0
+                  }}
+                />
+              )}
 
               {navItems.map(item => (
                 <NavItem
@@ -1062,8 +1193,9 @@ export function Navbar({
                   item={item}
                   isActive={value === item.id}
                   onClick={() => handleItemClick(item)}
-                  padding={sizeTokens.itemPadding}
+                  padding={effectiveItemPadding}
                   fontSize={sizeTokens.fontSize}
+                  hoverEffect={hoverEffect}
                   buttonRef={(el) => {
                     if (el) buttonRefs.current.set(item.id, el)
                     else buttonRefs.current.delete(item.id)
@@ -1074,15 +1206,14 @@ export function Navbar({
 
             {/* Actions */}
             <div style={{
-              gridColumn: !isMobile && resolvedAlignment === 'center' ? 3 : undefined,
-              justifySelf: !isMobile && resolvedAlignment === 'center' ? 'end' : undefined,
+              gridColumn: useGridLayout ? 3 : undefined,
+              justifySelf: useGridLayout ? 'end' : undefined,
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem',
               overflow: 'visible'
             }}>
-              {/* Search button */}
-              {showSearch && (
+              {showSearch && (layout !== 'search' || isMobile) && (
                 <IconButton
                   variant="ghost"
                   size={actionsSize}

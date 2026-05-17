@@ -244,6 +244,9 @@ export function ForgeProvider({
   reducedMotion = 'auto',
   fontFamily
 }: ForgeProviderProps) {
+  const parentContext = useContext(ForgeContext)
+  const isNested = parentContext !== null
+
   const baseTheme = mode === 'light' ? lightTheme : darkTheme
   const theme = useMemo(() => ({
     ...baseTheme,
@@ -435,6 +438,7 @@ export function ForgeProvider({
   // default. Without this, popups rendered into document.body fall back to
   // Times New Roman in browsers that ship serif as the UA font-family.
   useEffect(() => {
+    if (isNested) return
     const root = document.documentElement
     Object.entries(cssVariables).forEach(([key, value]) => {
       root.style.setProperty(key, value as string)
@@ -450,7 +454,7 @@ export function ForgeProvider({
         root.style.removeProperty('font-family')
       }
     }
-  }, [cssVariables, fontFamily])
+  }, [cssVariables, fontFamily, isNested])
 
   return (
     <ForgeContext.Provider value={contextValue}>

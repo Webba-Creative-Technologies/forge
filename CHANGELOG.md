@@ -2,6 +2,39 @@
 
 All notable changes to `wss3-forge` will be documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.3] | 2026-05-17
+
+### Added
+- **`Navbar.density`** new prop. `'compact'` shrinks the whole bar: shorter height (sm 40px, md 48px, lg 56px), smaller logo, tighter item padding, smaller fontSize and gap. A denser version of the same `size` preset.
+- **`Navbar.hoverEffect`** new prop with `'pill'` (default sliding bg), `'underline'` (animated bottom bar), `'highlight'` (text-only colour shift to brand), `'none'`. Active item follows the same family. The sliding pill indicator and the icon scale-on-hover are both gated to `'pill'`.
+- **`Navbar.layout="search"`** new layout preset. Swaps the items row for a real centered `<input>` (logo / wide input / actions). Nav `items` are ignored in this mode. Drive the input via the new `searchInline` prop (`{ value, onChange, placeholder?, onSubmit?, width? }`). The input is anchored to the viewport center via the same 3-column grid Forge uses for `itemsAlignment="center"`. On mobile, the inline input is hidden and the existing search icon button shows up as the fallback (so `showSearch={true}` still matters on mobile in this mode). Focus ring uses a brand-tinted halo. Enter triggers `onSubmit`.
+- **`AppSidebar.density`** new prop. `'compact'` tightens item padding, the icon/label gap, and the icon size (top-level 20→18, nested 16→14) so ~30% more items fit at the same sidebar width. Pairs with any `hoverEffect`.
+- **`AppSidebar.hoverEffect`** new prop. Picks the indicator drawn on hover and on the active item:
+  - `'bg'` (default): subtle background tint on hover, brand-color text on active.
+  - `'border-left'`: 3px left bar (brand on active, muted on hover).
+  - `'dot'`: small brand-tinted dot left of the icon (filled on active, ghosted on hover). Reserves extra left padding so the dot sits cleanly.
+  - `'highlight'`: text + icon shift to the brand colour on hover and on active. No bg, no bar. Minimalist editorial look.
+  - `'none'`: no surface feedback. The active item still gets the brand colour so it stays readable.
+
+### Changed
+- **`AppSidebar` default `width`** changed from `280` to `240`.
+- **`AppSidebar` padding** tightened: top/bottom `1.5rem` (`1rem` on mobile), left/right `0.75rem`.
+
+### Fixed
+- **`AppSidebar`** the inner `<aside>` now uses `box-sizing: border-box` so the `width` prop is the true layout width. Previously the aside took `width + 2 * padding` and overflowed narrow wrappers (template docs sidebars, fixed-width containers).
+- **`AppSidebar`** the aside no longer sets `minWidth: width` (now `minWidth: 0`). The aside can follow a narrower parent. The `width` prop sets the preferred width; the parent controls the bounds.
+- **`AppSidebar`** nav item button gets `box-sizing: border-box` so `width: 100%` plus internal padding doesn't push the button past the parent's right edge on narrow sidebars.
+- **`AppSidebar`** nav item label gets `min-width: 0`, `overflow: hidden`, `text-overflow: ellipsis`, `white-space: nowrap`. Long labels truncate instead of pushing the right padding out.
+- **`AppSidebar`** parent sliding indicator now renders only when `hoverEffect === 'bg'`. Other effects carry the active state on the item itself.
+- **`Navbar`** mega-menu panel now renders via `createPortal` to `document.body`. Escapes any ancestor with `transform`, `filter`, or `perspective` (the NavItem button uses `transform: scale()` for the press effect, which previously broke the panel's `position: fixed`).
+- **`ForgeProvider`** nested instances no longer write their CSS variables to `document.documentElement`. Previously, nested providers (theme previews on a landing page, isolated demos) overrode the root provider's variables on the global scope and, on unmount, removed them entirely. After navigating away from a page with nested providers, portals (dropdowns, mega menus, popovers) lost their `--bg-dropdown`, `--radius-lg`, etc. The root provider stays the only writer on `documentElement`; nested providers scope their variables to their wrapper `div` (which they already did via inline style).
+
+### Documentation
+- `skills/forge/components.md` documents the five new Navbar/AppSidebar props, the new `AppSidebar` default `width` (240) and padding, and the design rationale for each hover style.
+- `skills/forge/patterns.md` gains two recipes: "Search-led navbar" and "Dense product sidebar".
+- `skills/forge/anti-patterns.md` gains four entries: do not hand-roll a SearchNavbar (use `layout="search"`), do not override hover via custom CSS (use `hoverEffect`), do not cram a sidebar via inline styles (use `density="compact"`), and the AppSidebar variant of the hover override anti-pattern.
+- Docs site: all `Motion whileInView` scroll-reveal wrappers stripped from the docs pages (`src/pages/docs/`).
+
 ## [3.1.2] | 2026-05-13
 
 ### Fixed

@@ -34,7 +34,19 @@ Format: `WRONG ...` on one line, `RIGHT ...` on the next.
 - RIGHT `<HStack justify="between">` or `<HStack><Box /><Spacer /><Box /></HStack>`
 
 - WRONG `[A][spacer flex:1][B][spacer flex:1][C]` to center B between A and C (only centers B between A's right edge and C's left edge, drifts as soon as A and C have different widths)
-- RIGHT `display: grid; gridTemplateColumns: 'minmax(0,1fr) auto minmax(0,1fr)'` with A in column 1 (`justifySelf: start`), B in column 2, C in column 3 (`justifySelf: end`). The two `1fr` tracks are equal by definition, so B is truly viewport-centered regardless of A and C content widths. This is the Linear/Vercel nav pattern, and it's what `Navbar` uses internally when `itemsAlignment="center"`.
+- RIGHT `display: grid; gridTemplateColumns: 'minmax(0,1fr) auto minmax(0,1fr)'` with A in column 1 (`justifySelf: start`), B in column 2, C in column 3 (`justifySelf: end`). The two `1fr` tracks are equal by definition, so B is truly viewport-centered regardless of A and C content widths. It's what `Navbar` uses internally when `itemsAlignment="center"` and when `layout="search"`.
+
+- WRONG hand-rolling a "SearchNavbar": `<Navbar leftContent={<Logo />} centerContent={<Input className="w-96" />} rightContent={<Button>Sign in</Button>} />` plus custom focus styles and a manual onSubmit wrapper
+- RIGHT `<Navbar layout="search" logo={<Logo />} searchInline={{ value, onChange, onSubmit }} actions={<Button>Sign in</Button>} />`. Forge ships the inline input, the focus ring, the Enter-to-submit, and the mobile fallback. Re-implementing it loses the viewport-centering grid, the search icon prefix, and the brand-tinted focus halo.
+
+- WRONG custom CSS / className overrides to change Navbar hover into an underline or "minimal" style (e.g. `nav .item:hover { background: none; border-bottom: 2px solid var(--brand) }`)
+- RIGHT `<Navbar hoverEffect="underline" />` (or `"highlight"`, `"none"`). Same for the active state. Forge keeps the hover family and the active family aligned, so an underline-on-hover navbar also gets an underline-on-active item without extra work.
+
+- WRONG custom CSS on AppSidebar items to add a left bar, dot, or hover lift (e.g. `.sidebar-item:hover { box-shadow: inset 3px 0 var(--brand) }`)
+- RIGHT `<AppSidebar hoverEffect="border-left" />` (or `"dot"`, `"highlight"`, `"none"`). The hover family and active family stay in sync; `"dot"` even reserves the extra left padding for you.
+
+- WRONG cramming 20 sections into a sidebar by manually shrinking padding via inline styles or className overrides (`<NavItem className="py-1 text-xs" />`)
+- RIGHT `<AppSidebar density="compact" />`. Forge tightens the right tokens (padding, gap, icon size) without touching fontSize on the wrong axis. Combine with `hoverEffect="border-left"` for a dense product nav with a sharp active anchor.
 
 ## Spacing
 

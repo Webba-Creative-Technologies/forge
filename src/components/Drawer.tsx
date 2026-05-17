@@ -26,6 +26,23 @@ export interface NavSection {
 }
 
 /**
+ * Density preset for `AppSidebar`. `comfortable` (default) keeps the
+ * current spacing; `compact` tightens padding and gap so ~30% more
+ * items fit at the same height without changing the bar width.
+ */
+export type AppSidebarDensity = 'comfortable' | 'compact'
+
+/**
+ * Visual style applied on hover and on the active item for `AppSidebar`.
+ * - `bg` (default): subtle background tint on hover, brand-color text on active.
+ * - `border-left`: 3px left bar (brand on active, muted on hover).
+ * - `dot`: small brand-tinted dot left of the icon (filled on active, ghosted on hover).
+ * - `highlight`: text + icon shift to the brand colour. No bg, no bar.
+ * - `none`: no hover or active visual at all (use sparingly).
+ */
+export type AppSidebarHoverEffect = 'bg' | 'border-left' | 'dot' | 'highlight' | 'none'
+
+/**
  * Shared drawer concerns: open/close state, positioning, content, header,
  * footer, base styling. Used by AppSidebar, Sheet, SidePanel, BottomSheet
  * and any future drawer-shaped surface.
@@ -67,6 +84,10 @@ export interface DrawerBaseProps {
   rounded?: boolean // Only used in drawer mode
   // Force desktop mode (for previews/demos)
   forceDesktop?: boolean
+  /** Density preset. `comfortable` (default) keeps the current spacing; `compact` tightens item padding and inter-item gap. */
+  density?: AppSidebarDensity
+  /** Hover and active indicator style for nav items. Defaults to `bg`. */
+  hoverEffect?: AppSidebarHoverEffect
 }
 
 /**
@@ -115,7 +136,7 @@ export function AppSidebar({
   onSearchClick,
   footerContent,
   bottomItems,
-  width: initialWidth = 280,
+  width: initialWidth = 240,
   drawerWidth,
   height = '100dvh',
   accentColor,
@@ -127,7 +148,9 @@ export function AppSidebar({
   minWidth = 60,
   maxWidth = 480,
   onWidthChange,
-  forceDesktop = false
+  forceDesktop = false,
+  density = 'comfortable',
+  hoverEffect = 'bg'
 }: DrawerProps) {
   const isMobile = useIsMobile()
   const navigation = useNavigation()
@@ -501,6 +524,38 @@ export function AppSidebar({
     const isExpanded = expandedItems.has(item.id)
     const hasActiveChild = isChildActive(item)
     const isTopLevel = depth === 0
+    const isHovered = hoveredId === item.id
+    const isHotNotActive = isHovered && !isActive && !hasActiveChild
+    const activeOrChild = isActive || hasActiveChild
+
+    const compact = density === 'compact'
+    const itemPadding = compact
+      ? (isTopLevel ? '0.4375rem 0.625rem' : '0.3125rem 0.5rem')
+      : (isTopLevel ? '0.75rem' : '0.5rem 0.75rem')
+    const itemGap = compact ? '0.5rem' : '0.75rem'
+
+    let hoverBg: string = 'transparent'
+    let hoverShadow: string | undefined
+    let hoverTransform: string | undefined
+    switch (hoverEffect) {
+      case 'bg':
+        hoverBg = isHotNotActive ? 'var(--bg-tertiary)' : 'transparent'
+        break
+      case 'border-left':
+        hoverShadow = activeOrChild
+          ? `inset 3px 0 0 ${resolvedAccentColor}`
+          : isHotNotActive ? 'inset 3px 0 0 var(--text-muted)' : undefined
+        break
+      case 'dot':
+        hoverBg = isHotNotActive ? 'var(--bg-subtle, var(--bg-tertiary))' : 'transparent'
+        break
+      case 'highlight':
+        break
+      case 'none':
+        break
+    }
+
+    const isDefaultHover = hoverEffect === 'bg'
 
     return (
       <div key={item.id}>
@@ -514,30 +569,73 @@ export function AppSidebar({
             display: 'flex',
             alignItems: 'center',
             justifyContent: isCollapsed ? 'center' : undefined,
-            gap: isCollapsed ? 0 : '0.75rem',
+            gap: isCollapsed ? 0 : itemGap,
             width: '100%',
-            padding: isTopLevel ? '0.75rem' : '0.5rem 0.75rem',
-            backgroundColor: (!isActive && !hasActiveChild && hoveredId === item.id) ? 'var(--bg-tertiary)' : 'transparent',
+            boxSizing: 'border-box',
+            padding: itemPadding,
+            ...(hoverEffect === 'dot' && !isCollapsed && {
+              paddingLeft: compact ? '1.125rem' : '1.375rem'
+            }),
+            backgroundColor: isDefaultHover
+              ? (isHotNotActive ? 'var(--bg-tertiary)' : 'transparent')
+              : hoverBg,
+            ...(hoverShadow !== undefined && { boxShadow: hoverShadow }),
+            ...(hoverTransform !== undefined && { transform: hoverTransform }),
             border: 'none',
-            borderRadius: isTopLevel ? 'var(--radius-md)' : 'var(--radius-sm)',
-            color: isActive ? resolvedAccentColor : (
-              !isTopLevel
-                ? (hoveredId === item.id ? 'var(--text-primary)' : 'var(--text-secondary)')
-                : (hoveredId === item.id ? 'var(--text-primary)' : 'var(--text-primary)')
-            ),
+            borderRadius: hoverEffect === 'border-left'
+              ? 0
+              : (isTopLevel ? 'var(--radius-md)' : 'var(--radius-sm)'),
+            color: hoverEffect === 'none' && !isActive
+              ? (!isTopLevel ? 'var(--text-secondary)' : 'var(--text-primary)')
+              : isActive
+                ? resolvedAccentColor
+                : hoverEffect === 'highlight' && isHovered
+                  ? resolvedAccentColor
+                  : !isTopLevel
+                    ? (isHovered ? 'var(--text-primary)' : 'var(--text-secondary)')
+                    : (isHovered ? 'var(--text-primary)' : 'var(--text-primary)'),
             fontSize: isTopLevel ? '0.8125rem' : '0.8rem',
             fontWeight: isActive || hasActiveChild ? 500 : 400,
             cursor: 'pointer',
             textAlign: 'left',
             position: 'relative',
             zIndex: 1,
-            transition: 'color 0.15s ease, background-color 0.15s ease'
+            transition: isDefaultHover
+              ? 'color 0.15s ease, background-color 0.15s ease'
+              : 'color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease'
           }}
         >
-          {item.icon && (
-            <span style={{ fontSize: isTopLevel ? 20 : 16, display: 'flex', flexShrink: 0 }}>{item.icon}</span>
+          {hoverEffect === 'dot' && !isCollapsed && (isHovered || activeOrChild) && (
+            <span style={{
+              position: 'absolute',
+              left: compact ? 6 : 8,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: 6,
+              height: 6,
+              borderRadius: '50%',
+              backgroundColor: activeOrChild ? resolvedAccentColor : 'var(--text-muted)',
+              opacity: activeOrChild ? 1 : 0.6,
+              transition: 'background-color 0.15s ease, opacity 0.15s ease'
+            }} />
           )}
-          {!isCollapsed && <span style={{ flex: 1 }}>{item.label}</span>}
+          {item.icon && (
+            <span style={{
+              fontSize: isTopLevel ? (compact ? 18 : 20) : (compact ? 14 : 16),
+              display: 'flex',
+              flexShrink: 0
+            }}>{item.icon}</span>
+          )}
+          {!isCollapsed && (
+            <span style={{
+              flex: 1,
+              minWidth: 0,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              textAlign: 'left'
+            }}>{item.label}</span>
+          )}
           {!isCollapsed && item.badge !== undefined && item.badge !== 0 && (
             <span style={{
               backgroundColor: item.badgeColor ? item.badgeColor : isActive ? 'var(--brand-primary)' : 'var(--bg-tertiary)',
@@ -604,6 +702,7 @@ export function AppSidebar({
             alignItems: 'center',
             gap: '0.75rem',
             width: '100%',
+            boxSizing: 'border-box',
             padding: isTopLevel ? '0.75rem' : '0.5rem 0.75rem',
             backgroundColor: isActive ? 'var(--bg-tertiary)' : 'transparent',
             border: 'none',
@@ -615,8 +714,15 @@ export function AppSidebar({
             textAlign: 'left'
           }}
         >
-          {item.icon && <span style={{ fontSize: isTopLevel ? 20 : 16, display: 'flex' }}>{item.icon}</span>}
-          <span style={{ flex: 1 }}>{item.label}</span>
+          {item.icon && <span style={{ fontSize: isTopLevel ? 20 : 16, display: 'flex', flexShrink: 0 }}>{item.icon}</span>}
+          <span style={{
+            flex: 1,
+            minWidth: 0,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            textAlign: 'left'
+          }}>{item.label}</span>
           {item.badge !== undefined && item.badge !== 0 && (
             <span style={{
               backgroundColor: item.badgeColor ? item.badgeColor : isActive ? 'var(--brand-primary)' : 'var(--bg-tertiary)',
@@ -655,13 +761,14 @@ export function AppSidebar({
       : '0 16px 16px 0'
     : 0
 
-  const mobilePadding = isMobile ? '1rem' : '1.5rem'
+  const mobilePadding = isMobile ? '1rem 0.75rem' : '1.5rem 0.75rem'
 
   const sidebarContent = (
     <aside style={{
       width: responsiveWidth,
-      minWidth: mode === 'drawer' ? undefined : width,
+      minWidth: 0,
       maxWidth: '100vw',
+      boxSizing: 'border-box',
       ...(height === '100%' ? { alignSelf: 'stretch' } : { height }),
       backgroundColor: 'var(--bg-secondary)',
       display: 'flex',
@@ -772,8 +879,7 @@ export function AppSidebar({
 
       {/* Navigation */}
       <nav ref={navRef} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', flex: 1 }}>
-        {/* Sliding indicator */}
-        {indicatorStyle.width > 0 && (
+        {hoverEffect === 'bg' && indicatorStyle.width > 0 && (
           <div
             style={{
               position: 'absolute',
